@@ -1,37 +1,43 @@
-# ProyectoSIERP
-Repositorio para proyecto tecnólogo (SIERP)
+# Proyecto SIMP
+Repositorio para proyecto tecnólogo (SIMP)
 
 ## Objetivo principal
-El Sistema de inventario, economía y reportes para pizzería (SIERP) tiene como objetivo principal suplir las necesidades administrativas y de gestión productos compras, ventas y de inventarios de la empresa por medio de un sistema informático con acceso por red a cualquier dispositivo.
+Desarrollar e implementar un sistema de gestión de inventario de materia prima efectivo que permita a la empresa mantener un control adecuado sobre los productos de materia prima disponibles.
 
 ## Objetivos especificos
-Levantar información
-Identificar el problema
-Identificar las necesidades del cliente.
-Identificar y validar los requisitos funciónales y no funcióneles del proyecto 
-Diseñar el sistema informático (básico)
-Maquetar el proyecto (mockups)
-Desarrollar el sistema informático
-Validar la calidad del producto por medio de pruebas de software.
-Mantener el sistema informático
+Levantar información.​
+
+Identificar el problema.​
+
+Identificar y validar los requisitos funciónales y no funcióneles del proyecto.​
+
+Modelar los casos de uso.​
+
+Documentar los casos de uso extendió.​
+
+Maquetar el proyecto.​
+
+Desarrollar el sistema informático.​
+
+Validar la calidad del producto por medio de pruebas de software.​
+
+Mantener el sistema informático.
 
 ## Alcance del proyecto
-El Sistema de inventario, economía y reportes para pizzería (SIERP), está compuesto por base de datos, motor de búsqueda, sistema de tratamiento de datos e interfaz gráfica eficiente y sencilla alojado en la red con el fin de una fácil manipulación.
+El Sistema informático (SIMP)está compuesto por base de datos, motor de búsqueda, sistema de tratamiento de datos e interfaz gráfica eficiente y sencilla alojado en la red con el fin de registrar y tratar los datos del inventario de materia prima.​
 
 
 ## Planteamiento del problema
-¿Qué problemas conlleva no tener un manejo adecuado del inventario y los procesos de contabilidad en el negocio?
-En la empresa Anguie pizza se constata la ineficacia y las malas decisiones administrativas y económicas y todo ello por la inexistencia de un sistema informático capaz de almacenar y tratar datos de compras, ventas, inventario, y reportes lo cual origina deficiencias en su administración y gestión en general de la microempresa. Otros problemas encontrados en la empresa son:
-·	El nulo tratamiento de datos. 
-·	La falta de planes administrativos por la falta de información.
-·	El mal control de presupuestos en la empresa.
-·	El mal control de los precios de venta.
-·	El mal control de los presupuestos para las compras y gastos de la microempresa.
+La empresa Anguie pizza enfrenta problemas de gestión de inventario sobre materia prima debido a la falta de sistemas de archivo y registro, lo que resulta en la falta de disponibilidad de ingredientes frescos y en el desperdicio de alimentos. Como resultado, la empresa está experimentando pérdidas económicas y baja eficiencia en su actividad empresarial. ¿Cómo podemos implementar un sistema de gestión de inventario efectivo para garantizar la disponibilidad constante de los ingredientes necesarios para la producción de pizzas frescas y de calidad, al tiempo que se minimiza el desperdicio de alimentos y se maximiza la eficiencia en el proceso de producción?.​
 
 ## Justificacion del proyecto
-En la actualidad la microempresa Anguie no cuenta con el control de su inventario, gastos y de sus ventas como para poder competir en el contexto actual del mercado colombiano, ya que el mercado colombiano a raíz de la pandemia de coronavirus se avisto obligado a evolucionar e implementar sistemas informáticos para un mayor eficiencia y competitividad en el mercado; además de mantenerse competitivos obtendría beneficios como:
-•	La planeación de compras de productos 
-•	Historial del valor de los insumos
-•	Detección de productos infructíferos
-•	Ajustes de precios
+En la actualidad la microempresa Anguie no cuenta con el control de su inventario de materias primas como para poder competir en el contexto actual del mercado colombiano, ya que el mercado colombiano a raíz de la pandemia de coronavirus se avisto obligado a evolucionar e implementar sistemas informáticos para una mayor eficiencia y competitividad en el mercado; además de mantenerse competitivos obtendría beneficios como:​
+
+La planeación en compras de productos ​
+
+Historial del valor de los insumos​
+
+Detección de productos infructíferos​
+
+Ajustes de precios
 
