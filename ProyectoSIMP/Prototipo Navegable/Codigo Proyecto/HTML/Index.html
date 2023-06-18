@@ -6,34 +6,29 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Index SIMP</title>
-	<link rel="shortcut icon" href="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\LogoSIMP.png" type="image/x-icon">
-	<link rel="stylesheet" href="C:\Users\JuanC\Desktop\Codigo Proyecto\Css\index.css">
+	<link rel="shortcut icon" href="../Imagenes/LogoSIMP.png" type="image/x-icon">
+	<link rel="stylesheet" href="../Css/index.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
 	<div class="Contenedor">
 		<header>
 			<nav>
-				<a href="#"><img src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\usuario.png"
-						alt="Foto generica de usuario"><br>Usuario</a>
-				<a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\Index.html"><img
-						src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\aplicaciones.png"><br>Inventario</a>
-				<a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\Entradas.html"><img
-						src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\lado-del-camion.png"><br>Entradas</a>
-				<a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\Salida.html"><img
-						src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\carrito-de-compras.png"><br>Salidas</a>
-				<a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\PlantillaProducto.html"><img
-						src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\navegador.png"><br>Platilla
-						producto</a>
-				<a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\Usuarios.html"><img
-						src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\agregar-usuario.png"><br>Usuarios</a>
-				<a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\ProductoMateriaPrima.html"><img
-						src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\etiquetas.png"><br>Productos</a>
+				<a href="#"><img src="../Imagenes/usuario.png" alt="Foto generica de usuario"><br>Usuario</a>
+				<a href="Index.html"><img src="../Imagenes/aplicaciones.png"><br>Inventario</a>
+				<a href="Entradas.html"><img src="../Imagenes/lado-del-camion.png"><br>Entradas</a>
+				<a href="Salida.html"><img src="../Imagenes/carrito-de-compras.png"><br>Salidas</a>
+				<a href="PlantillaProducto.html"><img src="../Imagenes/navegador.png"><br>Platilla
+					producto</a>
+				<a href="Usuarios.html"><img src="../Imagenes/agregar-usuario.png"><br>Usuarios</a>
+				<a href="ProductoMateriaPrima.html"><img src="../Imagenes/etiquetas.png"><br>Productos</a>
 			</nav>
 		</header>
 
 		<section id="Notificaciones">
-			<marquee behavior="scroll" direction="left"> <a href="C:\Users\JuanC\Desktop\Codigo Proyecto\HTML\Notificaciones.html">Notificaciones</a></marquee>
+			<marquee behavior="scroll" direction="left"> <a href="Notificaciones.html">Notificaciones</a></marquee>
 		</section>
 
 		<main>
@@ -41,20 +36,19 @@
 				<h1>Inventario</h1>
 				<div class="ZonaBotones">
 					<button class="Añadir" type="button">
-						<img src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\agregar.png" alt="Añadir item">
+						<img src="../Imagenes/agregar.png" alt="Añadir item">
 					</button>
 					<button class="modificar" type="button">
-						<img src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\editar (1).png" alt="Modificar item">
+						<img src="../Imagenes/editar (1).png" alt="Modificar item">
 					</button>
 					<button class="Borrar" type="button">
-						<img src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\basura-nfc.png" alt="Borrar item">
+						<img src="../Imagenes/basura-nfc.png" alt="Borrar item">
 					</button>
 					<form action="#" id="Form de busqueda">
 						<label for="search-input">Buscar:
 							<input type="text" id="search-input">
 						</label>
-						<button type="button" id="search-button"><img
-								src="C:\Users\JuanC\Desktop\Codigo Proyecto\Imagenes\busqueda (1).png"
+						<button type="button" id="search-button"><img src="../Imagenes/busqueda (1).png"
 								alt="Buscar en tabla"></button>
 					</form>
 				</div>
@@ -64,39 +58,75 @@
 				<table>
 					<thead>
 						<tr>
-							<th>Codigo</th>
-							<th>Nombre</th>
-							<th>Descripción</th>
+							<th>Codigo Categoria producto</th>
+							<th>Nombre de categoria producto</th>
+							<th>Descripción Categoria</th>
 							<th>Cantidad existencias</th>
-							<th>Consumidas</th>
-							<th>Punto compra</th>
-							<th>Punto almacenamiento</th>
-							<th>Valor unitario</th>
+							<th>Consumidas en el ultimo mes</th>
+							<th>Maximo Almacenamiento</th>
+							<th>Punto de Recompra</th>
+							<th>Valor unitario promedio</th>
 							<th>Valor total promedio</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td>Producto 1</td>
-							<td>Descripción del producto 1</td>
+							<td>Cabano</td>
+							<td>Carne de cerdo y res en tiras tubulares</td>
 							<td>10</td>
 							<td>5</td>
 							<td>15</td>
 							<td>5</td>
-							<td>10.00</td>
-							<td>75.00</td>
+							<td>10.000</td>
+							<td>100.000</td>
+						<tr>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+
+						</tr>
+						<tr>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+
+						</tr>
+						<tr>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+							<td>Subtabla marca</td>
+
+						</tr>
 						</tr>
 						<tr>
 							<td>2</td>
-							<td>Producto 2</td>
-							<td>Descripción del producto 2</td>
+							<td>Queso Doble crema</td>
+							<td>Queso doble crema en presentacion bloque comunmente</td>
 							<td>20</td>
 							<td>10</td>
 							<td>30</td>
 							<td>10</td>
-							<td>20.00</td>
-							<td>150.00</td>
+							<td>2.000</td>
+							<td>40.000</td>
 						</tr>
 						<tr>
 							<td>4</td>
@@ -470,6 +500,9 @@
 			<p> <small>Sistema de Inventario de Matieria Prima para Pizzeria</small></p>
 		</footer>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>
