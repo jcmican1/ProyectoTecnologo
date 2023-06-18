@@ -1,0 +1,186 @@
+* {
+	margin: 0%;
+	padding: 0%;
+	font-family: sans-serif;
+}
+
+.Contenedor {
+	display: grid;
+	grid-template-rows: 0.1fr 0.1fr 1fr auto;
+	padding: 2% 3% 0% 3%;
+	gap: 1%;
+	background-color: white;
+}
+
+	header {
+		padding: 2%;
+		height: auto;
+		background-color: #fbfbfc;
+		border: solid black;
+		border-radius: 10px;
+	}
+
+		nav {
+			display: flex;
+			text-align: center;
+		}
+
+		nav a {
+			display: inline-block;
+			margin: auto;
+			text-decoration: none;
+			font-weight: bold;
+			color: #939aa9;
+			border-radius: 20px;
+		}
+
+		nav a:hover {
+			padding: 5px;
+			background-color: rgb(248, 161, 234);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			transition: all 0.3s ease-in-out;
+			transform: translateY(-5px);
+		}
+
+	#Notificaciones {
+		border: solid black;
+		border-radius: 10px;
+	}
+
+	main {
+		border: solid black;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		padding: 2vw;
+		display: grid;
+		grid-template-rows: 10vh 90vh;
+		gap: 1vw;
+	}
+
+		.HeadMain {
+			display: grid;
+			grid-template-columns: auto auto;
+			text-align: center;
+		}
+			.HeadMain h1 {
+				display: flex;
+				justify-content: right;
+			}
+
+			.ZonaBotones {
+				display: flex;
+				align-items: center;
+				justify-content: right;
+				gap: 1vw;
+			}
+			
+		
+            .TablaTrabajo {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1vw;
+                text-align: center;
+                padding: 5vh;
+                overflow-y: scroll;
+                border: solid black;
+            }
+
+                 .Producto {
+					padding: 2vw;
+                    display: grid;
+                    grid-template-rows: 5vw auto 5vw;
+                    /* grid-template-areas: 
+                    "P1Section1" 
+                    "P1Section2"
+                    "button"; */
+                    border: solid black;
+                    overflow-y: scroll;
+                }
+
+				.Producto:hover {
+					background-color: rgb(197, 216, 30);
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				}
+
+					.PsectionBody {
+						overflow-y: scroll;
+					} 
+
+						table {
+							padding: 2%;
+							border-collapse: collapse;
+							width: 100%;
+							text-align: center;
+						}
+
+							th,
+							td {
+								padding: 8px;
+								border-bottom: 1px solid black;
+							}
+
+							th {
+								background-color: #4CAF50;
+								color: white;
+							}
+
+							tr:nth-child(even) {
+								background-color: #f2f2f2;
+							}
+
+							tr:hover {
+								background-color: #ddd;
+							}
+
+	footer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: solid black;
+		border-radius: 10px;
+	}
+
+
+@media (max-width: 900px) {
+	* {
+		font-size: 3vw;
+	}
+	nav {
+		gap:0.3px;
+	}
+	nav a {
+		font-size: 2.5vw;
+	}
+	img, button {
+		width: 5vw;
+		height: 5vw;
+	}
+
+	#Notificaciones {
+		height: auto;
+	}
+
+	.HeadMain {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10PX;
+	}
+
+	.ZonaBotones {
+		display: block;
+	}
+	.TablaTrabajo {
+		overflow-x: scroll;
+	}
+
+		.Producto {
+			overflow-x: scroll;
+		}
+
+			.PsectionBody {
+				margin-top: 5vw;
+				overflow-x: scroll;
+			} 
+}
