@@ -1,1 +1,82 @@
-<p>entradas-inventario works!</p>
+<main class="container">
+
+    <div class="container">
+
+        <h1>Entradas</h1>
+
+        <div class=" m-3 container text-center row justify-content-md-center">
+
+            <div class="ZonaBotones container m-2 col-lg-6">
+                <button class="btn btn-success col-lg-4" type="button">
+                    <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
+                </button>
+                <button class="btn btn-primary col-lg-4" type="button">
+                    <img src="./assets/Imagenes/editar (1).png" alt="Modificar item">
+                </button>
+                <button class="btn btn-danger col-lg-4" type="button">
+                    <img src="./assets/Imagenes/basura-nfc.png" alt="Borrar item">
+                </button>
+            </div>
+
+            <div class="col-lg-5">
+                <form class="row" action="#" id="Form de busqueda">
+                    <label class="col-lg-10" for="search-input">Buscar:
+                        <input type="text" id="search-input">
+                    </label>
+                    <button class="btn btn-warning col-lg-2 " type="button" id="search-button">
+                        <img src="./assets/Imagenes/busqueda (1).png" alt="Buscar en tabla">
+                    </button>
+                </form>
+            </div>
+
+
+
+        </div>
+
+        <div class="TablaTrabajo container table-responsive ">
+            
+            <table class="table table-m table-bordered border-primary table-hover table-striped">
+
+                <caption>Tabla de entradas de inventario</caption>
+
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Columna 1</th>
+                        <th scope="col">Columna 2</th>
+                        <th scope="col">Columna 3</th>
+                        <th scope="col">Columna 4</th>
+                        <th scope="col">Columna 5</th>
+                        <th scope="col">Columna 6</th>
+                        <th scope="col">Columna 7</th>
+                        <th scope="col">Columna 8</th>
+                        <th scope="col">Columna 9</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let art of articulos">
+                        <td>{{art.codigo}}</td>
+                        <td>{{art.descripcion}}</td>
+                        <td>{{art.precio}}</td>
+                        <td><button (click)="baja()">Borrar?</button></td>
+                        <td><button (click)="seleccionar()">Seleccionar</button></td>        
+                      </tr> -->
+                    <!-- <tr>
+                        <th scope="row">1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 7</td>
+                        <td><button class="btn btn-danger" (click)="baja()">Borrar?</button></td>
+                        <td><button class="btn btn-primary" (click)="seleccionar()">Seleccionar</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
