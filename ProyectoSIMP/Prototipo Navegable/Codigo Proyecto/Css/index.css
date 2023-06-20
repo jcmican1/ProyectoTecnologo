@@ -3,7 +3,13 @@
 	padding: 0%;
 	font-family: sans-serif;
 }
+/* body{
+	background-image: url('https://cdn.pixabay.com/photo/2017/07/08/11/33/white-2484120_1280.png');
 
+} */
+body{
+	padding: 2vw;
+}
 .Contenedor {
 	display: grid;
 	grid-template-rows: 0.1fr 0.1fr 1fr auto;
@@ -32,6 +38,7 @@
 			font-weight: bold;
 			color: #939aa9;
 			border-radius: 20px;
+			font-size: x-large ;
 		}
 
 		nav a:hover {
@@ -75,6 +82,8 @@
 			}
 			
 		.TablaTrabajo {
+			height: 900%;
+			width: 80vw;
 			overflow-y: scroll;
 			border: solid black;
 		}
