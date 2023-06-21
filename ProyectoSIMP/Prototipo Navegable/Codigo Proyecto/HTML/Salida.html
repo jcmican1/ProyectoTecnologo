@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Salida</title>
+	<link rel="shortcut icon" href="../Imagenes/LogoSIMP.png" type="image/x-icon">
+	<link rel="stylesheet" href="../Css/index.css">
+</head>
+
+<body>
+	<div class="Contenedor">
+		<header>
+			<nav>
+				<a href="#"><img src="../Imagenes/usuario.png"
+						alt="Foto generica de usuario"><br>Usuario</a>
+				<a href="Index.html"><img
+						src="../Imagenes/aplicaciones.png"><br>Inventario</a>
+				<a href="Entradas.html"><img
+						src="../Imagenes/lado-del-camion.png"><br>Entradas</a>
+				<a href="Salida.html"><img
+						src="../Imagenes/carrito-de-compras.png"><br>Salidas</a>
+				<a href="PlantillaProducto.html"><img
+						src="../Imagenes/navegador.png"><br>Platilla
+						producto</a>
+				<a href="Usuarios.html"><img
+						src="../Imagenes/agregar-usuario.png"><br>Usuarios</a>
+				<a href="ProductoMateriaPrima.html"><img
+						src="../Imagenes/etiquetas.png"><br>Productos</a>
+			</nav>
+		</header>
+
+		<section id="Notificaciones">
+			<marquee behavior="scroll" direction="left"> <a href="Notificaciones.html">Notificaciones</a></marquee>
+		</section>
+
+		<main>
+			<div class="HeadMain">
+				<h1>Salida</h1>
+				<div class="ZonaBotones">
+					<button class="Añadir" type="button">
+						<img src="../Imagenes/agregar.png" alt="Añadir item">
+					</button>
+					<button class="modificar" type="button">
+						<img src="../Imagenes/editar (1).png" alt="Modificar item">
+					</button>
+					<button class="Borrar" type="button">
+						<img src="../Imagenes/basura-nfc.png" alt="Borrar item">
+					</button>
+					<form action="#" id="Form de busqueda">
+						<label for="search-input">Buscar:
+							<input type="text" id="search-input">
+						</label>
+						<button type="button" id="search-button"><img
+								src="../Imagenes/busqueda (1).png"
+								alt="Buscar en tabla"></button>
+					</form>
+				</div>
+
+			</div>
+			<div class="TablaTrabajo">
+				<table>
+					<thead>
+						<tr>
+							<th>Codigo salida</th>
+							<th>Motivo</th>
+							<th>Fecha</th>
+							<th>Codigo producto</th>
+							<th>Nombre</th>
+							<th>Cantidad</th>
+							<th>Valor unitario</th>
+							<th>Valor Valor total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Producto 1</td>
+							<td>Descripción del producto 1</td>
+							<td>10</td>
+							<td>5</td>
+							<td>15</td>
+							<td>5</td>
+							<td>10.00</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+
+		<footer>
+			<p> <small>Sistema de Inventario de Matieria Prima para Pizzeria</small></p>
+		</footer>
+	</div>
+</body>
+
+</html>

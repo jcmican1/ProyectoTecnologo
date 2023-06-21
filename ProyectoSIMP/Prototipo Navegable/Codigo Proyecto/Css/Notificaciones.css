@@ -1,0 +1,73 @@
+* {
+    font-family: sans-serif;
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    text-align: center;
+    align-items: center;
+}
+
+main {
+    background-color: cornflowerblue;
+    max-width: 70%;
+    margin:0 auto;
+    margin-top: 5vw;
+    padding: 1%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-rows: repeat(3,auto);
+    gap: 1vw;
+}
+
+   .primaria {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    overflow-y: scroll;
+    background-color: coral;
+   }
+        .Ejemplo {
+            margin: 2vw;
+        }
+
+    .AreaBotones {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+    }
+
+    button {
+        background-color: gray;
+        color: white;
+        padding: 2% 5%;
+        margin-right: 2%;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+@media screen and (max-width: 900px) {
+    main {
+        max-width: 90%;
+        margin-top: 10vw;
+    }
+    
+    .primaria {
+        margin: 2vw;
+    }
+    
+    button {
+        padding: 2% 3%;
+    }
+}
+    

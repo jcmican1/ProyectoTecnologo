@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="es">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto de materia prima</title>
+    <link rel="shortcut icon" href="../Imagenes/LogoSIMP.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Css/ProductoMateriaprima.css">
+</head>
+
+<body>
+    <form>
+
+        <h2>Producto de materia prima</h2>
+        <div>
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo" required>
+        </div>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+        </div>
+        <div>
+            <label for="punto_compra">Punto de compra:</label>
+            <input type="text" id="punto_compra" name="punto_compra" required>
+        </div>
+        <div>
+            <label for="cantidad_maxima">Cantidad máxima de compra:</label>
+            <input type="text" id="cantidad_maxima" name="cantidad_maxima" required>
+        </div>
+        <div class="AreaBotones">
+            <button type="button" class="cancel-button" onclick="history.back()">Cancelar</button>
+            <button type="submit">Enviar</button>
+        </div>
+
+    </form>
+</body>
+
+</html>
