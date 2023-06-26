@@ -10,6 +10,9 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { EntradasInventarioComponent } from './Componentes/TablasVista/entradas-inventario/entradas-inventario.component';
 import { RestaurarClaveComponent } from './Componentes/restaurar-clave/restaurar-clave.component';
 import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-producto/plantilla-producto.component';
+import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.component';
+import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
+import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-
     LoginComponent,
     EntradasInventarioComponent,
     RestaurarClaveComponent,
-    PlantillaProductoComponent
+    PlantillaProductoComponent,
+    SalidasComponent,
+    ProductoMateriaPrimaComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

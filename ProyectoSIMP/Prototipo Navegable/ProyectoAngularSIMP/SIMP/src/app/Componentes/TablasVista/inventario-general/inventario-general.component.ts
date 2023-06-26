@@ -25,5 +25,12 @@ baja(){
 seleccionar(){
 
 }
+busqueda(){
+  this.articulos={
+    codigo: 2 ,
+    descripcion:"holass",
+    precio:100
+  }
+}
 
 }

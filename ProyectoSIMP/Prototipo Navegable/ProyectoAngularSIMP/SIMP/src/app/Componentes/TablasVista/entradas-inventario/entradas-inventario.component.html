@@ -6,30 +6,19 @@
 
         <div class=" m-3 container text-center row justify-content-md-center">
 
-            <div class="ZonaBotones container m-2 col-lg-6">
-                <button class="btn btn-success col-lg-4" type="button">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button">
                     <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
-                </button>
-                <button class="btn btn-primary col-lg-4" type="button">
-                    <img src="./assets/Imagenes/editar (1).png" alt="Modificar item">
-                </button>
-                <button class="btn btn-danger col-lg-4" type="button">
-                    <img src="./assets/Imagenes/basura-nfc.png" alt="Borrar item">
                 </button>
             </div>
 
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <form class="row" action="#" id="Form de busqueda">
                     <label class="col-lg-10" for="search-input">Buscar:
                         <input type="text" id="search-input">
                     </label>
-                    <button class="btn btn-warning col-lg-2 " type="button" id="search-button">
-                        <img src="./assets/Imagenes/busqueda (1).png" alt="Buscar en tabla">
-                    </button>
                 </form>
             </div>
-
-
 
         </div>
 
@@ -58,10 +47,10 @@
                         <td>{{art.codigo}}</td>
                         <td>{{art.descripcion}}</td>
                         <td>{{art.precio}}</td>
-                        <td><button (click)="baja()">Borrar?</button></td>
+                        <td><button (click)="baja()">Borrar</button></td>
                         <td><button (click)="seleccionar()">Seleccionar</button></td>        
                       </tr> -->
-                    <!-- <tr>
+                      <tr>
                         <th scope="row">1</th>
                         <td>Dato 1</td>
                         <td>Dato 2</td>
@@ -70,9 +59,58 @@
                         <td>Dato 5</td>
                         <td>Dato 6</td>
                         <td>Dato 7</td>
-                        <td><button class="btn btn-danger" (click)="baja()">Borrar?</button></td>
-                        <td><button class="btn btn-primary" (click)="seleccionar()">Seleccionar</button></td>
-                    </tr> -->
+                        <td><button class="btn btn-danger" >Borrar</button></td>
+                        <td><button class="btn btn-primary" >Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 7</td>
+                        <td><button class="btn btn-danger" >Borrar</button></td>
+                        <td><button class="btn btn-primary" >Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 7</td>
+                        <td><button class="btn btn-danger" >Borrar</button></td>
+                        <td><button class="btn btn-primary" >Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 7</td>
+                        <td><button class="btn btn-danger" >Borrar</button></td>
+                        <td><button class="btn btn-primary" >Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 7</td>
+                        <td><button class="btn btn-danger" >Borrar</button></td>
+                        <td><button class="btn btn-primary" >Seleccionar</button></td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
