@@ -14,6 +14,9 @@ import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.comp
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
 import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.component';
 
+import { FormsModule } from "@angular/forms";
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,11 +29,13 @@ import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.c
     PlantillaProductoComponent,
     SalidasComponent,
     ProductoMateriaPrimaComponent,
-    UsuariosComponent
+    UsuariosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@
     $con = retornarConexion();
   
     // Utilizar una sentencia preparada para evitar inyección SQL
-    $stmt = $con->prepare("INSERT INTO usuarios (Correo, Clave) VALUES (?, ?)");
+    $stmt = $con->prepare("INSERT INTO usuario (Correo, Clave) VALUES (?, ?)");
     $stmt->bind_param("ss", $correo, $clave);
     $stmt->execute();
     $stmt->close();

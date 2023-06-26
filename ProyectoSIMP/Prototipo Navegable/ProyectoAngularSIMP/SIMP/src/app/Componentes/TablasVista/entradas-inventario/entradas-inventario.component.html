@@ -14,8 +14,10 @@
 
             <div class="col-lg-4">
                 <form class="row" action="#" id="Form de busqueda">
-                    <label class="col-lg-10" for="search-input">Buscar:
-                        <input type="text" id="search-input">
+                    <label for="search-input">Buscar:
+                        <!-- El input realiza un llamado a una funcion que realiza 
+                            una nueva consulta ala base de datos con el las palabras como filtro -->
+                        <input  type="text" id="search-input">
                     </label>
                 </form>
             </div>
@@ -30,16 +32,17 @@
 
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Columna 1</th>
-                        <th scope="col">Columna 2</th>
-                        <th scope="col">Columna 3</th>
-                        <th scope="col">Columna 4</th>
-                        <th scope="col">Columna 5</th>
-                        <th scope="col">Columna 6</th>
-                        <th scope="col">Columna 7</th>
-                        <th scope="col">Columna 8</th>
-                        <th scope="col">Columna 9</th>
+                        <th >Código</th>
+                        <th >Fecha</th>
+                        <th >Codigo producto</th>
+                        <th >Nombre	</th>
+                        <th >Descripcion</th>
+                        <th >Cantidad</th>
+                        <th >Proveedor</th>
+                        <th >Valor unitario</th>
+                        <th >Valor total</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,57 +61,10 @@
                         <td>Dato 4</td>
                         <td>Dato 5</td>
                         <td>Dato 6</td>
-                        <td>Dato 7</td>
-                        <td><button class="btn btn-danger" >Borrar</button></td>
-                        <td><button class="btn btn-primary" >Seleccionar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Dato 1</td>
-                        <td>Dato 2</td>
-                        <td>Dato 3</td>
-                        <td>Dato 4</td>
                         <td>Dato 5</td>
                         <td>Dato 6</td>
-                        <td>Dato 7</td>
-                        <td><button class="btn btn-danger" >Borrar</button></td>
-                        <td><button class="btn btn-primary" >Seleccionar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Dato 1</td>
-                        <td>Dato 2</td>
-                        <td>Dato 3</td>
-                        <td>Dato 4</td>
-                        <td>Dato 5</td>
-                        <td>Dato 6</td>
-                        <td>Dato 7</td>
-                        <td><button class="btn btn-danger" >Borrar</button></td>
-                        <td><button class="btn btn-primary" >Seleccionar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Dato 1</td>
-                        <td>Dato 2</td>
-                        <td>Dato 3</td>
-                        <td>Dato 4</td>
-                        <td>Dato 5</td>
-                        <td>Dato 6</td>
-                        <td>Dato 7</td>
-                        <td><button class="btn btn-danger" >Borrar</button></td>
-                        <td><button class="btn btn-primary" >Seleccionar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Dato 1</td>
-                        <td>Dato 2</td>
-                        <td>Dato 3</td>
-                        <td>Dato 4</td>
-                        <td>Dato 5</td>
-                        <td>Dato 6</td>
-                        <td>Dato 7</td>
-                        <td><button class="btn btn-danger" >Borrar</button></td>
-                        <td><button class="btn btn-primary" >Seleccionar</button></td>
+                        <td><button routerLink="" class="btn btn-danger" >Borrar</button></td>
+                        <td><button routerLink="" class="btn btn-primary" >Seleccionar</button></td>
                     </tr>
 
                 </tbody>

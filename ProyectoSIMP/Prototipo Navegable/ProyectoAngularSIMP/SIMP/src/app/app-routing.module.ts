@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'Usuarios', component: UsuariosComponent },
 
   { path: '', redirectTo: '/simp', pathMatch: 'full' },
-  { path: '**', component: InventarioGeneralComponent },
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({

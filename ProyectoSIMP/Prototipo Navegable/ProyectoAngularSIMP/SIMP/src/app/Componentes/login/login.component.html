@@ -1,22 +1,23 @@
-<form style="text-align: center;" class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
-    <div class="form-outline mb-4">
-        <h1>Login SIMP</h1>
+<form style="text-align: center;"
+  class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
+  <div class="form-outline mb-4">
+    <h1>Login SIMP</h1>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="DatosUsuario.Correo" required #Correo="ngModel" />
+    <label class="form-label">Correo</label>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input type="password" class="form-control" name="Clave" [(ngModel)]="DatosUsuario.Clave" required #Clave="ngModel" />
+    <label class="form-label">Clave</label>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col">
+      <a routerLink="Restaurar">Forgot password?</a>
     </div>
-    <div class="form-outline mb-4">
-      <input type="email" id="form2Example1" class="form-control" [(ngModel)]="DatosUsuario.Correo" required #correo = "ngModel"/>
-      <label class="form-label" for="form2Example1">Correo</label>
-    </div>
-  
-    <div class="form-outline mb-4">
-      <input type="password" id="form2Example2" class="form-control" [(ngModel)]="DatosUsuario.Clave" required #Clave="ngModel"/>
-      <label class="form-label" for="form2Example2">Clave</label>
-    </div>  
-  
-    <div class="row mb-4">  
-      <div class="col">
-        <a routerLink="Restaurar">Forgot password?</a>
-      </div>
-    </div>
-  
-    <button (click)="logeo()" type="button" class="btn btn-primary btn-block mb-4">Iniciar sesion</button>
+  </div>
+
+  <button (click)="logeo()" type="button" class="btn btn-primary btn-block mb-4">Iniciar sesion</button>
 </form>

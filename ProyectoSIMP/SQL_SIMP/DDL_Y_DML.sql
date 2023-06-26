@@ -166,4 +166,7 @@ alter table Movimiento add constraint Proveedor_Movimiento foreign key (Proveedo
 
 alter table Movimiento add constraint Usuario_Movimiento foreign key (Usuario_idUsuario) references Usuario (idUsuario);
 
-INSERT INTO `usuario`(`idUsuario`, `NombreUsuario`, `Apellido`, `Correo`, `Clave`, `Rol_IdRol`, `Estado_idEstado`) VALUES ('1','Juan','Mican','j@exmple.com',AES_ENCRYPT("ClaveTremenda","512"),'1','1');
+INSERT INTO `estado`(`idEstado`, `DescripcionEstado`) VALUES ('1','Activo');
+INSERT INTO `rol`(`IdRol`, `DescripcionRol`) VALUES ('1','Administrador');
+INSERT INTO `usuario`(`idUsuario`, `NombreUsuario`, `Apellido`, `Correo`, `Clave`, `Rol_IdRol`, `Estado_idEstado`) VALUES ('1','root','aroot','root','123','1','1');
+INSERT INTO `usuario`(`idUsuario`, `NombreUsuario`, `Apellido`, `Correo`, `Clave`, `Rol_IdRol`, `Estado_idEstado`) VALUES ('2','Juan','Mican','j@exmple.com',AES_ENCRYPT("ClaveTremenda","512"),'1','1');

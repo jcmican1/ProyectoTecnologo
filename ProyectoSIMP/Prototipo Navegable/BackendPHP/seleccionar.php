@@ -8,7 +8,7 @@
   $correo = $_GET['Correo'];
 
   // Utilizar sentencia preparada para evitar inyección SQL
-  $stmt = $con->prepare("SELECT Codigo_usuario, Correo, Clave FROM usuarios WHERE Correo = ?");
+  $stmt = $con->prepare("SELECT idUsuario, Correo, Clave FROM Usuario WHERE Correo = ?");
   $stmt->bind_param("s", $correo);
   $stmt->execute();
   $resultado = $stmt->get_result();

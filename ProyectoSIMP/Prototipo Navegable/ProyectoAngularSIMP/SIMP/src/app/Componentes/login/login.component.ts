@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuariosLRService } from 'src/app/usuarios-lr.service';
+import { UsuariosLRService } from 'src/app/servicios/tablas-crud.service';
 
 import { Router } from '@angular/router';
 
@@ -16,18 +16,17 @@ export class LoginComponent {
     Clave:''
   };
 
+  logeo(){
 
-logeo(){
-
-  this.UsuariosLRServiceAA.seleccionar(this.DatosUsuario.Correo).subscribe(result => {
-     if (Object.keys(result).length > 0) {
-    // Redirige a la página del menú
-    this.router.navigate(['SegundoMenu']);
-  }else{
-    alert("Login insatisfactorio");
+    this.UsuariosLRServiceAA.seleccionar(this.DatosUsuario.Correo).subscribe(result => {
+        if (Object.keys(result).length > 0) {
+        // Redirige a la página del menú
+        this.router.navigate(['Inventario']);
+      }else{
+        alert("Login insatisfactorio");
+      }
+    }
+  ); 
+  
   }
-}
-); 
- 
-}
 }
