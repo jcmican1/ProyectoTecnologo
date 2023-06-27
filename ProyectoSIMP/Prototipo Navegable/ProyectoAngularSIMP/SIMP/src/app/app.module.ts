@@ -16,6 +16,7 @@ import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.c
 
 import { FormsModule } from "@angular/forms";
 import {HttpClientModule} from '@angular/common/http';
+import { NotificacionesComponent } from './Componentes/notificaciones/notificaciones.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
     SalidasComponent,
     ProductoMateriaPrimaComponent,
     UsuariosComponent,
+    NotificacionesComponent,
   ],
   imports: [
     BrowserModule,
