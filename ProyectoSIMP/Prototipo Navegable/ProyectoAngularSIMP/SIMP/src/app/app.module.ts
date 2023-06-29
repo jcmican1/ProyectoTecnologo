@@ -17,6 +17,7 @@ import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.c
 import { FormsModule } from "@angular/forms";
 import {HttpClientModule} from '@angular/common/http';
 import { NotificacionesComponent } from './Componentes/notificaciones/notificaciones.component';
+import { VistaCentralComponent } from './Componentes/TablasVista/vista-central/vista-central.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NotificacionesComponent } from './Componentes/notificaciones/notificaci
     ProductoMateriaPrimaComponent,
     UsuariosComponent,
     NotificacionesComponent,
+    VistaCentralComponent,
   ],
   imports: [
     BrowserModule,

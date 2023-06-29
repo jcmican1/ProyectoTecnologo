@@ -9,17 +9,19 @@ import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
 import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.component';
 import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.component';
+import { VistaCentralComponent } from './Componentes/TablasVista/vista-central/vista-central.component';
 
 const routes: Routes = [
-  { path: 'Entradas', component: EntradasInventarioComponent },
   { path: 'Login', component: LoginComponent },
-
   { path: 'Restaurar', component: RestaurarClaveComponent },
-  { path: 'Inventario', component: InventarioGeneralComponent },
-  { path: 'Plantilla', component: PlantillaProductoComponent },
-  { path: 'ProductoMateria', component: ProductoMateriaPrimaComponent },
-  { path: 'Salidas', component: SalidasComponent },
-  { path: 'Usuarios', component: UsuariosComponent },
+
+  { path: 'VistaCentralComponent/Entradas', component: EntradasInventarioComponent },
+  { path: 'VistaCentralComponent/Inventario', component: InventarioGeneralComponent },
+  { path: 'VistaCentralComponent/Plantilla', component: PlantillaProductoComponent },
+  { path: 'VistaCentralComponent/ProductoMateria', component: ProductoMateriaPrimaComponent },
+  { path: 'VistaCentralComponent/Salidas', component: SalidasComponent },
+  { path: 'VistaCentralComponent/Usuarios', component: UsuariosComponent },
+  { path: 'VistaCentralComponent', component: UsuariosComponent },
 
   { path: '', redirectTo: '/simp', pathMatch: 'full' },
   { path: '**', component: LoginComponent },

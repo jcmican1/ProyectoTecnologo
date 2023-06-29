@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuariosLRService } from 'src/app/servicios/tablas-crud.service';
+import { UsuariosLRService } from '../../servicios/tablas-crud.service';
 
 import { Router } from '@angular/router';
 
@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
-  constructor(private UsuariosLRServiceAA: UsuariosLRService, private router: Router) { }
+  constructor(private UsuariosLRService : UsuariosLRService, private router: Router) { }
   DatosUsuario={
     Correo:'',
     Clave:''
@@ -18,7 +17,7 @@ export class LoginComponent {
 
   logeo(){
 
-    this.UsuariosLRServiceAA.seleccionar(this.DatosUsuario.Correo).subscribe(result => {
+    this.UsuariosLRService.seleccionar(this.DatosUsuario.Correo).subscribe(result => {
         if (Object.keys(result).length > 0) {
         // Redirige a la página del menú
         this.router.navigate(['Inventario']);
