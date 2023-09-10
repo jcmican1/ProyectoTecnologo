@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+<main class="container">
+
+    <div class="container">
+
+        <h1>Entradas</h1>
+
+        <div class=" m-3 container text-center row justify-content-md-center">
+
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button">
+                    <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
+                </button>
+            </div>
+
+            <div class="col-lg-4">
+                <form class="row" action="#" id="Form de busqueda">
+                    <label for="search-input">Buscar:
+                        <!-- El input realiza un llamado a una funcion que realiza 
+                            una nueva consulta ala base de datos con el las palabras como filtro -->
+                        <input  type="text" id="search-input">
+                    </label>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="TablaTrabajo container table-responsive ">
+            
+            <table class="table table-m table-bordered border-primary table-hover table-striped">
+
+                <caption>Tabla de entradas de inventario</caption>
+
+                <thead class="table-dark">
+                    <tr>
+                        <th >Código</th>
+                        <th >Fecha</th>
+                        <th >Codigo producto</th>
+                        <th >Nombre	</th>
+                        <th >Descripcion</th>
+                        <th >Cantidad</th>
+                        <th >Proveedor</th>
+                        <th >Valor unitario</th>
+                        <th >Valor total</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let art of articulos">
+                        <td>{{art.codigo}}</td>
+                        <td>{{art.descripcion}}</td>
+                        <td>{{art.precio}}</td>
+                        <td><button (click)="baja()">Borrar</button></td>
+                        <td><button (click)="seleccionar()">Seleccionar</button></td>        
+                      </tr> -->
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td><button routerLink="" class="btn btn-danger" >Borrar</button></td>
+                        <td><button routerLink="" class="btn btn-primary" >Seleccionar</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
+<app-footer></app-footer>

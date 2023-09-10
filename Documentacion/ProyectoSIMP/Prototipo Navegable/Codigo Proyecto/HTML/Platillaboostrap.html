@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Barra de Navegación con Imágenes Bootstrap</title>
+
+    <link rel="shortcut icon" href="../Imagenes/LogoSIMP.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Css/index.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="mx-auto navbar navbar-expand-lg navbar-light bg-light ">
+            <a class="navbar-brand" href="#">
+                <img src="../Imagenes/aplicaciones.png" width="30" height="30" class="d-inline-block align-top"
+                    alt="Logo"> Mi Sitio Web
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="mx-auto navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Index.html">
+                            <img src="../Imagenes/aplicaciones.png" width="20" height="20"
+                                class="d-inline-block align-middle" alt="Inicio">
+                            Inventario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Entradas.html">
+                            <img src="../Imagenes/lado-del-camion.png" width="20" height="20"
+                                class="d-inline-block align-middle" alt="Index">
+                            Index
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Salida.html">
+                            <img src="../Imagenes/carrito-de-compras.png" width="20" height="20"
+                                class="d-inline-block align-middle" alt="Servicios"> Servicios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PlantillaProducto.html">
+                            <img src="../Imagenes/navegador.png" width="20" height="20"
+                                class="d-inline-block align-middle" alt="Contacto"> Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Usuarios.html">
+                            <img src="../Imagenes/agregar-usuario.png" width="20" height="20"
+                                class="d-inline-block align-middle" alt="Contacto"> Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductoMateriaPrima.html">
+                            <img src="../Imagenes/etiquetas.png" width="20" height="20"
+                                class="d-inline-block align-middle" alt="Contacto"> Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="Notificaciones">
+        <marquee behavior="scroll" direction="left"> <a href="Notificaciones.html">Notificaciones</a></marquee>
+    </section>
+
+    <main>
+
+        <div class="container">
+            <h1>Inventario</h1>
+            <div class="ZonaBotones">
+                <button class="Añadir" type="button">
+                    <img src="../Imagenes/agregar.png" alt="Añadir item">
+                </button>
+                <button class="modificar" type="button">
+                    <img src="../Imagenes/editar (1).png" alt="Modificar item">
+                </button>
+                <button class="Borrar" type="button">
+                    <img src="../Imagenes/basura-nfc.png" alt="Borrar item">
+                </button>
+                <form action="#" id="Form de busqueda">
+                    <label for="search-input">Buscar:
+                        <input type="text" id="search-input">
+                    </label>
+                    <button type="button" id="search-button"><img src="../Imagenes/busqueda (1).png"
+                            alt="Buscar en tabla"></button>
+                </form>
+            </div>
+
+            <div class="TablaTrabajo">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Columna 1</th>
+                            <th scope="col">Columna 2</th>
+                            <th scope="col">Columna 3</th>
+                            <th scope="col">Columna 4</th>
+                            <th scope="col">Columna 5</th>
+                            <th scope="col">Columna 6</th>
+                            <th scope="col">Columna 7</th>
+                            <th scope="col">Columna 8</th>
+                            <th scope="col">Columna 9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Dato 1</td>
+                            <td>Dato 2</td>
+                            <td>Dato 3</td>
+                            <td>Dato 4</td>
+                            <td>Dato 5</td>
+                            <td>Dato 6</td>
+                            <td>Dato 7</td>
+                            <td>Dato 8</td>
+                            <td>Dato 9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Dato 10</td>
+                            <td>Dato 11</td>
+                            <td>Dato 12</td>
+                            <td>Dato 13</td>
+                            <td>Dato 14</td>
+                            <td>Dato 15</td>
+                            <td>Dato 16</td>
+                            <td>Dato 17</td>
+                            <td>Dato 18</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Dato 19</td>
+                            <td>Dato 20</td>
+                            <td>Dato 21</td>
+                            <td>Dato 22</td>
+                            <td>Dato 23</td>
+                            <td>Dato 24</td>
+                            <td>Dato 25</td>
+                            <td>Dato 26</td>
+                            <td>Dato 27</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <span>Sistema de Inventario de Matieria Prima para Pizzeria</span>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

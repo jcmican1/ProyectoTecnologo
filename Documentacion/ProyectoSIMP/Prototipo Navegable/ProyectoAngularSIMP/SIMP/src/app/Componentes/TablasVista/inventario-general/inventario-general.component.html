@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<main class="container">
+
+    <div class="container">
+
+        <div class=" m-3 container justify-content-md-center">
+        <h1>Inventario</h1>
+            <div>
+                <label for="search-input">Buscar:
+                    <!-- El input realiza un llamado a una funcion que realiza 
+                        una nueva consulta ala base de datos con el las palabras como filtro -->
+                    <input (change)="busqueda()" type="text" id="search-input">
+                </label>
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive ">
+            <table class="table table-m table-bordered border-primary table-hover table-striped">
+
+                <caption>Tabla de Inventario</caption>
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Cantidad existencias</th>
+                        <th>Consumidas</th>
+                        <th>Punto compra</th>
+                        <th>Punto almacenamiento</th>
+                        <th>Valor unitario</th>
+                        <th>Valor total promedio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let art of articulos">
+                        <td>{{art.codigo}}</td>
+                        <td>{{art.descripcion}}</td>
+                        <td>{{art.precio}}</td>
+                        <td><button (click)="baja()">Borrar</button></td>
+                        <td><button (click)="seleccionar()">Seleccionar</button></td>        
+                      </tr> -->
+                    <tr>
+                        <th>1</th>
+                        <td>Dato 1</td>
+                        <td>Dato 2</td>
+                        <td>Dato 3</td>
+                        <td>Dato 4</td>
+                        <td>Dato 5</td>
+                        <td>Dato 6</td>
+                        <td>Dato 7</td>
+                        <td>Dato 8</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+</main>
+<app-footer></app-footer>

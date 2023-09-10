@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Salida</title>
+	<link rel="shortcut icon" href="../Imagenes/LogoSIMP.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Css/FormularioGenerico.css">
+</head>
+
+<body>
+    <form action="#" method="post">
+        <h1>Salida</h1>
+        <br>
+        <label for="CodigoSalida">Código salida:</label>
+        <input type="text" id="CodigoSalida" name="CodigoSalida" required>
+
+        <label for="Motivo">Motivo:</label>
+        <input type="text" id="Motivo" name="Motivo" >
+
+        <label for="Fecha">Fecha:</label>
+        <input type="date" id="Fecha" name="Fecha" required>
+
+        <label for="Codigoproducto">Codigo producto:</label>
+        <input type="number" id="Codigoproducto" name="Codigoproducto" required>
+
+        <label for="Nombre">Nombre:</label>
+        <input type="number" id="Nombre" name="Nombre" required>
+
+        <label for="Cantidad">Cantidad:</label>
+        <input type="number" id="Cantidad" name="Cantidad" required>
+
+        <label for="ValorUnitario">Valor unitario:</label>
+        <input type="number" id="ValorUnitario" name="ValorUnitario" required>
+
+        <label for="ValorTotal">Valor Total:</label>
+        <input type="number" id="ValorTotal" name="ValorTotal" step="0.01" required>  
+
+        <input type="submit" value="Enviar">
+        <button type="button">Cancelar</button>
+    </form>
+
+</body>
+
+</html>

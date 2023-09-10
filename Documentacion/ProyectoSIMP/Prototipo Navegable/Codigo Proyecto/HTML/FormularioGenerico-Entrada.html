@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario entrada</title>
+	<link rel="shortcut icon" href="../Imagenes/LogoSIMP.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Css/FormularioGenerico.css">
+</head>
+
+<body>
+    <form action="#" method="post">
+        <h1>Entrada</h1>
+        <br>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required>
+
+        <label for="existencias">Cantidad existencias:</label>
+        <input type="number" id="existencias" name="existencias" required>
+
+        <label for="consumidas">Consumidas:</label>
+        <input type="number" id="consumidas" name="consumidas" required>
+
+        <label for="puntoCompra">Punto compra:</label>
+        <input type="number" id="puntoCompra" name="puntoCompra" required>
+
+        <label for="puntoAlmacenamiento">Punto almacenamiento:</label>
+        <input type="number" id="puntoAlmacenamiento" name="puntoAlmacenamiento" required>
+
+        <label for="valorUnitario">Valor unitario:</label>
+        <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" required>
+
+        <label for="valorTotalPromedio">Valor total promedio:</label>
+        <input type="number" id="valorTotalPromedio" name="valorTotalPromedio" step="0.01" required>
+
+        <input type="submit" value="Enviar">
+        <button type="button">Cancelar</button>
+    </form>
+
+</body>
+
+</html>

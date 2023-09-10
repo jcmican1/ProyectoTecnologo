@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+header{
+    padding: 2%;
+    height: auto;
+    background-color: #fbfbfc;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #939aa9;
+    border-radius: 20px;
+    font-size:140%;
+}
+
+nav a:hover {
+    padding: 5px;
+    background-color: rgb(248, 161, 234);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-5px);
+}
+
+#Notificaciones {
+    border: 1px solid black;
+    border-radius: 3px;
+}
