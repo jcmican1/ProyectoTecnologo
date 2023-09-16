@@ -11,7 +11,6 @@ import { FooterComponent } from './compartidos/footer/footer.component';
 import { InventarioGeneralComponent } from './Componentes/TablasVista/inventario-general/inventario-general.component';
 import { LoginComponent } from './Componentes/login/login.component';
 import { EntradasInventarioComponent } from './Componentes/TablasVista/entradas-inventario/entradas-inventario.component';
-import { RestaurarClaveComponent } from './Componentes/restaurar-clave/restaurar-clave.component';
 import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-producto/plantilla-producto.component';
 import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.component';
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
@@ -32,7 +31,6 @@ import { UsuariosComponent } from './Componentes/TablasVista/usuarios/TablaUsuar
     InventarioGeneralComponent,
     LoginComponent,
     EntradasInventarioComponent,
-    RestaurarClaveComponent,
     PlantillaProductoComponent,
     SalidasComponent,
     ProductoMateriaPrimaComponent,
