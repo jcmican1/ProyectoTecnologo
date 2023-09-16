@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const { id } = req.params
 
-    const query = `SELECT * FROM Usuario WHERE idUsuario=${id};`
+    const query = `SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado WHERE idUsuario=${id};`
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message)
 

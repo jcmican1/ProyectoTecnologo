@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CompartidosService } from './servicios/Compartidos/compartidos.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SIMP';
+
+  constructor(public Sesion:CompartidosService) { } 
+
 }

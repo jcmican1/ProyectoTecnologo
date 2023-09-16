@@ -1,0 +1,75 @@
+<main class="container">
+    <div class="container">
+        <div class=" m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <h1>Usuarios</h1>
+
+                <button class="btn btn-success" type="button" [routerLink]="['/FormularioUsuario/agregar']">
+                    <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
+                    Añadir Usuario
+                </button>
+                <button class="btn btn-warning" type="button" [routerLink]="['/FormularioUsuario/agregar']">
+                    Rol CRUD
+                </button>
+                <button class="btn btn-warning" type="button" [routerLink]="['/FormularioUsuario/agregar']">
+                    Estado CRUD
+                </button>
+
+            </div>
+
+            <div class="col-lg-4">
+                <form (ngSubmit)="buscarUsuario()" #BusquedaForm="ngForm" class="row" id="Form de busqueda">
+                    <label for="search-input">Buscar por correo:
+                        <br>
+                        <input [(ngModel)]="usuarioBusqueda" type="text" id="search-input" name="Correo"
+                            placeholder="Correo">
+                            <br>
+                        <button class="btn btn-success" type="submit">Buscar</button>
+                    </label>
+                </form>
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive ">
+            <table class="table table-m table-bordered border-primary table-hover table-striped">
+                <caption>Tabla de Usuarios del sistema</caption>
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>idUsuario </th>
+                        <th>NombreUsuario</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Clave</th>
+                        <th>Rol_IdRol</th>
+                        <th>Estado_idEstado</th>
+                        <th>Modificar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let RegistroUsuariosVariable of UsuarioModel | async">
+                        <td>{{ RegistroUsuariosVariable.idUsuario}}</td>
+                        <td>{{ RegistroUsuariosVariable.NombreUsuario}}</td>
+                        <td>{{ RegistroUsuariosVariable.Apellido }}</td>
+                        <td>{{ RegistroUsuariosVariable.Correo}}</td>
+                        <td>{{ RegistroUsuariosVariable.Clave}}</td>
+                        <td>{{ RegistroUsuariosVariable.DescripcionRol}}</td>
+                        <td>{{ RegistroUsuariosVariable.DescripcionEstado}}</td>
+                        <td>
+                            <a class="btn btn-info"
+                                [routerLink]="['/FormularioUsuario/editar/', RegistroUsuariosVariable.idUsuario]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger"
+                                (click)="borrarUsuarios(RegistroUsuariosVariable.idUsuario)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="!UsuarioModel">
+                <h2>No hay datos</h2>
+            </div>
+        </div>
+    </div>
+</main>
