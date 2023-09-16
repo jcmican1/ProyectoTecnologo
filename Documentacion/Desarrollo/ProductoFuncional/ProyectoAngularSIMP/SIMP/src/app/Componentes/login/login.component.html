@@ -1,23 +1,16 @@
-<form style="text-align: center;"
-  class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
-  <div class="form-outline mb-4">
-    <h1>Login SIMP</h1>
-  </div>
-  <div class="form-outline mb-4">
-    <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="DatosUsuario.Correo" required #Correo="ngModel" />
-    <label class="form-label">Correo</label>
-  </div>
-
-  <div class="form-outline mb-4">
-    <input type="password" class="form-control" name="Clave" [(ngModel)]="DatosUsuario.Clave" required #Clave="ngModel" />
-    <label class="form-label">Clave</label>
-  </div>
-
-  <div class="row mb-4">
-    <div class="col">
-      <a routerLink="Restaurar">Forgot password?</a>
+<form (ngSubmit)="logeo()" #LoginForm="ngForm" style="text-align: center;"
+    class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
+    <div class="form-outline mb-4">
+        <h1>Login SIMP</h1>
     </div>
-  </div>
+    <div class="form-outline mb-4">
+        <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="UsuarioModel.Correo" required />
+        <label class="form-label">Correo</label>
+    </div>
 
-  <button (click)="logeo()" type="button" class="btn btn-primary btn-block mb-4">Iniciar sesion</button>
+    <div class="form-outline mb-4">
+        <input type="password" class="form-control" name="Clave" [(ngModel)]="UsuarioModel.Clave" required />
+        <label class="form-label">Clave</label>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar sesion</button>
 </form>

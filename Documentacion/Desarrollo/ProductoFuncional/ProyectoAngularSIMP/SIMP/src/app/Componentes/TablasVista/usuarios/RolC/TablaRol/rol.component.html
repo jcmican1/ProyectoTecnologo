@@ -1,0 +1,58 @@
+<main class="container">
+    <div class="container">
+        <div class=" m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <h1>Rol</h1>
+
+                <button class="btn btn-success" type="button" [routerLink]="['/FormularioRol/agregar']">
+                    <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
+                    Añadir Rol
+                </button>
+            </div>
+
+            <div class="col-lg-4">
+                <form (ngSubmit)="buscarRol()" #BusquedaForm="ngForm" class="row" id="Form de busqueda">
+                    <label for="search-input">Buscar por Rol:
+                        <br>
+                        <input [(ngModel)]="RolBusqueda" type="text" id="search-input" name="RolBusqueda"
+                            placeholder="Rol">
+                            <br>
+                        <button class="btn btn-success" type="submit">Buscar</button>
+                    </label>
+                </form>
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive ">
+            <table class="table table-m table-bordered border-primary table-hover table-striped">
+                <caption>Tabla de Roles del sistema</caption>
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id Rol</th>
+                        <th>Nombre Rol</th>
+                        <th>Modificar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let RegistroRolVariable of RolModel | async">
+                        <td>{{ RegistroRolVariable.IdRol}}</td>
+                        <td>{{ RegistroRolVariable.DescripcionRol}}</td>
+                        <td>
+                            <a class="btn btn-info"
+                                [routerLink]="['/FormularioRol/editar/', RegistroRolVariable.IdRol]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger"
+                                (click)="borrarRol(RegistroRolVariable.IdRol)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="!RolModel">
+                <h2>No hay datos</h2>
+            </div>
+        </div>
+    </div>
+</main>

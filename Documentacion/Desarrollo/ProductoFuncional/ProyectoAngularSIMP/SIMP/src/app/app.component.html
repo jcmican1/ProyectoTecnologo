@@ -1,1 +1,3 @@
-<router-outlet></router-outlet>
+<app-central *ngIf="this.Sesion.Sesion"></app-central>
+
+<app-login *ngIf="!this.Sesion.Sesion"></app-login>

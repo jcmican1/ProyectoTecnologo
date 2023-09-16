@@ -5,29 +5,29 @@
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	}
 
-		.HeadMain {
-			display: grid;
-			grid-template-columns: auto auto;
-			text-align: center;
-		}
-			.HeadMain h1 {
-				display: flex;
-				justify-content: right;
-			}
+	.HeadMain {
+		display: grid;
+		grid-template-columns: auto auto;
+		text-align: center;
+	}
 
-			.ZonaBotones {
-				display: flex;
-				align-items: center;
-				justify-content: right;
-				gap: 1vw;
-			}
-			
-		.TablaTrabajo {
-			height: 90%;
-			overflow-y: scroll;
-		}
+	.HeadMain h1 {
+		display: flex;
+		justify-content: right;
+	}
 
-			table {
-				text-align: center;
-			}
-	
+	.ZonaBotones {
+		display: flex;
+		align-items: center;
+		justify-content: right;
+		gap: 1vw;
+	}
+
+	.TablaTrabajo {
+		height: 90%;
+		overflow-y: scroll;
+	}
+
+	table {
+		text-align: center;
+	}

@@ -8,23 +8,38 @@ import { InventarioGeneralComponent } from './Componentes/TablasVista/inventario
 import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-producto/plantilla-producto.component';
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
 import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.component';
-import { UsuariosComponent } from './Componentes/TablasVista/usuarios/usuarios.component';
-import { VistaCentralComponent } from './Componentes/TablasVista/vista-central/vista-central.component';
+import { AppComponent } from './app.component';
+import { FormularioUsuariosComponent } from './Componentes/TablasVista/usuarios/formulario-usuarios/formulario-usuarios.component';
+import { UsuariosComponent } from './Componentes/TablasVista/usuarios/TablaUsuarios/usuarios.component';
+import { RolFormularioComponent } from './Componentes/TablasVista/usuarios/RolC/rol-formulario/rol-formulario.component';
+import { EstadoFormularioComponent } from './Componentes/TablasVista/usuarios/Estadoc/estado-formulario/estado-formulario.component';
+
 
 const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Restaurar', component: RestaurarClaveComponent },
 
-  { path: 'VistaCentralComponent/Entradas', component: EntradasInventarioComponent },
-  { path: 'VistaCentralComponent/Inventario', component: InventarioGeneralComponent },
-  { path: 'VistaCentralComponent/Plantilla', component: PlantillaProductoComponent },
-  { path: 'VistaCentralComponent/ProductoMateria', component: ProductoMateriaPrimaComponent },
-  { path: 'VistaCentralComponent/Salidas', component: SalidasComponent },
-  { path: 'VistaCentralComponent/Usuarios', component: UsuariosComponent },
-  { path: 'VistaCentralComponent', component: UsuariosComponent },
+  { path: 'Entradas', component: EntradasInventarioComponent },
+  { path: 'Inventario', component: InventarioGeneralComponent },
+  { path: 'Plantilla', component: PlantillaProductoComponent },
+  { path: 'ProductoMateria', component: ProductoMateriaPrimaComponent },
+  { path: 'Salidas', component: SalidasComponent },
+  { path: 'Usuarios', component: UsuariosComponent },
+  
+  { path: 'FormularioUsuario/editar/:id', component: FormularioUsuariosComponent }, 
+  { path: 'FormularioUsuario/editar/:id', component: FormularioUsuariosComponent }, 
+  { path: 'FormularioUsuario/agregar', component: FormularioUsuariosComponent }, 
 
-  { path: '', redirectTo: '/simp', pathMatch: 'full' },
-  { path: '**', component: LoginComponent },
+  { path: 'Rol', component: RolFormularioComponent }, 
+  { path: 'FormularioRol/editar/:id', component: RolFormularioComponent }, 
+  { path: 'FormularioRol/agregar', component: RolFormularioComponent }, 
+
+  { path: 'Estado', component: EstadoFormularioComponent }, 
+  { path: 'FormularioEstado/editar/:id', component: EstadoFormularioComponent }, 
+  { path: 'FormularioEstado/agregar', component: EstadoFormularioComponent }, 
+
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
