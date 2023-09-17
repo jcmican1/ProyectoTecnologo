@@ -36,5 +36,4 @@ export class UsuariosComponent {
   buscarUsuario(){
     this.UsuarioModel = this.UsuariosService.obtenerUsuario(this.usuarioBusqueda)
   }
-
 }

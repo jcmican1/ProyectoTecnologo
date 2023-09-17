@@ -12,7 +12,6 @@ import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
 })
 export class EstadoFormularioComponent {
 
-
   id = ''
   EstadoModelo = new EstadoModelo("", "");
 
@@ -25,23 +24,28 @@ export class EstadoFormularioComponent {
   ngOnInit() {
     this.id = this.route.snapshot.params['id']
     if (this.id) {
+      console.log("EDITAR");
+
       this.UsuariosService.obtenerEstado(this.id).subscribe(data => {
         this.EstadoModelo = data[0]
       }, error => {
         console.log(error);
       })
+    }else{
+      console.log("CREAR");
     }
   }
 
   onSubmit() {
     console.log('onSubmit');
 
-    if (this.EstadoModelo.idEstado) {
+    if (this.EstadoModelo.IdEstado) {
       this.UsuariosService.actualizarEstado(this.EstadoModelo).subscribe(data => {
         alert(data)
         this.router.navigate(['/Estado'])
       })
     } else {
+      console.log('crear');
       this.UsuariosService.agregarEstado(this.EstadoModelo).subscribe(data => {
         alert(data)
         this.router.navigate(['/Estado'])

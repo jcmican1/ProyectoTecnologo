@@ -16,12 +16,12 @@ import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.comp
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
 
 import { NotificacionesComponent } from './Componentes/notificaciones/notificaciones.component';
-import { FormularioUsuariosComponent } from './Componentes/TablasVista/usuarios/formulario-usuarios/formulario-usuarios.component';
+import { FormularioUsuariosComponent } from './Componentes/TablasVista/usuarios/UsuariosC/formulario-usuarios/formulario-usuarios.component';
 import { RolComponent } from './Componentes/TablasVista/usuarios/RolC/TablaRol/rol.component';
 import { EstadoComponent } from './Componentes/TablasVista/usuarios/Estadoc/TablaEstado/estado.component';
 import { RolFormularioComponent } from './Componentes/TablasVista/usuarios/RolC/rol-formulario/rol-formulario.component';
 import { EstadoFormularioComponent } from './Componentes/TablasVista/usuarios/Estadoc/estado-formulario/estado-formulario.component';
-import { UsuariosComponent } from './Componentes/TablasVista/usuarios/TablaUsuarios/usuarios.component';
+import { UsuariosComponent } from './Componentes/TablasVista/usuarios/UsuariosC/TablaUsuarios/usuarios.component';
 
 @NgModule({
   declarations: [

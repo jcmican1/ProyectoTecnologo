@@ -25,7 +25,7 @@ export class EstadoComponent {
   }
 
   borrarEstado(id: string) {
-    this.UsuariosService.borrarUsuario(id).subscribe(data => {
+    this.UsuariosService.borrarEstado(id).subscribe(data => {
       console.log(data);
       alert(data)
       this.ngOnInit()

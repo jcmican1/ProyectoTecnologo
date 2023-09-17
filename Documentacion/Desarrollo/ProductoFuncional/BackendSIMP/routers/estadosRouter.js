@@ -17,6 +17,21 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+
+    const { id } = req.params
+    const query = `SELECT * FROM Estado WHERE IdEstado=${id};`;
+    conexion.query(query, (error, resultado) => {
+        if (error) return console.error(error.message);
+
+        if (resultado.length > 0) {
+            res.json(resultado);
+        } else {
+            res.json(`No hay registros`);
+        }
+    });
+});
+
 // Endpoint para crear un nuevo estado
 router.post('/agregar', (req, res) => {
     const nuevoEstado = {
@@ -34,8 +49,8 @@ router.post('/agregar', (req, res) => {
 router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
     const { DescripcionEstado } = req.body;
+    const query = `UPDATE Estado SET DescripcionEstado='${DescripcionEstado}' WHERE IdEstado=${id};`;
 
-    const query = `UPDATE Estado SET DescripcionEstado='${DescripcionEstado}' WHERE idEstado=${id};`;
     conexion.query(query, (error) => {
         if (error) return console.error(error.message);
 
@@ -45,10 +60,10 @@ router.put('/actualizar/:id', (req, res) => {
 
 router.delete('/borrar/:id', (req, res) => {
     const { id } = req.params;
-
-    const query = `DELETE FROM Estado WHERE idEstado=${id};`;
+    const query = `DELETE FROM Estado WHERE IdEstado=${id}`;
+    
     conexion.query(query, (error) => {
-        if (error) console.error(error.message);
+        if (error) return console.error(error.message);
 
         res.json(`Se eliminó correctamente el estado`);
     });

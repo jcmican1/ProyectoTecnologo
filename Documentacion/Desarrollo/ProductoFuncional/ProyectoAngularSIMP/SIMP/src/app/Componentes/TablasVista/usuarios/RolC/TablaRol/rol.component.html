@@ -2,20 +2,21 @@
     <div class="container">
         <div class=" m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" routerLink="/Usuarios" >Regresar a Usuarios</button>
                 <h1>Rol</h1>
-
                 <button class="btn btn-success" type="button" [routerLink]="['/FormularioRol/agregar']">
                     <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
                     Añadir Rol
                 </button>
+                <button class="btn btn-success" (click)="ngOnInit()">Refrescar</button>
             </div>
 
             <div class="col-lg-4">
                 <form (ngSubmit)="buscarRol()" #BusquedaForm="ngForm" class="row" id="Form de busqueda">
-                    <label for="search-input">Buscar por Rol:
+                    <label for="search-input">Buscar por ID Rol:
                         <br>
                         <input [(ngModel)]="RolBusqueda" type="text" id="search-input" name="RolBusqueda"
-                            placeholder="Rol">
+                            placeholder="Id Rol">
                             <br>
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </label>

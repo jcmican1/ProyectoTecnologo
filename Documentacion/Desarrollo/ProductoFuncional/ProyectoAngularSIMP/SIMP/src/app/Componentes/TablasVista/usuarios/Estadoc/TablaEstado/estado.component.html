@@ -2,19 +2,23 @@
     <div class="container">
         <div class=" m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" routerLink="/Usuarios" >Regresar a Usuarios</button>
+
                 <h1>Estados</h1>
                 <button class="btn btn-success" type="button" [routerLink]="['/FormularioEstado/agregar']">
                     <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
                     Añadir Estado
                 </button>
+                <button class="btn btn-success" (click)="ngOnInit()">Refrescar</button>
+w
             </div>
 
             <div class="col-lg-4">
                 <form (ngSubmit)="buscarEstado()" #BusquedaForm="ngForm" class="row" id="Form de busqueda">
-                    <label for="search-input">Buscar Estado:
+                    <label for="search-input">Buscar ID Estado:
                         <br>
                         <input [(ngModel)]="EstadoBusqueda" type="text" id="search-input" name="EstadoBusqueda"
-                            placeholder="Estado">
+                            placeholder="Id Estado">
                             <br>
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </label>
@@ -36,15 +40,15 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let RegistroUsuariosVariable of EstadoModelo | async">
-                        <td>{{ RegistroUsuariosVariable.idEstado}}</td>
+                        <td>{{ RegistroUsuariosVariable.IdEstado}}</td>
                         <td>{{ RegistroUsuariosVariable.DescripcionEstado}}</td>
                         <td>
                             <a class="btn btn-info"
-                                [routerLink]="['/FormularioEstado/editar/', RegistroUsuariosVariable.idEstado]">Editar</a>
+                                [routerLink]="['/FormularioEstado/editar/', RegistroUsuariosVariable.IdEstado]">Editar</a>
                         </td>
                         <td>
                             <a class="btn btn-danger"
-                                (click)="borrarEstado(RegistroUsuariosVariable.idEstado)">Borrar</a>
+                                (click)="borrarEstado(RegistroUsuariosVariable.IdEstado)">Borrar</a>
                         </td>
                     </tr>
                 </tbody>

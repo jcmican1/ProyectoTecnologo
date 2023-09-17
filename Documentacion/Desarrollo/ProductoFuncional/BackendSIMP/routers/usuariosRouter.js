@@ -18,10 +18,9 @@ router.get('/', (req, res) => {
     });
 });
 
-
 router.get('/:id', (req, res) => {
-    const { id } = req.params
 
+    const { id } = req.params
     const query = `SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado WHERE idUsuario=${id};`
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message)
@@ -42,8 +41,8 @@ router.post('/agregar', (req, res) => {
         Apellido: req.body.Apellido,
         Correo: req.body.Correo,
         Clave: req.body.Clave,
-        Rol_IdRol: req.body.Rol_IdRol,
-        Estado_idEstado: req.body.Estado_idEstado
+        Rol_IdRol: req.body.DescripcionRol,
+        Estado_idEstado: req.body.DescripcionEstado
     };
 
     const query = 'INSERT INTO Usuario SET ?';
@@ -58,7 +57,7 @@ router.post('/agregar', (req, res) => {
 // Endpoint para actualizar un usuario existente
 router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
-    const { NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado } = req.body;
+    const NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado 
 
     const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Clave='${Clave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
     conexion.query(query, (error) => {
@@ -88,7 +87,7 @@ router.post('/login', (req, res) => {
     };
 
     const query = `SELECT * FROM usuario WHERE Correo = '${nuevoUsuario.Correo}' AND Clave = '${nuevoUsuario.Clave}';`
-    conexion.query(query, (error,resultado) => {
+    conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
 
         if (resultado.length > 0) {

@@ -8,22 +8,23 @@
                     <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
                     Añadir Usuario
                 </button>
-                <button class="btn btn-warning" type="button" [routerLink]="['/FormularioUsuario/agregar']">
-                    Rol CRUD
-                </button>
-                <button class="btn btn-warning" type="button" [routerLink]="['/FormularioUsuario/agregar']">
+                <button class="btn btn-warning" type="button" [routerLink]="['/Estado']">
                     Estado CRUD
                 </button>
+                <button class="btn btn-warning" type="button" [routerLink]="['/Rol']">
+                    Rol CRUD
+                </button>
 
+                <button class="btn btn-success" (click)="ngOnInit()">Refrescar</button>
             </div>
 
             <div class="col-lg-4">
                 <form (ngSubmit)="buscarUsuario()" #BusquedaForm="ngForm" class="row" id="Form de busqueda">
-                    <label for="search-input">Buscar por correo:
+                    <label for="search-input">Buscar por ID:
                         <br>
-                        <input [(ngModel)]="usuarioBusqueda" type="text" id="search-input" name="Correo"
-                            placeholder="Correo">
-                            <br>
+                        <input [(ngModel)]="usuarioBusqueda" type="text" id="search-input" name="Idusuario"
+                            placeholder="Id usuario">
+                        <br>
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </label>
                 </form>

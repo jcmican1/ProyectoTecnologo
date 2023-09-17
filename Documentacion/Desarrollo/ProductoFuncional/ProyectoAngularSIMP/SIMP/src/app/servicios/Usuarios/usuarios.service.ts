@@ -12,12 +12,13 @@ import { NotificacionesModel } from 'src/app/Modelos/Notificacione.model';
   providedIn: 'root'
 })
 export class UsuariosService {
-  url='http://localhost:3000';
+  url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
+
   // Estado
   obtenerEstados() {
-    return this.http.get<EstadoModelo[]>(this.url+'/estados');
+    return this.http.get<EstadoModelo[]>(this.url + '/estados');
   }
 
   obtenerEstado(idEstado: string) {
@@ -29,7 +30,7 @@ export class UsuariosService {
   }
 
   actualizarEstado(EstadoModelo: EstadoModelo) {
-    return this.http.put<string>(`${this.url}/estados/actualizar/${EstadoModelo.idEstado}`, EstadoModelo)
+    return this.http.put<string>(`${this.url}/estados/actualizar/${EstadoModelo.IdEstado}`, EstadoModelo)
   }
 
   borrarEstado(idEstado: string) {
@@ -38,7 +39,7 @@ export class UsuariosService {
 
   //Rol
   obtenerRols() {
-    return this.http.get<RolModel[]>(this.url+'/roles');
+    return this.http.get<RolModel[]>(this.url + '/roles');
   }
 
   obtenerRol(IdRol: string) {
@@ -46,7 +47,7 @@ export class UsuariosService {
   }
 
   agregarRol(RolModel: RolModel) {
-    return this.http.post<string>(`${this.url}/roles/agregar`, EstadoModelo);
+    return this.http.post<string>(`${this.url}/roles/agregar`, RolModel);
   }
 
   actualizarRol(RolModel: RolModel) {
@@ -58,12 +59,12 @@ export class UsuariosService {
   }
 
   //Usuarios
-  
+
   obtenerUsuarios() {
-    return this.http.get<UsuarioModel[]>(this.url+'/usuarios');
+    return this.http.get<UsuarioModel[]>(this.url + '/usuarios');
   }
 
-    obtenerUsuario(idUsuario: string) {
+  obtenerUsuario(idUsuario: string) {
     return this.http.get<UsuarioModel[]>(`${this.url}/usuarios/${idUsuario}`);
   }
 
@@ -86,7 +87,7 @@ export class UsuariosService {
   //Usuarios_has_notificaciones
 
   obtenerUsuario_has_notificaciones() {
-    return this.http.get<Usuario_has_notificacionesModel[]>(this.url+'/usuario-notificaciones');
+    return this.http.get<Usuario_has_notificacionesModel[]>(this.url + '/usuario-notificaciones');
   }
 
   obtenerUsuario_has_notificacion(Usuario_idUsuario: string) {
@@ -108,7 +109,7 @@ export class UsuariosService {
   // Notificaciones
 
   obtenerNotificaciones() {
-    return this.http.get<NotificacionesModel[]>(this.url+'/notificaciones');
+    return this.http.get<NotificacionesModel[]>(this.url + '/notificaciones');
   }
 
   obtenerNotificacion(idNotificaciones: string) {
