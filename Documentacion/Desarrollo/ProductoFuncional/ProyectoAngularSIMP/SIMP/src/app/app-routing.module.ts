@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EntradasInventarioComponent } from './Componentes/TablasVista/entradas-inventario/entradas-inventario.component';
 import { LoginComponent } from './Componentes/login/login.component';
-import { RestaurarClaveComponent } from './Componentes/restaurar-clave/restaurar-clave.component';
 import { InventarioGeneralComponent } from './Componentes/TablasVista/inventario-general/inventario-general.component';
 import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-producto/plantilla-producto.component';
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
@@ -17,7 +16,6 @@ import { EstadoFormularioComponent } from './Componentes/TablasVista/usuarios/Es
 
 const routes: Routes = [
   { path: 'Login', component: LoginComponent },
-  { path: 'Restaurar', component: RestaurarClaveComponent },
 
   { path: 'Entradas', component: EntradasInventarioComponent },
   { path: 'Inventario', component: InventarioGeneralComponent },
