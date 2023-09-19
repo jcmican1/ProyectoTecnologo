@@ -1,0 +1,43 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Proveedores</h1>
+
+        <div class="m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button" [routerLink]="['/proveedores/agregar']">Agregar</button>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>NIT Proveedor</th>
+                        <th>Nombre Proveedor</th>
+                        <th>Teléfono Proveedor</th>
+                        <th>Dirección Proveedor</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pr of proveedor | async">
+                        <td>{{ pr.NITProveedor }}</td>
+                        <td>{{ pr.NombreProveedor }}</td>
+                        <td>{{ pr.NumeroTelefonoProveedor }}</td>
+                        <td>{{ pr.DireccionProveedor }}</td>
+                        <td>
+                            <a class="btn btn-warning" [routerLink]="['/proveedores/editar/', pr.NITProveedor]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" (click)="borrarProveedor(pr.NITProveedor)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+

@@ -14,8 +14,16 @@ import { RolFormularioComponent } from './Componentes/TablasVista/usuarios/RolC/
 import { EstadoFormularioComponent } from './Componentes/TablasVista/usuarios/Estadoc/estado-formulario/estado-formulario.component';
 import { RolComponent } from './Componentes/TablasVista/usuarios/RolC/TablaRol/rol.component';
 import { EstadoComponent } from './Componentes/TablasVista/usuarios/Estadoc/TablaEstado/estado.component';
-
-
+import { LsProveedorComponent } from './Componentes/crud/ls-proveedor/ls-proveedor.component';
+import { EdProveedorComponent } from './Componentes/crud/ed-proveedor/ed-proveedor.component';
+import { LsMotivoComponent } from './Componentes/crud/ls-motivo/ls-motivo.component';
+import { EdMotivoComponent } from './Componentes/crud/ed-motivo/ed-motivo.component';
+import { LsUbicacionComponent } from './Componentes/crud/ls-ubicacion/ls-ubicacion.component';
+import { EdUbicacionComponent } from './Componentes/crud/ed-ubicacion/ed-ubicacion.component';
+import { LsExistenciasComponent } from './Componentes/crud/ls-existencias/ls-existencias.component';
+import { EdExistenciasComponent } from './Componentes/crud/ed-existencias/ed-existencias.component';
+import { LsMovimientoComponent } from './Componentes/crud/ls-movimiento/ls-movimiento.component';
+import { EdMovimientoComponent } from './Componentes/crud/ed-movimiento/ed-movimiento.component';
 
 const routes: Routes = [
   { path: 'Login', component: LoginComponent },
@@ -37,6 +45,26 @@ const routes: Routes = [
   { path: 'Estado', component: EstadoComponent }, 
   { path: 'FormularioEstado/editar/:id', component: EstadoFormularioComponent }, 
   { path: 'FormularioEstado/agregar', component: EstadoFormularioComponent }, 
+
+  { path:'proveedores', component: LsProveedorComponent},
+  { path:'proveedores/editar/:id', component: EdProveedorComponent},
+  { path:'proveedores/agregar', component:EdProveedorComponent},
+
+  { path:'motivo', component: LsMotivoComponent},
+  { path:'motivo/editar/:id', component:EdMotivoComponent },
+  { path:'motivo/agregar', component: EdMotivoComponent },
+
+  { path:'ubicacion-almacen', component: LsUbicacionComponent },
+  { path:'ubicacion-almacen/editar/:id', component: EdUbicacionComponent },
+  { path:'ubicacion-almacen/agregar', component:EdUbicacionComponent },
+
+  { path:'existencias', component:LsExistenciasComponent },
+  { path:'existencias/editar/:id', component:EdExistenciasComponent },
+  { path:'existencias/agregar', component:EdExistenciasComponent },
+
+  { path:'movimiento', component:LsMovimientoComponent },
+  { path:'movimiento/editar/:id', component:EdMovimientoComponent },
+  { path:'movimiento/agregar', component:EdMovimientoComponent },
 
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' }

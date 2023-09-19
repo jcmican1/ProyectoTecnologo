@@ -1,0 +1,38 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Motivo</h1>
+
+        <div class="m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button" [routerLink]="['/motivo/agregar']">Agregar</button>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Motivo</th>
+                        <th>Descripción de Motivo</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let mt of motivo | async">
+                        <td>{{ mt.IdMotivo }}</td>
+                        <td>{{ mt.DescripcionMovimiento }}</td>
+                        <td>
+                            <a class="btn btn-warning" [routerLink]="['/motivo/editar/', mt.IdMotivo]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" (click)="borrarMotivo(mt.IdMotivo)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

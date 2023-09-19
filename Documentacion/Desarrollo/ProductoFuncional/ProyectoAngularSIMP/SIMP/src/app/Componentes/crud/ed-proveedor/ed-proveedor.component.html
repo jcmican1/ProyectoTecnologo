@@ -1,0 +1,34 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <div class="row">
+            <div class="col-sm-12">
+              <form (ngSubmit)="onSubmit()" #proveedorForm="ngForm" >
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NombreProveedor">Nombre Proveedor</label>
+                    <input type="text" class="form-control" required [(ngModel)]="proveedor.NombreProveedor" name="NombreProveedor">
+                  </div>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NumeroTelefonoProveedor">Telefono Proveedor</label>
+                    <input type="text" class="form-control" required [(ngModel)]="proveedor.NumeroTelefonoProveedor" name="NumeroTelefonoProveedor">
+                  </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-12">
+                      <label class="control-label" for="DireccionProveedor">Dirección Proveedor</label>
+                      <input type="text" class="form-control" required [(ngModel)]="proveedor.DireccionProveedor" name="DireccionProveedor">
+                    </div>
+                    <br>
+                  </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" [disabled]="!proveedorForm.form.valid">Enviar</button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+    </div>
+</main>
