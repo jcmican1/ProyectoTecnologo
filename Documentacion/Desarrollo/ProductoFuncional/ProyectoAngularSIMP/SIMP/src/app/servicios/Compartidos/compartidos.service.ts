@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CompartidosService {
-  Sesion: boolean = true;
+  Sesion: boolean = false;
 
   constructor() { }
 }

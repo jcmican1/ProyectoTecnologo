@@ -1,5 +1,5 @@
 // plantillaProductoRouter.js
-
+const crypto = require('crypto');
 const express = require('express');
 const router = express.Router();
 const conexion = require('../conexion'); // Importa tu conexión a la base de datos aquí
@@ -45,6 +45,10 @@ router.post('/agregar', (req, res) => {
         Estado_idEstado: req.body.DescripcionEstado
     };
 
+    let hash = crypto.createHash('md5');
+    hash.update(nuevoUsuario.Clave);
+    let hashMD5 = hash.digest('hex');
+    nuevoUsuario.Clave = hashMD5
     const query = 'INSERT INTO Usuario SET ?';
     conexion.query(query, nuevoUsuario, (error) => {
         if (error) return console.error(error.message);
@@ -57,7 +61,7 @@ router.post('/agregar', (req, res) => {
 // Endpoint para actualizar un usuario existente
 router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
-    const NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado 
+    const NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado
 
     const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Clave='${Clave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
     conexion.query(query, (error) => {
@@ -86,6 +90,11 @@ router.post('/login', (req, res) => {
         Clave: req.body.Clave
     };
 
+    let hash = crypto.createHash('md5');
+    hash.update(nuevoUsuario.Clave);
+    let hashMD5 = hash.digest('hex');
+    nuevoUsuario.Clave = hashMD5
+    
     const query = `SELECT * FROM usuario WHERE Correo = '${nuevoUsuario.Correo}' AND Clave = '${nuevoUsuario.Clave}';`
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
