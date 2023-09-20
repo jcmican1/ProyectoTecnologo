@@ -5,6 +5,10 @@
         <div class="m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
                 <button class="btn btn-success" type="button" [routerLink]="['/movimiento/agregar']">Agregar</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/proveedores/']">Ir a Proveedor</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/ubicacion-almacen/']">Ir a Ubicacion</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/motivo/']">Ir a Motivo</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/Usuarios/']">Ir a Usuarios</button>
             </div>
             <div class="col-lg-4">
             </div>
@@ -33,11 +37,11 @@
                         <td>{{ mv.FechaMovimiento }}</td>
                         <td>{{ mv.CantidadProducto }}</td>
                         <td>{{ mv.PrecioProductoMovimiento }}</td>
-                        <td>{{ mv.IdMotivo }}</td>
-                        <td>{{ mv.IdUbicacionAlmacen }}</td>
-                        <td>{{ mv.NITProveedor }}</td>
-                        <td>{{ mv.IdProductoMateriaPrima }}</td>
-                        <td>{{ mv.IdUsuario }}</td>
+                        <td>{{ mv.DescripcionMovimiento }}</td>
+                        <td>{{ mv.NombreAlmacen }}</td>
+                        <td>{{ mv.NombreProveedor }}</td>
+                        <td>{{ mv.NombreProducto }}</td>
+                        <td>{{ mv.NombreUsuario }}</td>
                         <td>
                             <a class="btn btn-warning" [routerLink]="['/movimiento/editar/', mv.IdMovimiento]">Editar</a>
                         </td>
