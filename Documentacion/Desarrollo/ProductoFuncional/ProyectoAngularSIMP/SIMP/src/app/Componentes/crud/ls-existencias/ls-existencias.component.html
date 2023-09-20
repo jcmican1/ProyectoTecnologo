@@ -1,0 +1,48 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Existencias</h1>
+
+        <div class="m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button" [routerLink]="['/existencias/agregar']">Agregar</button>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Existencias</th>
+                        <th>Cantidad Existencias</th>
+                        <th>Cantidad Consumida</th>
+                        <th>Punto de Compra</th>
+                        <th>Punto Máximo</th>
+                        <th>Fecha Ultima Modificación</th>
+                        <th>Id Producto Materia Prima</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ex of existencias | async">
+                        <td>{{ ex.IdExistencias }}</td>
+                        <td>{{ ex.CantidadExistencias }}</td>
+                        <td>{{ ex.CantidadConsumida }}</td>
+                        <td>{{ ex.PuntoCompraProducto }}</td>
+                        <td>{{ ex.PuntoMaximoProducto }}</td>
+                        <td type="date">{{ ex.FechaUltimaModificacion }}</td>
+                        <td>{{ ex.IdProductoMateriaPrima }}</td>
+                        <td>
+                            <a class="btn btn-warning" [routerLink]="['/existencias/editar/', ex.IdExistencias]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" (click)="borrarExistencias(ex.IdExistencias)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

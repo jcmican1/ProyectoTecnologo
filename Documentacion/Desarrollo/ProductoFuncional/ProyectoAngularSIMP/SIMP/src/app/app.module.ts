@@ -22,6 +22,19 @@ import { EstadoComponent } from './Componentes/TablasVista/usuarios/Estadoc/Tabl
 import { RolFormularioComponent } from './Componentes/TablasVista/usuarios/RolC/rol-formulario/rol-formulario.component';
 import { EstadoFormularioComponent } from './Componentes/TablasVista/usuarios/Estadoc/estado-formulario/estado-formulario.component';
 import { UsuariosComponent } from './Componentes/TablasVista/usuarios/UsuariosC/TablaUsuarios/usuarios.component';
+import { EdProveedorComponent } from './Componentes/crud/ed-proveedor/ed-proveedor.component';
+import { LsProveedorComponent } from './Componentes/crud/ls-proveedor/ls-proveedor.component';
+import { LsMotivoComponent } from './Componentes/crud/ls-motivo/ls-motivo.component';
+import { EdMotivoComponent } from './Componentes/crud/ed-motivo/ed-motivo.component';
+import { LsUbicacionComponent } from './Componentes/crud/ls-ubicacion/ls-ubicacion.component';
+import { EdUbicacionComponent } from './Componentes/crud/ed-ubicacion/ed-ubicacion.component';
+import { LsExistenciasComponent } from './Componentes/crud/ls-existencias/ls-existencias.component';
+import { EdExistenciasComponent } from './Componentes/crud/ed-existencias/ed-existencias.component';
+import { LsMovimientoComponent } from './Componentes/crud/ls-movimiento/ls-movimiento.component';
+import { EdMovimientoComponent } from './Componentes/crud/ed-movimiento/ed-movimiento.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +54,18 @@ import { UsuariosComponent } from './Componentes/TablasVista/usuarios/UsuariosC/
     RolComponent,
     EstadoComponent,
     RolFormularioComponent,
-    EstadoFormularioComponent
+    EstadoFormularioComponent,
+    EdProveedorComponent,
+    LsProveedorComponent,
+    LsMotivoComponent,
+    EdMotivoComponent,
+    LsUbicacionComponent,
+    EdUbicacionComponent,
+    LsExistenciasComponent,
+    EdExistenciasComponent,
+    LsMovimientoComponent,
+    EdMovimientoComponent,
+
   ],
   imports: [
     BrowserModule,

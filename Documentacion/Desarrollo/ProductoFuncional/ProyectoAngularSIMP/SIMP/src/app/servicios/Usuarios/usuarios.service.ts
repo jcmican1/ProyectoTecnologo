@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 import { UsuarioModel } from '../../Modelos/Usuarios.model';
 import { EstadoModelo } from 'src/app/Modelos/Estado.model';
 import { RolModel } from 'src/app/Modelos/Rol.model';
 import { Usuario_has_notificacionesModel } from 'src/app/Modelos/Usuarios_has_Notificaciones.model';
 import { NotificacionesModel } from 'src/app/Modelos/Notificacione.model';
+import { ProveedorModel } from 'src/app/Modelos/Proveedor.model';
+import { MotivoModel } from 'src/app/Modelos/Motivo.model';
+import { UbicacionModel } from 'src/app/Modelos/UbicacionAlmacen.module';
+import { ExistenciasModel } from 'src/app/Modelos/Existencias.model';
+import { MovimientoModel } from 'src/app/Modelos/Movimiento.model';
 
 @Injectable({
   providedIn: 'root'
@@ -127,4 +131,96 @@ export class UsuariosService {
   borrarNotificaciones(idNotificaciones: string) {
     return this.http.delete<string>(`${this.url}/notificaciones/borrar/${idNotificaciones}`)
   }
+
+  //Proveedor
+
+  obtenerProveedores(){
+    return this.http.get<ProveedorModel[]>(this.url+'/proveedor');
+  }
+  obtenerProveedor(id:string){
+    return this.http.get<ProveedorModel[]>(`${this.url}/proveedor/${id}`);
+  }
+  agregarProveedor(proveedor: ProveedorModel){
+    return this.http.post<string>(`${this.url}/proveedor/agregar`, proveedor);
+  }
+  actualizarProveedor(proveedor: ProveedorModel){
+    return this.http.put<string>(`${this.url}/proveedor/actualizar/${proveedor.NITProveedor}`, proveedor);
+
+  }
+  borrarProveedor(id:string){
+    return this.http.delete<string>(`${this.url}/proveedor/borrar/${id}`);
+  }
+  
+  //Motivo
+
+  obtenerMotivos(){
+    return this.http.get<MotivoModel[]>(this.url+'/motivo');
+  }
+  obtenerMotivo(id:string){
+    return this.http.get<MotivoModel[]>(`${this.url}/motivo/${id}`);
+  }
+  agregarMotivo(motivo: MotivoModel){
+    return this.http.post<string>(`${this.url}/motivo/agregar`, motivo);
+  }
+  actualizarMotivo(motivo: MotivoModel){
+    return this.http.put<string>(`${this.url}/motivo/actualizar/${motivo.IdMotivo}`, motivo);
+  }
+  borrarMotivo(id:string){
+    return this.http.delete<string>(`${this.url}/motivo/borrar/${id}`);
+  }
+
+  //UbicacionAlmacen
+
+  obtenerUbicaciones(){
+    return this.http.get<UbicacionModel[]>(this.url+`/ubicacion-almacen`);
+  }
+  obtenerUbicacion(id:string){
+    return this.http.get<UbicacionModel[]>(`${this.url}/ubicacion-almacen/${id}`);
+  }
+  agregarUbicacion(ubicacion: UbicacionModel){
+    return this.http.post<string>(`${this.url}/ubicacion-almacen/agregar`, ubicacion);
+  }
+  actualizarUbicacion(ubicacion: UbicacionModel){
+    return this.http.put<string>(`${this.url}/ubicacion-almacen/actualizar/${ubicacion.IdUbicacionAlmacen}`, ubicacion);
+  }
+  borrarUbicacion(id:string){
+    return this.http.delete<string>(`${this.url}/ubicacion-almacen/borrar/${id}`);
+  }
+
+  //Existencias
+
+  obtenerExistencias(){
+    return this.http.get<ExistenciasModel[]>(this.url+`/existencias`);
+  }
+  obtenerExistencia(id:string){
+    return this.http.get<ExistenciasModel[]>(`${this.url}/existencias/${id}`);
+  }
+  agregarExistencia(existencias: ExistenciasModel){
+    return this.http.post<string>(`${this.url}/existencias/agregar`, existencias);
+  }
+  actualizarExistencia(existencias: ExistenciasModel){
+    return this.http.put<string>(`${this.url}/existencias/actualizar/${existencias.IdExistencias}`, existencias);
+  }
+  borrarExistencia(id:string){
+    return this.http.delete<string>(`${this.url}/existencias/borrar/${id}`);
+  }
+
+  //Movimiento
+
+  obtenerMovimientos(){
+    return this.http.get<MovimientoModel[]>(this.url+`/movimiento`);
+  }
+  obtenerMovimiento(id:string){
+    return this.http.get<MovimientoModel[]>(`${this.url}/movimiento/${id}`);
+  }
+  agregarMovimiento(movimiento: MovimientoModel){
+    return this.http.post<string>(`${this.url}/movimiento/agregar`, movimiento);
+  }
+  actualizarMovimiento(movimiento: MovimientoModel){
+    return this.http.put<string>(`${this.url}/movimiento/actualizar/${movimiento.IdMovimiento}`, movimiento);
+  }
+  borrarMovimiento(id:string){
+    return this.http.delete<string>(`${this.url}/movimiento/borrar/${id}`);
+  }
+
 }

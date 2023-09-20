@@ -1,10 +1,23 @@
 const express = require('express');
 const conexion = require('../conexion');
-const router= express.Router();
+const router = express.Router();
 
-//Obtener todos los Movimientos
+// Obtener todos los Movimientos con descripciones de motivo, almacén, proveedor, materia prima y nombre de usuario
 router.get('/', (req, res) => {
-    const query = 'SELECT * FROM Movimiento;'
+    const query = `
+        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto,
+        Movimiento.PrecioProductoMovimiento, Motivo.DescripcionMovimiento, UbicacionAlmacen.NombreAlmacen,
+        Proveedor.NombreProveedor, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
+        FROM Movimiento
+        INNER JOIN Motivo ON Movimiento.IdMotivo = Motivo.IdMotivo
+        INNER JOIN UbicacionAlmacen ON Movimiento.IdUbicacionAlmacen = UbicacionAlmacen.IdUbicacionAlmacen
+        INNER JOIN Proveedor_has_Producto_MateriaPrima ON Movimiento.NITProveedor = Proveedor_has_Producto_MateriaPrima.NITProveedor
+        AND Movimiento.IdProductoMateriaPrima = Proveedor_has_Producto_MateriaPrima.IdProductoMateriaPrima
+        INNER JOIN Proveedor ON Proveedor_has_Producto_MateriaPrima.NITProveedor = Proveedor.NITProveedor
+        INNER JOIN Producto_Materia_Prima ON Proveedor_has_Producto_MateriaPrima.IdProductoMateriaPrima = Producto_Materia_Prima.IdProductoMateriaPrima
+        INNER JOIN Usuario ON Movimiento.IdUsuario = Usuario.IdUsuario;
+    `;
+
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message)
 
@@ -16,11 +29,25 @@ router.get('/', (req, res) => {
     })
 })
 
-//Obtener Movimiento por ID
+// Obtener Movimiento por ID con descripciones de motivo, almacén, proveedor, materia prima y nombre de usuario
 router.get('/:id', (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
-    const query = `SELECT * FROM Movimiento WHERE IdMovimiento=${id};`
+    const query = `
+        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto,
+        Movimiento.PrecioProductoMovimiento, Motivo.DescripcionMovimiento, UbicacionAlmacen.NombreAlmacen,
+        Proveedor.NombreProveedor, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
+        FROM Movimiento
+        INNER JOIN Motivo ON Movimiento.IdMotivo = Motivo.IdMotivo
+        INNER JOIN UbicacionAlmacen ON Movimiento.IdUbicacionAlmacen = UbicacionAlmacen.IdUbicacionAlmacen
+        INNER JOIN Proveedor_has_Producto_MateriaPrima ON Movimiento.NITProveedor = Proveedor_has_Producto_MateriaPrima.NITProveedor
+        AND Movimiento.IdProductoMateriaPrima = Proveedor_has_Producto_MateriaPrima.IdProductoMateriaPrima
+        INNER JOIN Proveedor ON Proveedor_has_Producto_MateriaPrima.NITProveedor = Proveedor.NITProveedor
+        INNER JOIN Producto_Materia_Prima ON Proveedor_has_Producto_MateriaPrima.IdProductoMateriaPrima = Producto_Materia_Prima.IdProductoMateriaPrima
+        INNER JOIN Usuario ON Movimiento.IdUsuario = Usuario.IdUsuario
+        WHERE Movimiento.IdMovimiento = ${id};
+    `;
+
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message)
 
@@ -32,20 +59,21 @@ router.get('/:id', (req, res) => {
     })
 })
 
-//Agregar un nuevo Movimiento
+// Agregar un nuevo Movimiento
 router.post('/agregar', (req, res) => {
     const movimiento = {
         FechaMovimiento: req.body.FechaMovimiento,
         CantidadProducto: req.body.CantidadProducto,
         PrecioProductoMovimiento: req.body.PrecioProductoMovimiento,
-        Motivo_IdMotivo: req.body.Motivo_IdMotivo,
-        UbicacionAlmacen_IdUbicacionAlmacen: req.body.UbicacionAlmacen_IdUbicacionAlmacen,
-        Proveedor_has_Producto_Materia_Prima_Proveedor_NITProveedor: req.body.Proveedor_has_Producto_Materia_Prima_Proveedor_NITProveedor,
-        P_H_P_M_P_P_M_P_I: req.body.P_H_P_M_P_P_M_P_I,
-        Usuario_idUsuario: req.body.Usuario_idUsuario
-    }
+        IdMotivo: req.body.IdMotivo,
+        IdUbicacionAlmacen: req.body.IdUbicacionAlmacen,
+        NITProveedor: req.body.NITProveedor,
+        IdProductoMateriaPrima: req.body.IdProductoMateriaPrima,
+        IdUsuario: req.body.IdUsuario
+    };
 
-    const query = `INSERT INTO Movimiento SET ?;`
+    const query = `INSERT INTO Movimiento SET ?;`;
+
     conexion.query(query, movimiento, (error, resultado) => {
         if (error) return console.error(error.message)
 
@@ -53,30 +81,32 @@ router.post('/agregar', (req, res) => {
     })
 })
 
-//Actualizar Movimiento por ID
+// Actualizar Movimiento por ID
 router.put('/actualizar/:id', (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
     const {
         FechaMovimiento,
         CantidadProducto,
         PrecioProductoMovimiento,
-        Motivo_IdMotivo,
-        UbicacionAlmacen_IdUbicacionAlmacen,
-        Proveedor_has_Producto_Materia_Prima_Proveedor_NITProveedor,
-        P_H_P_M_P_P_M_P_I,
-        Usuario_idUsuario
+        IdMotivo,
+        IdUbicacionAlmacen,
+        NITProveedor,
+        IdProductoMateriaPrima,
+        IdUsuario
     } = req.body
 
-    const query = `UPDATE Movimiento SET
+    const query = `
+        UPDATE Movimiento SET
         FechaMovimiento='${FechaMovimiento}',
         CantidadProducto=${CantidadProducto},
         PrecioProductoMovimiento=${PrecioProductoMovimiento},
-        Motivo_IdMotivo=${Motivo_IdMotivo},
-        UbicacionAlmacen_IdUbicacionAlmacen=${UbicacionAlmacen_IdUbicacionAlmacen},
-        Proveedor_has_Producto_Materia_Prima_Proveedor_NITProveedor=${Proveedor_has_Producto_Materia_Prima_Proveedor_NITProveedor},
-        P_H_P_M_P_P_M_P_I=${P_H_P_M_P_P_M_P_I},
-        Usuario_idUsuario=${Usuario_idUsuario}
-        WHERE IdMovimiento=${id};`
+        IdMotivo=${IdMotivo},
+        IdUbicacionAlmacen=${IdUbicacionAlmacen},
+        NITProveedor=${NITProveedor},
+        IdProductoMateriaPrima=${IdProductoMateriaPrima},
+        IdUsuario=${IdUsuario}
+        WHERE IdMovimiento=${id};
+    `;
 
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message)
@@ -85,11 +115,12 @@ router.put('/actualizar/:id', (req, res) => {
     })
 })
 
-//Borrar Movimiento por ID
+// Borrar Movimiento por ID
 router.delete('/borrar/:id', (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
-    const query = `DELETE FROM Movimiento WHERE IdMovimiento=${id};`
+    const query = `DELETE FROM Movimiento WHERE IdMovimiento=${id};`;
+
     conexion.query(query, (error, resultado) => {
         if (error) console.error(error.message)
 
@@ -97,4 +128,5 @@ router.delete('/borrar/:id', (req, res) => {
     })
 })
 
-module.exports=router;
+module.exports = router;
+
