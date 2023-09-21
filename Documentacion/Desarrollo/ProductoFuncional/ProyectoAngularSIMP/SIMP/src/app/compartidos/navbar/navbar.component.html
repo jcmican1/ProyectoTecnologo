@@ -8,44 +8,86 @@
             </button>
             <div class="collapse navbar-collapse nav navbar-nav navbar-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav ">
-                    <a class="nav-link" routerLink="/ProductoMateria">
-                        <img src="./assets/Imagenes/etiquetas.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Producto Materia
-                    </a>
-                    <a class="nav-link" routerLink="/Plantilla">
-                        <img src="./assets/Imagenes/navegador.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Plantilla
-                    </a>
-                    <a class="nav-link" routerLink="/Usuarios">
-                        <img src="./assets/Imagenes/agregar-usuario.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Usuarios
-                    </a>
-                    <a class="nav-link" routerLink="/Usuarios">
-                        <button (click)="Cerrarsession()">Cerrar Sesión</button>
-                    </a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="nav-link" routerLink="/ProductoMateria">
+                                    <img src="./assets/Imagenes/etiquetas.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Producto Materia
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" routerLink="/Plantilla">
+                                    <img src="./assets/Imagenes/navegador.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Plantilla
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" routerLink="/existencias">
+                                    <img src="./assets/Imagenes/existencias.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Existencias
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Usuarios
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="nav-link" routerLink="/Usuarios">
+                                    <img src="./assets/Imagenes/agregar-usuario.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Usuarios
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" routerLink="/proveedores">
+                                    <img src="./assets/Imagenes/proveedor.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Proveedores
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Movimientos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="nav-link" routerLink="/ubicacion-almacen">
+                                    <img src="./assets/Imagenes/ubicacionAlmacen.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Ubicacion Almacen
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" routerLink="/motivo">
+                                    <img src="./assets/Imagenes/motivo.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Motivo
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" routerLink="/movimiento">
+                                    <img src="./assets/Imagenes/movimiento.png" width="20" height="20"
+                                        class="d-inline-block align-middle" alt="Contacto"> Movimiento
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </div>
-                <div class="navbar-nav">
-                    <a class="nav-link" routerLink="/proveedores">
-                        <img src="./assets/Imagenes/proveedor.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Proveedores
-                    </a>
-                    <a class="nav-link" routerLink="/existencias">
-                        <img src="./assets/Imagenes/existencias.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Existencias
-                    </a>
-                    <a class="nav-link" routerLink="/ubicacion-almacen">
-                        <img src="./assets/Imagenes/ubicacionAlmacen.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Ubicacion Almacen
-                    </a>
-                    <a class="nav-link" routerLink="/motivo">
-                        <img src="./assets/Imagenes/motivo.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Motivo
-                    </a>
-                    <a class="nav-link" routerLink="/movimiento">
-                        <img src="./assets/Imagenes/movimiento.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto"> Movimiento
-                    </a>
-                </div>
+                <a class="nav-link" routerLink="/Usuarios">
+                    <button (click)="Cerrarsession()">Cerrar Sesión</button>
+                </a>
             </div>
         </div>
     </nav>
