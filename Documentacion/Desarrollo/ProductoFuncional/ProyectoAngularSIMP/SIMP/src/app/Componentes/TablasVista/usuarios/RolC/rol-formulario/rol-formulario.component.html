@@ -1,23 +1,16 @@
-<div class="row">
-    <div class="col-sm-12">
-        <form (ngSubmit)="onSubmit()" #RegistroForm="ngForm">
-            <fieldset class="form-group">
-                <div class="col-sm-12">
-                    <label class="control-label">ID</label>
-                    <input type="text" class="form-control" required [(ngModel)]="RolModel.IdRol"
-                        name="Id Rol">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form (ngSubmit)="onSubmit()" #RegistroForm="ngForm">
+                <div class="form-group">
+                    <label for="DescripcionRol">Descripción</label>
+                    <input type="text" class="form-control" required [(ngModel)]="RolModel.DescripcionRol" name="DescripcionRol" id="DescripcionRol">
                 </div>
-                <div class="col-sm-12">
-                    <label class="control-label">Descripcion</label>
-                    <input type="text" class="form-control" required [(ngModel)]="RolModel.DescripcionRol"
-                        name="Descripcion">
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary" [disabled]="!RegistroForm.form.valid">Enviar</button>
                 </div>
-            </fieldset>
-        </form>
+            </form>
+            <button class="btn btn-success" routerLink="/Rol" >Regresar</button>
+        </div>
     </div>
 </div>

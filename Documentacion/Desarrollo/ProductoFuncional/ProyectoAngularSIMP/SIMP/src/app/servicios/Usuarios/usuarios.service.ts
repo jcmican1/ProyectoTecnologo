@@ -1,23 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 import { UsuarioModel } from '../../Modelos/Usuarios.model';
 import { EstadoModelo } from 'src/app/Modelos/Estado.model';
 import { RolModel } from 'src/app/Modelos/Rol.model';
 import { Usuario_has_notificacionesModel } from 'src/app/Modelos/Usuarios_has_Notificaciones.model';
 import { NotificacionesModel } from 'src/app/Modelos/Notificacione.model';
+import { ProveedorModel } from 'src/app/Modelos/Proveedor.model';
+import { MotivoModel } from 'src/app/Modelos/Motivo.model';
+import { UbicacionModel } from 'src/app/Modelos/UbicacionAlmacen.module';
+import { ExistenciasModel } from 'src/app/Modelos/Existencias.model';
+import { MovimientoModel } from 'src/app/Modelos/Movimiento.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-  url='http://localhost:3000';
+  url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
+
   // Estado
   obtenerEstados() {
-    return this.http.get<EstadoModelo[]>(this.url+'/estados');
+    return this.http.get<EstadoModelo[]>(this.url + '/estados');
   }
 
   obtenerEstado(idEstado: string) {
@@ -29,7 +34,7 @@ export class UsuariosService {
   }
 
   actualizarEstado(EstadoModelo: EstadoModelo) {
-    return this.http.put<string>(`${this.url}/estados/actualizar/${EstadoModelo.idEstado}`, EstadoModelo)
+    return this.http.put<string>(`${this.url}/estados/actualizar/${EstadoModelo.IdEstado}`, EstadoModelo)
   }
 
   borrarEstado(idEstado: string) {
@@ -38,7 +43,7 @@ export class UsuariosService {
 
   //Rol
   obtenerRols() {
-    return this.http.get<RolModel[]>(this.url+'/roles');
+    return this.http.get<RolModel[]>(this.url + '/roles');
   }
 
   obtenerRol(IdRol: string) {
@@ -46,7 +51,7 @@ export class UsuariosService {
   }
 
   agregarRol(RolModel: RolModel) {
-    return this.http.post<string>(`${this.url}/roles/agregar`, EstadoModelo);
+    return this.http.post<string>(`${this.url}/roles/agregar`, RolModel);
   }
 
   actualizarRol(RolModel: RolModel) {
@@ -58,12 +63,12 @@ export class UsuariosService {
   }
 
   //Usuarios
-  
+
   obtenerUsuarios() {
-    return this.http.get<UsuarioModel[]>(this.url+'/usuarios');
+    return this.http.get<UsuarioModel[]>(this.url + '/usuarios');
   }
 
-    obtenerUsuario(idUsuario: string) {
+  obtenerUsuario(idUsuario: string) {
     return this.http.get<UsuarioModel[]>(`${this.url}/usuarios/${idUsuario}`);
   }
 
@@ -86,7 +91,7 @@ export class UsuariosService {
   //Usuarios_has_notificaciones
 
   obtenerUsuario_has_notificaciones() {
-    return this.http.get<Usuario_has_notificacionesModel[]>(this.url+'/usuario-notificaciones');
+    return this.http.get<Usuario_has_notificacionesModel[]>(this.url + '/usuario-notificaciones');
   }
 
   obtenerUsuario_has_notificacion(Usuario_idUsuario: string) {
@@ -108,7 +113,7 @@ export class UsuariosService {
   // Notificaciones
 
   obtenerNotificaciones() {
-    return this.http.get<NotificacionesModel[]>(this.url+'/notificaciones');
+    return this.http.get<NotificacionesModel[]>(this.url + '/notificaciones');
   }
 
   obtenerNotificacion(idNotificaciones: string) {
@@ -126,4 +131,96 @@ export class UsuariosService {
   borrarNotificaciones(idNotificaciones: string) {
     return this.http.delete<string>(`${this.url}/notificaciones/borrar/${idNotificaciones}`)
   }
+
+  //Proveedor
+
+  obtenerProveedores(){
+    return this.http.get<ProveedorModel[]>(this.url+'/proveedor');
+  }
+  obtenerProveedor(id:string){
+    return this.http.get<ProveedorModel[]>(`${this.url}/proveedor/${id}`);
+  }
+  agregarProveedor(proveedor: ProveedorModel){
+    return this.http.post<string>(`${this.url}/proveedor/agregar`, proveedor);
+  }
+  actualizarProveedor(proveedor: ProveedorModel){
+    return this.http.put<string>(`${this.url}/proveedor/actualizar/${proveedor.NITProveedor}`, proveedor);
+
+  }
+  borrarProveedor(id:string){
+    return this.http.delete<string>(`${this.url}/proveedor/borrar/${id}`);
+  }
+  
+  //Motivo
+
+  obtenerMotivos(){
+    return this.http.get<MotivoModel[]>(this.url+'/motivo');
+  }
+  obtenerMotivo(id:string){
+    return this.http.get<MotivoModel[]>(`${this.url}/motivo/${id}`);
+  }
+  agregarMotivo(motivo: MotivoModel){
+    return this.http.post<string>(`${this.url}/motivo/agregar`, motivo);
+  }
+  actualizarMotivo(motivo: MotivoModel){
+    return this.http.put<string>(`${this.url}/motivo/actualizar/${motivo.IdMotivo}`, motivo);
+  }
+  borrarMotivo(id:string){
+    return this.http.delete<string>(`${this.url}/motivo/borrar/${id}`);
+  }
+
+  //UbicacionAlmacen
+
+  obtenerUbicaciones(){
+    return this.http.get<UbicacionModel[]>(this.url+`/ubicacion-almacen`);
+  }
+  obtenerUbicacion(id:string){
+    return this.http.get<UbicacionModel[]>(`${this.url}/ubicacion-almacen/${id}`);
+  }
+  agregarUbicacion(ubicacion: UbicacionModel){
+    return this.http.post<string>(`${this.url}/ubicacion-almacen/agregar`, ubicacion);
+  }
+  actualizarUbicacion(ubicacion: UbicacionModel){
+    return this.http.put<string>(`${this.url}/ubicacion-almacen/actualizar/${ubicacion.IdUbicacionAlmacen}`, ubicacion);
+  }
+  borrarUbicacion(id:string){
+    return this.http.delete<string>(`${this.url}/ubicacion-almacen/borrar/${id}`);
+  }
+
+  //Existencias
+
+  obtenerExistencias(){
+    return this.http.get<ExistenciasModel[]>(this.url+`/existencias`);
+  }
+  obtenerExistencia(id:string){
+    return this.http.get<ExistenciasModel[]>(`${this.url}/existencias/${id}`);
+  }
+  agregarExistencia(existencias: ExistenciasModel){
+    return this.http.post<string>(`${this.url}/existencias/agregar`, existencias);
+  }
+  actualizarExistencia(existencias: ExistenciasModel){
+    return this.http.put<string>(`${this.url}/existencias/actualizar/${existencias.IdExistencias}`, existencias);
+  }
+  borrarExistencia(id:string){
+    return this.http.delete<string>(`${this.url}/existencias/borrar/${id}`);
+  }
+
+  //Movimiento
+
+  obtenerMovimientos(){
+    return this.http.get<MovimientoModel[]>(this.url+`/movimiento`);
+  }
+  obtenerMovimiento(id:string){
+    return this.http.get<MovimientoModel[]>(`${this.url}/movimiento/${id}`);
+  }
+  agregarMovimiento(movimiento: MovimientoModel){
+    return this.http.post<string>(`${this.url}/movimiento/agregar`, movimiento);
+  }
+  actualizarMovimiento(movimiento: MovimientoModel){
+    return this.http.put<string>(`${this.url}/movimiento/actualizar/${movimiento.IdMovimiento}`, movimiento);
+  }
+  borrarMovimiento(id:string){
+    return this.http.delete<string>(`${this.url}/movimiento/borrar/${id}`);
+  }
+
 }

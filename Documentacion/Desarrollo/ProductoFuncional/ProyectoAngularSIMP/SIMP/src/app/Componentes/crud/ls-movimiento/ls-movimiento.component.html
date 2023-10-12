@@ -1,0 +1,56 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Movimientos</h1>
+
+        <div class="m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button" [routerLink]="['/movimiento/agregar']">Agregar</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/proveedores/']">Ir a Proveedor</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/ubicacion-almacen/']">Ir a Ubicacion</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/motivo/']">Ir a Motivo</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/Usuarios/']">Ir a Usuarios</button>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Movimiento</th>
+                        <th>Fecha Movimiento</th>
+                        <th>Cantidad Producto</th>
+                        <th>Precio Producto Movimiento</th>
+                        <th>ID Motivo</th>
+                        <th>ID Ubicación Almacén</th>
+                        <th>NIT Proveedor</th>
+                        <th>ID Producto Materia Prima</th>
+                        <th>ID Usuario</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let mv of movimiento | async">
+                        <td>{{ mv.IdMovimiento }}</td>
+                        <td>{{ mv.FechaMovimiento }}</td>
+                        <td>{{ mv.CantidadProducto }}</td>
+                        <td>{{ mv.PrecioProductoMovimiento }}</td>
+                        <td>{{ mv.DescripcionMovimiento }}</td>
+                        <td>{{ mv.NombreAlmacen }}</td>
+                        <td>{{ mv.NombreProveedor }}</td>
+                        <td>{{ mv.NombreProducto }}</td>
+                        <td>{{ mv.NombreUsuario }}</td>
+                        <td>
+                            <a class="btn btn-warning" [routerLink]="['/movimiento/editar/', mv.IdMovimiento]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" (click)="borrarMovimiento(mv.IdMovimiento)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

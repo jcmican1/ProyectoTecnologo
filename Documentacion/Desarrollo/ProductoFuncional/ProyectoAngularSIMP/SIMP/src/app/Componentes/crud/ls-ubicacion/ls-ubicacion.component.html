@@ -1,0 +1,39 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Ubicación de Almacén</h1>
+
+        <div class="m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button" [routerLink]="['/ubicacion-almacen/agregar']">Agregar</button>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Ubicación de Almacén</th>
+                        <th>Nombre de Almacén</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ub of ubicacion  | async">
+                        <td>{{ ub.IdUbicacionAlmacen }}</td>
+                        <td>{{ ub.NombreAlmacen }}</td>
+
+                        <td>
+                            <a class="btn btn-warning" [routerLink]="['/ubicacion-almacen/editar/', ub.IdUbicacionAlmacen]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" (click)="borrarUbicacion(ub.IdUbicacionAlmacen)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

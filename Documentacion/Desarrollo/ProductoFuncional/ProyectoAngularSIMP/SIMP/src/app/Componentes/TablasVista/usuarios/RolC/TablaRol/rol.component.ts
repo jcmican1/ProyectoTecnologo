@@ -24,7 +24,7 @@ export class RolComponent {
   }
 
   borrarRol(id: string) {
-    this.UsuariosService.borrarUsuario(id).subscribe(data => {
+    this.UsuariosService.borrarRol(id).subscribe(data => {
       console.log(data);
       alert(data)
       this.ngOnInit()

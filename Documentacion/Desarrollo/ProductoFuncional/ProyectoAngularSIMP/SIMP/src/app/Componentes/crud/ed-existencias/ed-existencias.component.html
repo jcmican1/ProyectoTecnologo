@@ -1,0 +1,63 @@
+<main class="container mt-4">
+  <div class="container border p-4">
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #existenciasForm="ngForm" >
+              <fieldset class="form-group">
+                <div class="col-sm-12">
+                  <label class="control-label" for="IdMovimiento">ID Movimiento</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.IdExistencias" name="IdMovimiento" readonly>
+                </div>
+              </fieldset>
+              <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="FechaMovimiento">Fecha de Movimiento</label>
+                    <input type="date" class="form-control" required [(ngModel)]="existencias.CantidadExistencias" name="FechaMovimiento">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="CantidadProducto">Cantidad de Producto (kg)</label>
+                    <input type="text" class="form-control" required [(ngModel)]="existencias.CantidadConsumida" name="CantidadProducto">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="PrecioProductoMovimiento">Precio del Producto</label>
+                    <input type="text" class="form-control" required [(ngModel)]="existencias.PuntoCompraProducto" name="PrecioProductoMovimiento">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="IdMotivo">Motivo Movimiento</label>
+                    <input type="text" class="form-control" required [(ngModel)]="existencias.PuntoMaximoProducto" name="IdMotivo">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="IdUbicacionAlmacen">Ubicacion de Almacen</label>
+                    <input type="text" class="form-control" required [(ngModel)]="existencias.FechaUltimaModificacion" name="IdUbicacionAlmacen">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NITProveedor">ID Proveedor</label>
+                    <input type="text" class="form-control" required [(ngModel)]="existencias.IdProductoMateriaPrima" name="NITProveedor">
+                  </div>
+                  <br>
+                </fieldset>      
+              <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!existenciasForm.form.valid">Enviar</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+  </div>
+</main>

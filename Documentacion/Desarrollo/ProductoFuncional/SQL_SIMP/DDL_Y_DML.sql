@@ -25,7 +25,7 @@ create table Usuario
     NombreUsuario varchar(45) not null,
     Apellido varchar(45) not null,
     Correo varchar(100) not null,
-    Clave varchar(45) null,
+    Clave varchar(200) not null,
     Rol_IdRol int not null,
     Estado_idEstado int not null,
     primary key (IdUsuario),
@@ -183,7 +183,7 @@ INSERT INTO Estado (DescripcionEstado) VALUES
 INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado) VALUES
     ('juan123', 'Pérez', 'juan@example.com', 'clave123', 1, 1),
     ('ana456', 'López', 'ana@example.com', 'clave456', 2, 1),
-    ('carlos789', 'Gómez', 'carlos@example.com', 'clave789', 2, 3);
+    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 2, 3);
 
 -- Insertar datos de prueba en la tabla Notificaciones
 INSERT INTO Notificaciones (Notificacionescol) VALUES

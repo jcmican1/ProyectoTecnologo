@@ -16,6 +16,21 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+
+    const { id } = req.params;
+    const query = `SELECT * FROM Rol WHERE IdRol = ${id};`
+    conexion.query(query, (error, resultado) => {
+        if (error) return console.error(error.message);
+
+        if (resultado.length > 0) {
+            res.json(resultado);
+        } else {
+            res.json(`No hay registros`);
+        }
+    });
+});
+
 // Endpoint para crear un nuevo rol
 router.post('/agregar', (req, res) => {
     const nuevoRol = {
@@ -32,7 +47,8 @@ router.post('/agregar', (req, res) => {
 router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
     const { DescripcionRol } = req.body;
-    const query = `UPDATE Rol SET DescripcionRol='${DescripcionRol}' WHERE idRol=${id};`;
+    const query = `UPDATE Rol SET DescripcionRol = '${DescripcionRol}' WHERE IdRol=${id};`;
+
     conexion.query(query, (error) => {
         if (error) return console.error(error.message);
 
@@ -42,7 +58,7 @@ router.put('/actualizar/:id', (req, res) => {
 
 router.delete('/borrar/:id', (req, res) => {
     const { id } = req.params;
-    const query = `DELETE FROM Rol WHERE idRol=${id};`;
+    const query = `DELETE FROM Rol WHERE IdRol=${id};`;
     conexion.query(query, (error) => {
         if (error) console.error(error.message);
 
