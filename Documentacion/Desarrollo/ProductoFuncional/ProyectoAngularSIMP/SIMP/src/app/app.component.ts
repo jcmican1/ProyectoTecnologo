@@ -9,7 +9,5 @@ import { CompartidosService } from './servicios/Compartidos/compartidos.service'
 })
 export class AppComponent {
   title = 'SIMP';
-
-  constructor(public Sesion:CompartidosService) { } 
-
+  constructor(public Sesion:CompartidosService) {} 
 }
