@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { UsuarioModel } from '../../Modelos/Usuarios.model';
-import { EstadoModelo } from 'src/app/Modelos/Estado.model';
-import { RolModel } from 'src/app/Modelos/Rol.model';
-import { Usuario_has_notificacionesModel } from 'src/app/Modelos/Usuarios_has_Notificaciones.model';
-import { NotificacionesModel } from 'src/app/Modelos/Notificacione.model';
-import { ProveedorModel } from 'src/app/Modelos/Proveedor.model';
-import { MotivoModel } from 'src/app/Modelos/Motivo.model';
-import { UbicacionModel } from 'src/app/Modelos/UbicacionAlmacen.module';
-import { ExistenciasModel } from 'src/app/Modelos/Existencias.model';
-import { MovimientoModel } from 'src/app/Modelos/Movimiento.model';
+import { EstadoModelo } from '../../Modelos/Estado.model';
+import { RolModel } from '../../Modelos/Rol.model';
+import { Usuario_has_notificacionesModel } from '../../Modelos/Usuarios_has_Notificaciones.model';
+import { NotificacionesModel } from '../../Modelos/Notificacione.model';
+import { ProveedorModel } from '../../Modelos/Proveedor.model';
+import { MotivoModel } from '../../Modelos/Motivo.model';
+import { UbicacionModel } from '../../Modelos/UbicacionAlmacen.module';
+import { ExistenciasModel } from '../../Modelos/Existencias.model';
+import { MovimientoModel } from '../../Modelos/Movimiento.model';
 
 @Injectable({
   providedIn: 'root'
