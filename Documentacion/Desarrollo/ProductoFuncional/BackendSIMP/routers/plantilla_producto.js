@@ -3,7 +3,7 @@ const router = express.Router();
 const conexion = require('../conexion');
 
 // Consultar todos los registros de Plantilla Producto
-router.get('/plantillas', (req, res) => {
+router.get('/', (req, res) => {
     const query = 'SELECT * FROM PlantillaProducto';
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
@@ -17,7 +17,7 @@ router.get('/plantillas', (req, res) => {
 });
 
 // Consultar por ID en la tabla Plantilla Producto
-router.get('/plantillas/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params;
     const query = `SELECT * FROM PlantillaProducto WHERE IdPlantillaProducto=${id}`;
     
@@ -33,7 +33,7 @@ router.get('/plantillas/:id', (req, res) => {
 });
 
 // Agregar un nuevo registro a la tabla Plantilla Producto
-router.post('/plantillas/agregar', (req, res) => {
+router.post('/agregar', (req, res) => {
     const nuevaPlantilla = {
         NombreProductoPlantilla: req.body.NombreProductoPlantilla,
         ValorVenta: req.body.ValorVenta
@@ -51,7 +51,7 @@ router.post('/plantillas/agregar', (req, res) => {
 });
 
 // Actualizar un registro en la tabla Plantilla Producto por su ID
-router.put('/plantillas/actualizar/:id', (req, res) => {
+router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
     const { NombreProductoPlantilla, ValorVenta } = req.body;
 
@@ -71,7 +71,7 @@ router.put('/plantillas/actualizar/:id', (req, res) => {
 });
 
 // Borrar un registro en la tabla Plantilla Producto por su ID
-router.delete('/plantillas/borrar/:id', (req, res) => {
+router.delete('/borrar/:id', (req, res) => {
     const { id } = req.params;
 
     const query = `DELETE FROM PlantillaProducto WHERE IdPlantillaProducto=${id}`;
