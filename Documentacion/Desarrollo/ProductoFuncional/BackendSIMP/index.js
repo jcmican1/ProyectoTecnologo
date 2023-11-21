@@ -46,10 +46,10 @@ app.use('/usuarios', usuariosRouter);
 app.use('/notificaciones', notificacionesRouter);
 app.use('/usuario-notificaciones', usuarioNotificacionesRouter);
 
-app.use('./unidad-medida', unidad_medidaRouter);
-app.use('./producto-materia', plantilla_producto_has_producto_materia_prima);
+app.use('/unidad-medida', unidad_medidaRouter);
+app.use('/producto-materia', plantilla_producto_has_producto_materia_prima);
 app.use('/categoria', categoriaRouter);
-app.use('./materia-prima', producto_materia_prima);
+app.use('/materia-prima', producto_materia_prima);
 
 app.use('/proveedor', proveedorRouter);
 app.use('/ubicacion-almacen/', ubicacionAlmacenRouter);

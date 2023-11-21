@@ -3,7 +3,7 @@ const router = express.Router();
 const conexion = require('../conexion');
 
 // Consultar todos los registros de relacion plantilla materia prima
-router.get('/relaciones', (req, res) => {
+router.get('/', (req, res) => {
     const query = 'SELECT * FROM PlantillaProducto_has_ProductoMateriaPrima';
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
@@ -20,7 +20,7 @@ router.get('/relaciones', (req, res) => {
 
 
 // Agregar un nuevo registro a la tabla relacion plantilla materia prima
-router.post('/relaciones/agregar', (req, res) => {
+router.post('/agregar', (req, res) => {
     const { IdPlantillaProducto, IdProductoMateriaPrima } = req.body;
 
     const nuevaRelacion = {
@@ -43,7 +43,7 @@ router.post('/relaciones/agregar', (req, res) => {
 
 
 // Borrar un registro en la tabla relacion plantilla materia prima por su ID
-router.delete('/relaciones/borrar/:idPlantilla/:idMateriaPrima', (req, res) => {
+router.delete('/borrar/:idPlantilla/:idMateriaPrima', (req, res) => {
     const { idPlantilla, idMateriaPrima } = req.params;
 
     const query = `DELETE FROM PlantillaProducto_has_ProductoMateriaPrima WHERE IdPlantillaProducto=${idPlantilla} AND IdProductoMateriaPrima=${idMateriaPrima}`;
