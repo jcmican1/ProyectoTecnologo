@@ -4,7 +4,9 @@ const conexion = require('../conexion');
 
 // Consultar todos los registros de relacion plantilla materia prima
 router.get('/', (req, res) => {
-    const query = 'SELECT * FROM PlantillaProducto_has_ProductoMateriaPrima';
+    const query = `SELECT IdProductoMateria, NombreProductoPlantilla,NombreProducto  FROM PlantillaProducto_has_ProductoMateriaPrima as table1
+    INNER JOIN plantillaproducto ON table1.IdPlantillaProducto = plantillaproducto.IdPlantillaProducto 
+    INNER JOIN producto_materia_prima ON table1.IdProductoMateriaPrima = producto_materia_prima.IdProductoMateriaPrima`;
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
 
@@ -43,10 +45,10 @@ router.post('/agregar', (req, res) => {
 
 
 // Borrar un registro en la tabla relacion plantilla materia prima por su ID
-router.delete('/borrar/:idPlantilla/:idMateriaPrima', (req, res) => {
-    const { idPlantilla, idMateriaPrima } = req.params;
+router.delete('/borrar/:IdProductoMateria', (req, res) => {
+    const { IdProductoMateria } = req.params;
 
-    const query = `DELETE FROM PlantillaProducto_has_ProductoMateriaPrima WHERE IdPlantillaProducto=${idPlantilla} AND IdProductoMateriaPrima=${idMateriaPrima}`;
+    const query = `DELETE FROM PlantillaProducto_has_ProductoMateriaPrima WHERE IdProductoMateria=${IdProductoMateria}`;
     
     conexion.query(query, (error) => {
         if (error) {

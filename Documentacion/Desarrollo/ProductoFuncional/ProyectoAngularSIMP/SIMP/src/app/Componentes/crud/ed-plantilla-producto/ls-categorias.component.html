@@ -1,0 +1,47 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Categorias</h1>
+        <div class="m-3 container text-center row justify-content-md-center">
+            <div class="ZonaBotones container col-lg-8">
+                <button class="btn btn-success" type="button" [routerLink]="['/categorias/agregar']">Agregar</button>
+            </div>
+
+
+          <div class="col-lg-4">
+            <form class="row" (ngSubmit)="buscarCategoria()" id="Form de busqueda">
+                <label for="search-input">Buscar:
+                  <br>
+                  <input [(ngModel)]="CategoriaBusqueda" type="text" id="search-input" name="IdCategoria"
+                      placeholder="Id Categoria">
+                  <br>
+                  <button class="btn btn-success" type="submit">Buscar</button>
+                </label>
+            </form>
+          </div>
+        </div>
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Categoria</th>
+                        <th>Descripcion Categoria</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ca of categorias | async">
+                        <td>{{ ca.IdCategoria }}</td>
+                        <td>{{ ca.DescripcionCategoria }}</td>
+                        <td>
+                            <a class="btn btn-warning" [routerLink]="['/categorias/editar/', ca.IdCategoria]">Editar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" (click)="borrarCategoria(ca.IdCategoria)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

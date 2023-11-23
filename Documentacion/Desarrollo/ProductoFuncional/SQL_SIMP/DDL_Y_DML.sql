@@ -161,9 +161,10 @@ create table PlantillaProducto
 -- Crear tabla PlantillaProducto_has_ProductoMateriaPrima
 create table PlantillaProducto_has_ProductoMateriaPrima
 (
+    IdProductoMateria int not null auto_increment,
     IdPlantillaProducto int not null,
     IdProductoMateriaPrima int not null,
-    primary key (IdPlantillaProducto, IdProductoMateriaPrima),
+    primary key (IdProductoMateria),
     foreign key (IdPlantillaProducto) references PlantillaProducto (IdPlantillaProducto) on update cascade on delete cascade,
     foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
 );

@@ -26,7 +26,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ex of existencias | async">
+                  <ng-container *ngIf="existencias.length > 0; else noDataMessage">
+                    <tr *ngFor="let ex of existencias">
                         <td>{{ ex.IdExistencias }}</td>
                         <td>{{ ex.CantidadExistencias }}</td>
                         <td>{{ ex.CantidadConsumida }}</td>
@@ -41,6 +42,12 @@
                             <a class="btn btn-danger" (click)="borrarExistencias(ex.IdExistencias)">Borrar</a>
                         </td>
                     </tr>
+                  </ng-container>
+                  <ng-template #noDataMessage>
+                    <tr>
+                      <td colspan="9">{{messageError}}</td>
+                    </tr>
+                  </ng-template>
                 </tbody>
             </table>
         </div>

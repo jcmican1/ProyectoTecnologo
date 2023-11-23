@@ -14,7 +14,6 @@ import { EntradasInventarioComponent } from './Componentes/TablasVista/entradas-
 import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-producto/plantilla-producto.component';
 import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.component';
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
-
 import { NotificacionesComponent } from './Componentes/notificaciones/notificaciones.component';
 import { FormularioUsuariosComponent } from './Componentes/TablasVista/usuarios/UsuariosC/formulario-usuarios/formulario-usuarios.component';
 import { RolComponent } from './Componentes/TablasVista/usuarios/RolC/TablaRol/rol.component';
@@ -32,8 +31,14 @@ import { LsExistenciasComponent } from './Componentes/crud/ls-existencias/ls-exi
 import { EdExistenciasComponent } from './Componentes/crud/ed-existencias/ed-existencias.component';
 import { LsMovimientoComponent } from './Componentes/crud/ls-movimiento/ls-movimiento.component';
 import { EdMovimientoComponent } from './Componentes/crud/ed-movimiento/ed-movimiento.component';
-
-
+import { EdProductoMateriaPrimaComponent } from './Componentes/crud/ed-producto-materia-prima/ed-producto-materia-prima.component';
+import { LsCategoriasComponent } from './Componentes/crud/ls-categorias/ls-categorias.component';
+import { EdCategoriasComponent } from './Componentes/crud/ed-categorias/ed-categorias.component';
+import { EdPlantillaProductoComponent } from './Componentes/crud/ed-plantilla-producto/ed-plantilla-producto.component';
+import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-unidad-medida.component';
+import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
+import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-materia/ls-producto-materia.component';
+import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
 
 
 @NgModule({
@@ -65,7 +70,14 @@ import { EdMovimientoComponent } from './Componentes/crud/ed-movimiento/ed-movim
     EdExistenciasComponent,
     LsMovimientoComponent,
     EdMovimientoComponent,
-
+    EdProductoMateriaPrimaComponent,
+    LsCategoriasComponent,
+    EdCategoriasComponent,
+    EdPlantillaProductoComponent,
+    LsUnidadMedidaComponent,
+    EdUnidadMedidaComponent,
+    LsProductoMateriaComponent,
+    EdProductoMateriaComponent
   ],
   imports: [
     BrowserModule,

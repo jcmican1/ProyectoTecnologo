@@ -38,8 +38,8 @@ router.post('/agregar', (req, res) => {
         CantidadConsumida: req.body.CantidadConsumida,
         PuntoCompraProducto: req.body.PuntoCompraProducto,
         PuntoMaximoProducto: req.body.PuntoMaximoProducto,
-        FechaUltimaModificacion: req.body.FechaUltimaModificacion,
-        Producto_Materia_Prima_IdProductoMateriaPrima: req.body.Producto_Materia_Prima_IdProductoMateriaPrima
+        FechaUltimaModificacion: req.body.FechaUltimaModificacion.slice(0, 10),
+        IdProductoMateriaPrima: req.body.IdProductoMateriaPrima
     };
 
     const query = 'INSERT INTO Existencias SET ?;';
@@ -59,7 +59,7 @@ router.put('/actualizar/:id', (req, res) => {
         PuntoCompraProducto,
         PuntoMaximoProducto,
         FechaUltimaModificacion,
-        Producto_Materia_Prima_IdProductoMateriaPrima
+        IdProductoMateriaPrima
     } = req.body;
 
     const query = `UPDATE Existencias SET 
@@ -67,8 +67,8 @@ router.put('/actualizar/:id', (req, res) => {
         CantidadConsumida=${CantidadConsumida},
         PuntoCompraProducto=${PuntoCompraProducto},
         PuntoMaximoProducto=${PuntoMaximoProducto},
-        FechaUltimaModificacion='${FechaUltimaModificacion}',
-        Producto_Materia_Prima_IdProductoMateriaPrima=${Producto_Materia_Prima_IdProductoMateriaPrima}
+        FechaUltimaModificacion='${FechaUltimaModificacion.slice(0, 10)}',
+        IdProductoMateriaPrima=${IdProductoMateriaPrima}
         WHERE IdExistencias=${id};`;
 
     conexion.query(query, (error, resultado) => {

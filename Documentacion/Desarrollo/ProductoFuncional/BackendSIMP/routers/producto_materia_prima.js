@@ -4,7 +4,9 @@ const conexion = require('../conexion');
 
 // Consultar todos los registros de Producto Materia Prima
 router.get('/', (req, res) => {
-    const query = 'SELECT * FROM Producto_Materia_Prima';
+    const query = `SELECT IdProductoMateriaPrima, NombreProducto, DescripcionProductoMateriaPrima,DescripcionCategoria,UnidadMedida 
+    FROM Producto_Materia_Prima as table1 INNER JOIN categoria ON table1.IdCategoria = categoria.IdCategoria INNER JOIN unidad_medida 
+    ON table1.IdUnidadMedida = unidad_medida.IDUnidadMedida`;
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
 
@@ -19,7 +21,8 @@ router.get('/', (req, res) => {
 // Consultar por ID en la tabla Producto Materia Prima
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    const query = `SELECT * FROM Producto_Materia_Prima WHERE IdProductoMateriaPrima=${id}`;
+    const query = `SELECT IdProductoMateriaPrima, NombreProducto, DescripcionProductoMateriaPrima,DescripcionCategoria,UnidadMedida FROM Producto_Materia_Prima as table1
+    INNER JOIN categoria ON table1.IdCategoria = categoria.IdCategoria INNER JOIN unidad_medida ON table1.IdUnidadMedida = unidad_medida.IDUnidadMedida WHERE IdProductoMateriaPrima=${id}`;
     
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);

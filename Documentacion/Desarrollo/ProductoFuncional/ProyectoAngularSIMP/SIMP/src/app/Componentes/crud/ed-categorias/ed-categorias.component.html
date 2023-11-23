@@ -1,0 +1,25 @@
+<main class="container mt-4">
+  <div class="container border p-4">
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #categoriasForm="ngForm" >
+              <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="DescripcionCategoria">Descripción Categoria</label>
+                    <input type="text" class="form-control" required [(ngModel)]="categorias.DescripcionCategoria" name="DescripcionCategoria" >
+                  </div>
+                  <br>
+                </fieldset>
+              <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!categoriasForm.form.valid">Enviar</button>
+                </div>
+              </fieldset>
+            </form>
+            <hr>
+            <br>
+            <button class="btn btn-success" routerLink="/categorias" >Regresar</button>
+          </div>
+        </div>
+  </div>
+</main>
