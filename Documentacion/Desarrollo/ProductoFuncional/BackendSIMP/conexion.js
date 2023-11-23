@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 const conexion = mysql.createConnection({
     host: 'localhost',
-    database: 'simpUv',
+    database: 'simpUvfinal',
     user: 'root',
     password: '',
 });

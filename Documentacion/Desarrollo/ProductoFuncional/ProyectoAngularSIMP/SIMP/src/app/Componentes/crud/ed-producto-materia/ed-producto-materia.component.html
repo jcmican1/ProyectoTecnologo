@@ -1,0 +1,38 @@
+<main class="container mt-4">
+  <div class="container border p-4">
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #productoMateriaForm="ngForm" >
+              <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="IdPlantillaProducto">Id Plantilla Producto</label>
+                    <select class="form-control" [(ngModel)]="productoMateria.IdPlantillaProducto" name="IdPlantillaProducto">
+                      <option [ngValue]="''">Seleccionar Plantilla Producto</option>
+                      <option *ngFor="let plantilla of plantillaProducto" [ngValue]="plantilla.IdPlantillaProducto">{{ plantilla.NombreProductoPlantilla }}</option>
+                    </select>
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="IdPlantillaProducto">Id Producto Materia Prima</label>
+                    <select class="form-control" [(ngModel)]="productoMateria.IdProductoMateriaPrima" name="IdProductoMateriaPrima">
+                      <option [ngValue]="''">Seleccionar Plantilla Producto</option>
+                      <option *ngFor="let producto of productoMateriaPrima" [ngValue]="producto.IdProductoMateriaPrima">{{ producto.NombreProducto }}</option>
+                    </select>
+                  </div>
+                  <br>
+                </fieldset>
+              <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!productoMateriaForm.form.valid">Enviar</button>
+                </div>
+              </fieldset>
+            </form>
+            <hr>
+            <br>
+            <button class="btn btn-success" routerLink="/productosMateria" >Regresar</button>
+          </div>
+        </div>
+  </div>
+</main>

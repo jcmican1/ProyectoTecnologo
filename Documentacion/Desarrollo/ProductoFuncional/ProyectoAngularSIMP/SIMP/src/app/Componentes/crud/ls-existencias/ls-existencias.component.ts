@@ -10,20 +10,35 @@ import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
 })
 export class LsExistenciasComponent implements OnInit {
 
-  existencias: Observable<ExistenciasModel[]> | undefined
+  existencias: ExistenciasModel[] = []
+  messageError:string = ''
 
   constructor(private existenciasService: UsuariosService){}
 
   ngOnInit() {
-      this.existencias = this.existenciasService.obtenerExistencias();
+      this.existenciasService.obtenerExistencias().subscribe(data=>{
+        if (Array.isArray(data)) {
+          this.existencias = data;
+        }else if (typeof data === 'string') {
+          this.existencias = []
+          this.messageError = data
+        }
+      }
+    );
   }
-  
+
   borrarExistencias(id:string){
     this.existenciasService.borrarExistencia(id).subscribe(data=>{
-      console.log(data);
+      this.existenciasService.obtenerExistencias().subscribe(data=>{
+          if (Array.isArray(data)) {
+            this.existencias = data;
+          }else if (typeof data === 'string') {
+            this.existencias = []
+            this.messageError = data
+          }
+        }
+      )
     })
-
-    this.existencias = this.existenciasService.obtenerExistencias()
   }
 
 }

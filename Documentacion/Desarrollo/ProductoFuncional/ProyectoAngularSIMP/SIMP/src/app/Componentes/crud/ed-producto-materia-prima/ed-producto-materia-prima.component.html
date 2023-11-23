@@ -1,0 +1,52 @@
+<main class="container mt-4">
+  <div class="container border p-4">
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #productoMateriaPrimaForm="ngForm" >
+              <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NombreProducto">Nombre del producto</label>
+                    <input type="text" class="form-control" required [(ngModel)]="productoMateriaPrima.NombreProducto" name="NombreProducto">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="DescripciónProducto">Descripción del Producto</label>
+                    <input type="text" class="form-control" required [(ngModel)]="productoMateriaPrima.DescripcionProductoMateriaPrima" name="DescripciónProducto">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="IdCategoria">Categoría</label>
+                    <select class="form-control" required [(ngModel)]="productoMateriaPrima.IdCategoria" name="IdCategoria">
+                      <option [ngValue]="''">Seleccionar categoría</option>
+                      <option *ngFor="let categoria of categorias" [ngValue]="categoria.IdCategoria">{{ categoria.DescripcionCategoria }}</option>
+                    </select>
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="IdUnidadMedida">Unidad de medida</label>
+                    <select class="form-control" required [(ngModel)]="productoMateriaPrima.IdUnidadMedida" name="IdUnidadMedida">
+                      <option [ngValue]="''">Seleccionar unidad de medida</option>
+                      <option *ngFor="let unidad of unidades" [ngValue]="unidad.IdUnidadMedida">{{ unidad.UnidadMedida }}</option>
+                    </select>
+                  </div>
+                  <br>
+                </fieldset>
+              <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!productoMateriaPrimaForm.form.valid">Enviar</button>
+                </div>
+              </fieldset>
+            </form>
+            <hr>
+            <br>
+            <button class="btn btn-success" routerLink="/ProductoMateria">Regresar</button>
+          </div>
+        </div>
+  </div>
+</main>
