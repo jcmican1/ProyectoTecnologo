@@ -73,7 +73,7 @@ export class UsuariosService {
   }
 
   obtenerUsuariologin(UsuarioModel: UsuarioModel) {
-    return this.http.post<string>(`${this.url}/usuarios/login`, UsuarioModel);
+    return this.http.post<string>(`${this.url}/login`, UsuarioModel);
   }
 
   agregarUsuario(UsuarioModel: UsuarioModel) {

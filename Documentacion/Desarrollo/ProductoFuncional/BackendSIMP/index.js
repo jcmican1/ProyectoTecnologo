@@ -34,6 +34,7 @@ const rolesRouter = require('./routers/rolesRouter');
 const usuariosRouter = require('./routers/usuariosRouter');
 const notificacionesRouter = require('./routers/notificacionesRouter');
 const usuarioNotificacionesRouter = require('./routers/usuarioNotificacionesRouter');
+const login = require('./routers/login');
 
 const unidad_medidaRouter = require('./routers/unidad_medidaRouter');
 const plantilla_producto_has_producto_materia_prima = require('./routers/plantilla_producto_has_producto_materia_prima');
@@ -50,9 +51,10 @@ const motivoRouter = require('./routers/motivoRouter');
 // Usa los enrutadores
 app.use('/estados',auth ,roleAuth([1]), estadosRouter);
 app.use('/roles',auth ,roleAuth([1]), rolesRouter);
-app.use('/usuarios', usuariosRouter);
+app.use('/usuarios', auth ,roleAuth([1]), usuariosRouter);
 app.use('/notificaciones',auth ,roleAuth([2]), notificacionesRouter);
 app.use('/usuario-notificaciones',auth ,roleAuth([2]), usuarioNotificacionesRouter);
+app.use('/login', login);
 
 app.use('/unidad-medida',auth ,roleAuth([2]), unidad_medidaRouter);
 app.use('/producto-materia',auth ,roleAuth([2]), plantilla_producto_has_producto_materia_prima);
