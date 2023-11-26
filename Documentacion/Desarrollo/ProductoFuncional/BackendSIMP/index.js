@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const conexion = require('./conexion'); 
 const app = express()
+const checkAuth = require('./middleware/auth')
+const checkRoleAuth = require('./middleware/roleAuth')
 
 
 app.use(function (req, res, next) {
@@ -44,20 +46,20 @@ const motivoRouter = require('./routers/motivoRouter');
 app.use('/estados', estadosRouter);
 app.use('/roles', rolesRouter);
 app.use('/usuarios', usuariosRouter);
-app.use('/notificaciones', notificacionesRouter);
-app.use('/usuario-notificaciones', usuarioNotificacionesRouter);
+app.use('/notificaciones',checkAuth ,checkRoleAuth([2]), notificacionesRouter);
+app.use('/usuario-notificaciones',checkAuth ,checkRoleAuth([2]), usuarioNotificacionesRouter);
 
-app.use('/unidad-medida', unidad_medidaRouter);
-app.use('/producto-materia', plantilla_producto_has_producto_materia_prima);
-app.use('/plantilla-producto', plantilla_producto);
-app.use('/categoria', categoriaRouter);
-app.use('/materia-prima', producto_materia_prima);
+app.use('/unidad-medida',checkAuth ,checkRoleAuth([2]), unidad_medidaRouter);
+app.use('/producto-materia',checkAuth ,checkRoleAuth([2]), plantilla_producto_has_producto_materia_prima);
+app.use('/plantilla-producto',checkAuth ,checkRoleAuth([2]), plantilla_producto);
+app.use('/categoria',checkAuth ,checkRoleAuth([2]), categoriaRouter);
+app.use('/materia-prima',checkAuth ,checkRoleAuth([2]), producto_materia_prima);
 
-app.use('/proveedor', proveedorRouter);
-app.use('/ubicacion-almacen/', ubicacionAlmacenRouter);
-app.use('/existencias', existenciasRouter);
-app.use('/movimiento', movimientoRouter);
-app.use('/motivo', motivoRouter);
+app.use('/proveedor',checkAuth ,checkRoleAuth([2]), proveedorRouter);
+app.use('/ubicacion-almacen/',checkAuth ,checkRoleAuth([2]), ubicacionAlmacenRouter);
+app.use('/existencias',checkAuth ,checkRoleAuth([2]), existenciasRouter);
+app.use('/movimiento',checkAuth ,checkRoleAuth([2]), movimientoRouter);
+app.use('/motivo',checkAuth ,checkRoleAuth([2]), motivoRouter);
 
 //comienzo de rutas
 

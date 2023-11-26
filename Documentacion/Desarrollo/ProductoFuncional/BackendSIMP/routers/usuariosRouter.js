@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const express = require('express');
 const router = express.Router();
 const conexion = require('../conexion'); // Importa tu conexión a la base de datos aquí
+const { tokenSign } = require('./generateToken')
 
 // Endpoint para manipular la tabla Usuario
 router.get('/', (req, res) => {
@@ -94,13 +95,18 @@ router.post('/login', (req, res) => {
     hash.update(nuevoUsuario.Clave);
     let hashMD5 = hash.digest('hex');
     nuevoUsuario.Clave = hashMD5
-    
+
     const query = `SELECT * FROM usuario WHERE Correo = '${nuevoUsuario.Correo}' AND Clave = '${nuevoUsuario.Clave}';`
-    conexion.query(query, (error, resultado) => {
+
+    conexion.query(query, async (error, resultado) => {
         if (error) return console.error(error.message);
 
+        const tokenSession = await tokenSign(resultado[0]);
+
+
         if (resultado.length > 0) {
-            res.json(true)
+            console.log("Chido");
+            res.json(tokenSession)
         } else {
             res.json(false)
         }

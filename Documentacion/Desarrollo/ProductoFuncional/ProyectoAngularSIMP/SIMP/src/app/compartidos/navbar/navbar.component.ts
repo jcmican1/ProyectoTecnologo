@@ -14,6 +14,7 @@ export class NavbarComponent {
 
   Cerrarsession(){
     this.Sesion.Sesion = false
+    this.Sesion.deleteToken()
   }
 
 }
