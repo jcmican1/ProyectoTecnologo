@@ -11,11 +11,13 @@ export class CompartidosService {
   }
 
   getToken(): string | null {
+    console.log(sessionStorage.getItem('token'));
     return sessionStorage.getItem('token');
   }
 
   deleteToken() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    this.getToken
   }
 
   constructor() { }

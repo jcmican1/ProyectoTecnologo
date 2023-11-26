@@ -2,7 +2,7 @@ const { verifyToken } = require('../routers/generateToken')
 const express = require('express');
 const conexion = require('../conexion'); // Importa tu conexión a la base de datos aquí
 
-const checkRoleAuth = (roles) => async (req, res, next) => {
+const roleAuth = (roles) => async (req, res, next) => {
     try {
         console.log(req.headers.authorization);
         const authorizationHeader = req.headers.authorization;
@@ -36,4 +36,4 @@ const checkRoleAuth = (roles) => async (req, res, next) => {
 
 }
 
-module.exports = checkRoleAuth
+module.exports = roleAuth

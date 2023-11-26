@@ -9,10 +9,10 @@ import { CompartidosService } from 'src/app/servicios/Compartidos/compartidos.se
 })
 export class NavbarComponent {
   constructor(
-    private Sesion:CompartidosService
+    private Sesion: CompartidosService
   ) { }
 
-  Cerrarsession(){
+  Cerrarsession() {
     this.Sesion.Sesion = false
     this.Sesion.deleteToken()
   }

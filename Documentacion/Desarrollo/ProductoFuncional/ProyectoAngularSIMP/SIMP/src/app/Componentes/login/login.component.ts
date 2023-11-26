@@ -36,9 +36,6 @@ export class LoginComponent implements OnInit {
     this.UsuariosService.obtenerUsuariologin(this.UsuarioModel).subscribe(data => {
       if (data) {
         this.Sesion.saveToken(data);
-        let token = this.Sesion.getToken();
-        console.log(token);
-
         this.Sesion.Sesion = true
         this.router.navigate([''])
       } else {

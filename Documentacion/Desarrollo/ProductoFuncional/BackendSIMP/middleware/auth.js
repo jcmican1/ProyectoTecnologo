@@ -1,7 +1,15 @@
 const { verifyToken } = require('../routers/generateToken')
 
-const checkAuth = async (req, res, next) => {
+const auth = async (req, res, next) => {
     try {
+        console.log(req.headers.authorization);
+        const authorizationHeader = req.headers.authorization;
+
+        if (!authorizationHeader) {
+            res.status(401);
+            return res.send({ error: 'Falta el encabezado de autorización' });
+        }
+
         //TODO: authorization: Bearer 1010101010101001010100 
         const token = req.headers.authorization.split(' ').pop() //TODO:123123213
         const tokenData = await verifyToken(token)
@@ -21,4 +29,4 @@ const checkAuth = async (req, res, next) => {
 
 }
 
-module.exports = checkAuth
+module.exports = auth
