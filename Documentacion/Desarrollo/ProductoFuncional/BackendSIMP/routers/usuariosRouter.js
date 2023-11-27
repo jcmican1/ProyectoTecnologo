@@ -33,6 +33,39 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/Correo/:id', (req, res) => {
+    const { id } = req.params;
+
+    // Utilizamos placeholders para la consulta y un array de valores
+    const query = `
+        SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado
+        FROM Usuario
+        INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol
+        INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado
+        WHERE Correo = ?;
+    `;
+
+    // Verificamos el formato del correo electrónico
+    const correo = `${id}`;
+
+    conexion.query(query, [correo], (error, resultado) => {
+        if (error) {
+            console.error(error.message);
+            return res.status(500).json({ error: 'Error en la consulta SQL' });
+        }
+
+        console.log('====================================');
+        console.log(resultado);
+        console.log('====================================');
+
+        if (resultado.length > 0 || !resultado == null) {
+            res.json(resultado);
+        } else {
+            res.json(`No hay registros`);
+        }
+    });
+});
+
 
 // Endpoint para crear un nuevo usuario
 router.post('/agregar', (req, res) => {

@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       if (data) {
         this.Sesion.saveToken(data);
         this.Sesion.Sesion = true
+        this.Sesion.Correo = this.UsuarioModel.Correo
         this.router.navigate([''])
       } else {
         alert("Logeo no posible  \n" + data)

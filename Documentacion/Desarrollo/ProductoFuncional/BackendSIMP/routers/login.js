@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
         Correo: req.body.Correo,
         Clave: req.body.Clave
     };
-console.log(nuevoUsuario);
+    console.log(nuevoUsuario);
     let hash = crypto.createHash('md5');
     hash.update(nuevoUsuario.Clave);
     let hashMD5 = hash.digest('hex');
@@ -20,7 +20,7 @@ console.log(nuevoUsuario);
     conexion.query(query, async (error, resultado) => {
         if (error) return console.error(error.message);
         let rol = resultado[0].Rol_IdRol;
-        console.log("esto es rol",rol);
+        console.log("esto es rol", rol);
 
         const tokenSession = await tokenSign(resultado[0]);
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const conexion = require('./conexion'); 
+const conexion = require('./conexion');
 const app = express()
 const auth = require('./middleware/auth')
 const roleAuth = require('./middleware/roleAuth')
@@ -49,24 +49,24 @@ const movimientoRouter = require('./routers/movimientoRouter');
 const motivoRouter = require('./routers/motivoRouter');
 
 // Usa los enrutadores
-app.use('/estados',auth ,roleAuth([1]), estadosRouter);
-app.use('/roles',auth ,roleAuth([1]), rolesRouter);
-app.use('/usuarios', auth ,roleAuth([1]), usuariosRouter);
-app.use('/notificaciones',auth ,roleAuth([2]), notificacionesRouter);
-app.use('/usuario-notificaciones',auth ,roleAuth([2]), usuarioNotificacionesRouter);
+app.use('/estados', auth, roleAuth([1]), estadosRouter);
+app.use('/roles', auth, roleAuth([1]), rolesRouter);
+app.use('/usuarios', auth, roleAuth([1]), usuariosRouter);
+app.use('/notificaciones', auth, roleAuth([2]), notificacionesRouter);
+app.use('/usuario-notificaciones', auth, roleAuth([2]), usuarioNotificacionesRouter);
 app.use('/login', login);
 
-app.use('/unidad-medida',auth ,roleAuth([2]), unidad_medidaRouter);
-app.use('/producto-materia',auth ,roleAuth([2]), plantilla_producto_has_producto_materia_prima);
-app.use('/plantilla-producto',auth ,roleAuth([2]), plantilla_producto);
-app.use('/categoria',auth ,roleAuth([2]), categoriaRouter);
-app.use('/materia-prima',auth ,roleAuth([2]), producto_materia_prima);
+app.use('/unidad-medida', auth, roleAuth([2]), unidad_medidaRouter);
+app.use('/producto-materia', auth, roleAuth([2]), plantilla_producto_has_producto_materia_prima);
+app.use('/plantilla-producto', auth, roleAuth([2]), plantilla_producto);
+app.use('/categoria', auth, roleAuth([2]), categoriaRouter);
+app.use('/materia-prima', auth, roleAuth([2]), producto_materia_prima);
 
-app.use('/proveedor',auth ,roleAuth([2]), proveedorRouter);
-app.use('/ubicacion-almacen/',auth ,roleAuth([2]), ubicacionAlmacenRouter);
-app.use('/existencias',auth ,roleAuth([2]), existenciasRouter);
-app.use('/movimiento',auth ,roleAuth([2]), movimientoRouter);
-app.use('/motivo',auth ,roleAuth([2]), motivoRouter);
+app.use('/proveedor', auth, roleAuth([2]), proveedorRouter);
+app.use('/ubicacion-almacen/', auth, roleAuth([2]), ubicacionAlmacenRouter);
+app.use('/existencias', auth, roleAuth([2]), existenciasRouter);
+app.use('/movimiento', auth, roleAuth([2]), movimientoRouter);
+app.use('/motivo', auth, roleAuth([2]), motivoRouter);
 
 
 

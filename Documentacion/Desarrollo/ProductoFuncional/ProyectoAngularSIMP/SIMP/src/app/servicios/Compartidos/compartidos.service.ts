@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 export class CompartidosService {
   Sesion: boolean = false;
 
+  Correo= ""
+  rol=""
+  
   saveToken(token: string): void {
     sessionStorage.setItem('token', token);
   }
