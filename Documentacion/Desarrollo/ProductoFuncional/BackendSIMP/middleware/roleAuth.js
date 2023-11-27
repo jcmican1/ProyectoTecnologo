@@ -1,6 +1,6 @@
 const { verifyToken } = require('../routers/generateToken')
 const express = require('express');
-const conexion = require('../conexion'); // Importa tu conexión a la base de datos aquí
+const conexion = require('../conexion');
 
 const roleAuth = (roles) => async (req, res, next) => {
     try {
@@ -12,15 +12,14 @@ const roleAuth = (roles) => async (req, res, next) => {
             return res.send({ error: 'Falta el encabezado de autorización' });
         }
 
-        const token = req.headers.authorization.split(' ').pop() //TODO: 231231321
+        const token = req.headers.authorization.split(' ').pop()
         const tokenData = await verifyToken(token)
 
         const userData = `SELECT * FROM usuario WHERE idUsuario=${tokenData.IdUsuario};`
         conexion.query(userData, (error, resultado) => {
             if (error) return console.error(error.message)
 
-            //TODO ['user'].includes('user')
-            if ([].concat(roles).includes(resultado[0].Rol_IdRol)) { //TODO:
+            if ([].concat(roles).includes(resultado[0].Rol_IdRol)) {
                 next()
             } else {
                 res.status(409)

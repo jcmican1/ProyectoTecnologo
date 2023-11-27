@@ -1,16 +1,16 @@
-const jwt = require('jsonwebtoken') //TODO : 😎
+const jwt = require('jsonwebtoken')
 
-const tokenSign = async (user) => { //TODO: Genera Token
+const tokenSign = async (user) => { 
     console.log(typeof user);
     console.log(user);
     return jwt.sign(
         {
-            IdUsuario: user.IdUsuario, //TODO: <---
+            IdUsuario: user.IdUsuario, 
             Rol_IdRol: user.Rol_IdRol
-        }, //TODO: Payload ! Carga útil
-        "123456", //TODO ENV 
+        }, 
+        "123456",  
         {
-            expiresIn: "2h", //TODO tiempo de vida
+            expiresIn: "2h", 
         }
     );
 }
@@ -23,7 +23,7 @@ const verifyToken = async (token) => {
     }
 }
 
-const decodeSign = (token) => { //TODO: Verificar que el token sea valido y correcto
+const decodeSign = (token) => {
     return jwt.decode(token, null)
 }
 
