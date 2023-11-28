@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 
 import { UsuarioModel } from '../../Modelos/Usuarios.model';
 import { EstadoModelo } from '../../Modelos/Estado.model';
@@ -72,8 +72,12 @@ export class UsuariosService {
     return this.http.get<UsuarioModel[]>(`${this.url}/usuarios/${idUsuario}`);
   }
 
+  obtenerNavUser(Correo: string) {
+    return this.http.get<UsuarioModel[]>(`${this.url}/usuarios/Correo/${Correo}`);
+  }
+
   obtenerUsuariologin(UsuarioModel: UsuarioModel) {
-    return this.http.post<string>(`${this.url}/usuarios/login`, UsuarioModel);
+    return this.http.post<string>(`${this.url}/login`, UsuarioModel);
   }
 
   agregarUsuario(UsuarioModel: UsuarioModel) {
@@ -134,92 +138,92 @@ export class UsuariosService {
 
   //Proveedor
 
-  obtenerProveedores(){
-    return this.http.get<ProveedorModel[]>(this.url+'/proveedor');
+  obtenerProveedores() {
+    return this.http.get<ProveedorModel[]>(this.url + '/proveedor');
   }
-  obtenerProveedor(id:string){
+  obtenerProveedor(id: string) {
     return this.http.get<ProveedorModel[]>(`${this.url}/proveedor/${id}`);
   }
-  agregarProveedor(proveedor: ProveedorModel){
+  agregarProveedor(proveedor: ProveedorModel) {
     return this.http.post<string>(`${this.url}/proveedor/agregar`, proveedor);
   }
-  actualizarProveedor(proveedor: ProveedorModel){
+  actualizarProveedor(proveedor: ProveedorModel) {
     return this.http.put<string>(`${this.url}/proveedor/actualizar/${proveedor.NITProveedor}`, proveedor);
 
   }
-  borrarProveedor(id:string){
+  borrarProveedor(id: string) {
     return this.http.delete<string>(`${this.url}/proveedor/borrar/${id}`);
   }
-  
+
   //Motivo
 
-  obtenerMotivos(){
-    return this.http.get<MotivoModel[]>(this.url+'/motivo');
+  obtenerMotivos() {
+    return this.http.get<MotivoModel[]>(this.url + '/motivo');
   }
-  obtenerMotivo(id:string){
+  obtenerMotivo(id: string) {
     return this.http.get<MotivoModel[]>(`${this.url}/motivo/${id}`);
   }
-  agregarMotivo(motivo: MotivoModel){
+  agregarMotivo(motivo: MotivoModel) {
     return this.http.post<string>(`${this.url}/motivo/agregar`, motivo);
   }
-  actualizarMotivo(motivo: MotivoModel){
+  actualizarMotivo(motivo: MotivoModel) {
     return this.http.put<string>(`${this.url}/motivo/actualizar/${motivo.IdMotivo}`, motivo);
   }
-  borrarMotivo(id:string){
+  borrarMotivo(id: string) {
     return this.http.delete<string>(`${this.url}/motivo/borrar/${id}`);
   }
 
   //UbicacionAlmacen
 
-  obtenerUbicaciones(){
-    return this.http.get<UbicacionModel[]>(this.url+`/ubicacion-almacen`);
+  obtenerUbicaciones() {
+    return this.http.get<UbicacionModel[]>(this.url + `/ubicacion-almacen`);
   }
-  obtenerUbicacion(id:string){
+  obtenerUbicacion(id: string) {
     return this.http.get<UbicacionModel[]>(`${this.url}/ubicacion-almacen/${id}`);
   }
-  agregarUbicacion(ubicacion: UbicacionModel){
+  agregarUbicacion(ubicacion: UbicacionModel) {
     return this.http.post<string>(`${this.url}/ubicacion-almacen/agregar`, ubicacion);
   }
-  actualizarUbicacion(ubicacion: UbicacionModel){
+  actualizarUbicacion(ubicacion: UbicacionModel) {
     return this.http.put<string>(`${this.url}/ubicacion-almacen/actualizar/${ubicacion.IdUbicacionAlmacen}`, ubicacion);
   }
-  borrarUbicacion(id:string){
+  borrarUbicacion(id: string) {
     return this.http.delete<string>(`${this.url}/ubicacion-almacen/borrar/${id}`);
   }
 
   //Existencias
 
-  obtenerExistencias(){
-    return this.http.get<ExistenciasModel[]>(this.url+`/existencias`);
+  obtenerExistencias() {
+    return this.http.get<ExistenciasModel[]>(this.url + `/existencias`);
   }
-  obtenerExistencia(id:string){
+  obtenerExistencia(id: string) {
     return this.http.get<ExistenciasModel[]>(`${this.url}/existencias/${id}`);
   }
-  agregarExistencia(existencias: ExistenciasModel){
+  agregarExistencia(existencias: ExistenciasModel) {
     return this.http.post<string>(`${this.url}/existencias/agregar`, existencias);
   }
-  actualizarExistencia(existencias: ExistenciasModel){
+  actualizarExistencia(existencias: ExistenciasModel) {
     return this.http.put<string>(`${this.url}/existencias/actualizar/${existencias.IdExistencias}`, existencias);
   }
-  borrarExistencia(id:string){
+  borrarExistencia(id: string) {
     return this.http.delete<string>(`${this.url}/existencias/borrar/${id}`);
   }
 
   //Movimiento
 
-  obtenerMovimientos(){
-    return this.http.get<MovimientoModel[]>(this.url+`/movimiento`);
+  obtenerMovimientos() {
+    return this.http.get<MovimientoModel[]>(this.url + `/movimiento`);
   }
-  obtenerMovimiento(id:string){
+  obtenerMovimiento(id: string) {
     return this.http.get<MovimientoModel[]>(`${this.url}/movimiento/${id}`);
   }
-  agregarMovimiento(movimiento: MovimientoModel){
+  agregarMovimiento(movimiento: MovimientoModel) {
     return this.http.post<string>(`${this.url}/movimiento/agregar`, movimiento);
   }
-  actualizarMovimiento(movimiento: MovimientoModel){
+  actualizarMovimiento(movimiento: MovimientoModel) {
     return this.http.put<string>(`${this.url}/movimiento/actualizar/${movimiento.IdMovimiento}`, movimiento);
   }
-  borrarMovimiento(id:string){
+  borrarMovimiento(id: string) {
     return this.http.delete<string>(`${this.url}/movimiento/borrar/${id}`);
   }
 

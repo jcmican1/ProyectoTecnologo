@@ -17,9 +17,10 @@ export class UsuariosComponent {
   UsuarioModel: Observable<UsuarioModel[]> | undefined;
 
   constructor(
-  private UsuariosService: UsuariosService,
-  private route: ActivatedRoute,
-  private router: Router) { }
+    private UsuariosService: UsuariosService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.UsuarioModel = this.UsuariosService.obtenerUsuarios();
@@ -33,7 +34,7 @@ export class UsuariosComponent {
     })
   }
 
-  buscarUsuario(){
+  buscarUsuario() {
     this.UsuarioModel = this.UsuariosService.obtenerUsuario(this.usuarioBusqueda)
   }
 }
