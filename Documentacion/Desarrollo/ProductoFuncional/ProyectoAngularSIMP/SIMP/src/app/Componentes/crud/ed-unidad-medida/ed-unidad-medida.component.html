@@ -1,0 +1,25 @@
+<main class="container mt-4">
+  <div class="container border p-4">
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #unidadesForm="ngForm" >
+              <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="UnidadMedida">Unidad  Medida</label>
+                    <input type="text" class="form-control" required [(ngModel)]="unidades.UnidadMedida" name="UnidadMedida" >
+                  </div>
+                  <br>
+                </fieldset>
+              <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!unidadesForm.form.valid">Enviar</button>
+                </div>
+              </fieldset>
+            </form>
+            <hr>
+            <br>
+            <button class="btn btn-success" routerLink="/unidades" >Regresar</button>
+          </div>
+        </div>
+  </div>
+</main>

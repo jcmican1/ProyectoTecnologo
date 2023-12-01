@@ -30,6 +30,7 @@ const usuarioNotificacionesRouter = require('./routers/usuarioNotificacionesRout
 
 const unidad_medidaRouter = require('./routers/unidad_medidaRouter');
 const plantilla_producto_has_producto_materia_prima = require('./routers/plantilla_producto_has_producto_materia_prima');
+const plantilla_producto = require("./routers/plantilla_producto")
 const categoriaRouter = require('./routers/categoriaRouter');
 const producto_materia_prima = require('./routers/producto_materia_prima');
 
@@ -46,10 +47,11 @@ app.use('/usuarios', usuariosRouter);
 app.use('/notificaciones', notificacionesRouter);
 app.use('/usuario-notificaciones', usuarioNotificacionesRouter);
 
-app.use('./unidad-medida', unidad_medidaRouter);
-app.use('./producto-materia', plantilla_producto_has_producto_materia_prima);
+app.use('/unidad-medida', unidad_medidaRouter);
+app.use('/producto-materia', plantilla_producto_has_producto_materia_prima);
+app.use('/plantilla-producto', plantilla_producto);
 app.use('/categoria', categoriaRouter);
-app.use('./materia-prima', producto_materia_prima);
+app.use('/materia-prima', producto_materia_prima);
 
 app.use('/proveedor', proveedorRouter);
 app.use('/ubicacion-almacen/', ubicacionAlmacenRouter);

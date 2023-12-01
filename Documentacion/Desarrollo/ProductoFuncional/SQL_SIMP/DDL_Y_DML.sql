@@ -1,264 +1,253 @@
 -- Crear la base de datos simpUv
-create database simpUv;
-use simpUv;
+CREATE DATABASE simpUv;
+USE simpUv;
 
 -- Crear tabla Rol
-create table Rol
+CREATE TABLE Rol
 (
-    IdRol int not null auto_increment,
-    DescripcionRol varchar(45) not null,
-    primary key (IdRol)
+    IdRol INT NOT NULL AUTO_INCREMENT,
+    DescripcionRol VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdRol)
 );
 
 -- Crear tabla Estado
-create table Estado
+CREATE TABLE Estado
 (
-    IdEstado int not null auto_increment,
-    DescripcionEstado varchar(45) not null,
-    primary key (IdEstado)
+    IdEstado INT NOT NULL AUTO_INCREMENT,
+    DescripcionEstado VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdEstado)
 );
 
 -- Crear tabla Usuario
-create table Usuario
+CREATE TABLE Usuario
 (
-    IdUsuario int not null auto_increment,
-    NombreUsuario varchar(45) not null,
-    Apellido varchar(45) not null,
-    Correo varchar(100) not null,
-    Clave varchar(200) not null,
-    Rol_IdRol int not null,
-    Estado_idEstado int not null,
-    primary key (IdUsuario),
-    foreign key (Rol_IdRol) references Rol (IdRol) on update cascade on delete cascade,
-    foreign key (Estado_idEstado) references Estado (IdEstado) on update cascade on delete cascade
+    IdUsuario INT NOT NULL AUTO_INCREMENT,
+    NombreUsuario VARCHAR(45) NOT NULL,
+    Apellido VARCHAR(45) NOT NULL,
+    Correo VARCHAR(100) NOT NULL,
+    Clave VARCHAR(200) NOT NULL,
+    Rol_IdRol INT NOT NULL,
+    Estado_idEstado INT NOT NULL,
+    PRIMARY KEY (IdUsuario),
+    FOREIGN KEY (Rol_IdRol) REFERENCES Rol (IdRol) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (Estado_idEstado) REFERENCES Estado (IdEstado) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Crear tabla Notificaciones
-create table Notificaciones
+CREATE TABLE Notificaciones
 (
-    IdNotificaciones int not null auto_increment,
-    Notificacionescol varchar(45) not null,
-    primary key (IdNotificaciones)
+    IdNotificaciones INT NOT NULL AUTO_INCREMENT,
+    Notificacionescol VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdNotificaciones)
 );
 
 -- Crear tabla Usuario_has_Notificaciones
-create table Usuario_has_Notificaciones
+CREATE TABLE Usuario_has_Notificaciones
 (
-    Usuario_idUsuario int not null,
-    Notificaciones_idNotificaciones int not null,
-    primary key (Usuario_idUsuario, Notificaciones_idNotificaciones),
-    foreign key (Usuario_idUsuario) references Usuario (IdUsuario) on update cascade on delete cascade,
-    foreign key (Notificaciones_idNotificaciones) references Notificaciones (IdNotificaciones) on update cascade on delete cascade
+    Usuario_idUsuario INT NOT NULL,
+    Notificaciones_idNotificaciones INT NOT NULL,
+    PRIMARY KEY (Usuario_idUsuario, Notificaciones_idNotificaciones),
+    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (Notificaciones_idNotificaciones) REFERENCES Notificaciones (IdNotificaciones) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Crear tabla Proveedor
-create table Proveedor
+CREATE TABLE Proveedor
 (
-    NITProveedor int not null auto_increment,
-    NombreProveedor varchar(45) not null,
-    NumeroTelefonoProveedor bigint not null,
-    DireccionProveedor varchar(45) not null,
-    primary key (NITProveedor)
+    NITProveedor INT NOT NULL AUTO_INCREMENT,
+    NombreProveedor VARCHAR(45) NOT NULL,
+    NumeroTelefonoProveedor BIGINT NOT NULL,
+    DireccionProveedor VARCHAR(45) NOT NULL,
+    PRIMARY KEY (NITProveedor)
 );
 
 -- Crear tabla Categoria
-create table Categoria
+CREATE TABLE Categoria
 (
-    IdCategoria int not null auto_increment,
-    DescripcionCategoria varchar(45) not null,
-    primary key (IdCategoria)
+    IdCategoria INT NOT NULL AUTO_INCREMENT,
+    DescripcionCategoria VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdCategoria)
 );
 
 -- Crear tabla Unidad_Medida
-create table Unidad_Medida
+CREATE TABLE Unidad_Medida
 (
-    IdUnidadMedida int not null auto_increment,
-    UnidadMedida varchar(45) not null,
-    primary key (IdUnidadMedida)
+    IdUnidadMedida INT NOT NULL AUTO_INCREMENT,
+    UnidadMedida VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdUnidadMedida)
 );
 
 -- Crear tabla Producto_Materia_Prima
-create table Producto_Materia_Prima
+CREATE TABLE Producto_Materia_Prima
 (
-    IdProductoMateriaPrima int not null auto_increment,
-    NombreProducto varchar(45) not null,
-    DescripcionProductoMateriaPrima varchar(45) not null,
-    IdCategoria int not null,
-    IdUnidadMedida int not null,
-    primary key (IdProductoMateriaPrima),
-    foreign key (IdCategoria) references Categoria (IdCategoria) on update cascade on delete cascade,
-    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade on delete cascade
-);
-
--- Crear tabla Motivo
-create table Motivo
-(
-    IdMotivo int not null auto_increment,
-    DescripcionMovimiento varchar(45) not null,
-    primary key (IdMotivo)
+    IdProductoMateriaPrima INT NOT NULL AUTO_INCREMENT,
+    NombreProducto VARCHAR(45) NOT NULL,
+    DescripcionProductoMateriaPrima VARCHAR(45) NOT NULL,
+    IdCategoria INT NOT NULL,
+    IdUnidadMedida INT NOT NULL,
+    PRIMARY KEY (IdProductoMateriaPrima),
+    FOREIGN KEY (IdCategoria) REFERENCES Categoria (IdCategoria) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdUnidadMedida) REFERENCES Unidad_Medida (IdUnidadMedida) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Crear tabla UbicacionAlmacen
-create table UbicacionAlmacen
+CREATE TABLE UbicacionAlmacen
 (
-    IdUbicacionAlmacen int not null auto_increment,
-    NombreAlmacen varchar(45) not null,
-    primary key (IdUbicacionAlmacen)
+    IdUbicacionAlmacen INT NOT NULL AUTO_INCREMENT,
+    NombreAlmacen VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdUbicacionAlmacen)
 );
 
 -- Crear tabla Proveedor_has_Producto_MateriaPrima
-create table Proveedor_has_Producto_MateriaPrima
+CREATE TABLE Proveedor_has_Producto_MateriaPrima
 (
-    NITProveedor int not null auto_increment,
-    IdProductoMateriaPrima int not null,
-    primary key (NITProveedor, IdProductoMateriaPrima),
-    foreign key (NITProveedor) references Proveedor (NITProveedor) on update cascade on delete cascade,
-    foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
+    NITProveedor INT NOT NULL AUTO_INCREMENT,
+    IdProductoMateriaPrima INT NOT NULL,
+    PRIMARY KEY (NITProveedor, IdProductoMateriaPrima),
+    FOREIGN KEY (NITProveedor) REFERENCES Proveedor (NITProveedor) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- Crear tabla Motivo
+CREATE TABLE Motivo
+(
+    IdMotivo INT NOT NULL AUTO_INCREMENT,
+    DescripcionMovimiento VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdMotivo)
 );
 
 -- Crear tabla Movimiento
-create table Movimiento
+CREATE TABLE Movimiento
 (
-    IdMovimiento int not null auto_increment,
-    FechaMovimiento date,
-    CantidadProducto int not null,
-    PrecioProductoMovimiento int null,
-    IdMotivo int not null,
-    IdUbicacionAlmacen int not null,
-    NITProveedor int not null,
-    IdProductoMateriaPrima int not null,
-    IdUsuario int not null,
-    primary key (IdMovimiento),
-    foreign key (IdMotivo) references Motivo (IdMotivo) on update cascade on delete cascade,
-    foreign key (IdUbicacionAlmacen) references UbicacionAlmacen (IdUbicacionAlmacen) on update cascade on delete cascade,
-    foreign key (NITProveedor, IdProductoMateriaPrima) references Proveedor_has_Producto_MateriaPrima (NITProveedor, IdProductoMateriaPrima) on update cascade on delete cascade,
-    foreign key (IdUsuario) references Usuario (IdUsuario) on update cascade on delete cascade
+    IdMovimiento INT NOT NULL AUTO_INCREMENT,
+    FechaMovimiento DATE,
+    CantidadProducto INT NOT NULL,
+    IdMotivo INT NOT NULL,
+    IdProductoMateriaPrima INT NOT NULL,
+    IdUsuario INT NOT NULL,
+    TipoMovimiento ENUM('Entrada', 'Salida') NOT NULL,
+    PRIMARY KEY (IdMovimiento),
+    FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Crear tabla Existencias
-create table Existencias
+CREATE TABLE Existencias
 (
-    IdExistencias int not null auto_increment,
-    CantidadExistencias int not null,
-    CantidadConsumida int not null,
-    PuntoCompraProducto int not null,
-    PuntoMaximoProducto int not null,
-    FechaUltimaModificacion date not null,
-    IdProductoMateriaPrima int not null,
-    primary key (IdExistencias, IdProductoMateriaPrima),
-    foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
+    IdExistencias INT NOT NULL AUTO_INCREMENT,
+    CantidadExistencias INT NOT NULL,
+    CantidadConsumida INT NOT NULL,
+    PuntoCompraProducto INT NOT NULL,
+    PuntoMaximoProducto INT NOT NULL,
+    FechaUltimaModificacion DATE NOT NULL,
+    IdProductoMateriaPrima INT NOT NULL,
+    PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+-- Crear trigger para actualizar existencias
+DELIMITER //
+CREATE TRIGGER tr_actualizar_existencias AFTER INSERT ON Movimiento
+FOR EACH ROW
+BEGIN
+    DECLARE factor INT;
+
+    IF NEW.TipoMovimiento = 'Entrada' THEN
+        SET factor = 1;
+    ELSE
+        SET factor = -1;
+    END IF;
+
+    UPDATE Existencias
+    SET CantidadExistencias = CantidadExistencias + (NEW.CantidadProducto * factor),
+        FechaUltimaModificacion = CURRENT_DATE
+    WHERE IdProductoMateriaPrima = NEW.IdProductoMateriaPrima;
+END;
+//
+DELIMITER ;
+
 -- Crear tabla PlantillaProducto
-create table PlantillaProducto
+CREATE TABLE PlantillaProducto
 (
-    IdPlantillaProducto int not null auto_increment,
-    NombreProductoPlantilla varchar(45) not null,
-    ValorVenta varchar(45) not null,
-    primary key (IdPlantillaProducto)
+    IdPlantillaProducto INT NOT NULL AUTO_INCREMENT,
+    NombreProductoPlantilla VARCHAR(45) NOT NULL,
+    ValorVenta VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdPlantillaProducto)
 );
 
 -- Crear tabla PlantillaProducto_has_ProductoMateriaPrima
-create table PlantillaProducto_has_ProductoMateriaPrima
+CREATE TABLE PlantillaProducto_has_ProductoMateriaPrima
 (
-    IdPlantillaProducto int not null,
-    IdProductoMateriaPrima int not null,
-    primary key (IdPlantillaProducto, IdProductoMateriaPrima),
-    foreign key (IdPlantillaProducto) references PlantillaProducto (IdPlantillaProducto) on update cascade on delete cascade,
-    foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
+    IdProductoMateria INT NOT NULL AUTO_INCREMENT,
+    IdPlantillaProducto INT NOT NULL,
+    IdProductoMateriaPrima INT NOT NULL,
+    PRIMARY KEY (IdProductoMateria),
+    FOREIGN KEY (IdPlantillaProducto) REFERENCES PlantillaProducto (IdPlantillaProducto) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
 );
--- Insertar datos de prueba en la tabla Rol
-INSERT INTO Rol (DescripcionRol) VALUES
-    ('Admin'),
-    ('Empleado'),
-    ('Gerente');
 
--- Insertar datos de prueba en la tabla Estado
-INSERT INTO Estado (DescripcionEstado) VALUES
-    ('Activo'),
-    ('Inactivo'),
-    ('En Espera');
+-- Insertar datos en la tabla Rol
+INSERT INTO Rol (DescripcionRol) VALUES ('Administrador'), ('Usuario Normal');
 
--- Insertar datos de prueba en la tabla Usuario
-INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado) VALUES
-    ('juan123', 'Pérez', 'juan@example.com', 'clave123', 1, 1),
-    ('ana456', 'López', 'ana@example.com', 'clave456', 2, 1),
-    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 2, 3);
+-- Insertar datos en la tabla Estado
+INSERT INTO Estado (DescripcionEstado) VALUES ('Activo'), ('Inactivo');
 
--- Insertar datos de prueba en la tabla Notificaciones
-INSERT INTO Notificaciones (Notificacionescol) VALUES
-    ('Notificación 1'),
-    ('Notificación 2'),
-    ('Notificación 3');
+-- Insertar datos en la tabla Usuario
+INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado)
+VALUES ('Usuario1', 'Apellido1', 'usuario1@example.com', 'clave1', 1, 1),
+       ('Usuario2', 'Apellido2', 'usuario2@example.com', 'clave2', 2, 1);
 
--- Insertar datos de prueba en la tabla Usuario_has_Notificaciones
-INSERT INTO Usuario_has_Notificaciones (Usuario_idUsuario, Notificaciones_idNotificaciones) VALUES
-    (1, 1),
-    (1, 2),
-    (2, 3),
-    (3, 1);
+-- Insertar datos en la tabla Notificaciones
+INSERT INTO Notificaciones (Notificacionescol) VALUES ('Notificacion1'), ('Notificacion2');
 
--- Insertar datos de prueba en la tabla Proveedor
-INSERT INTO Proveedor (NombreProveedor, NumeroTelefonoProveedor, DireccionProveedor) VALUES
-    ('Proveedor 1', 1234567890, 'Calle 123, Ciudad'),
-    ('Proveedor 2', 9876543210, 'Avenida 456, Otra Ciudad');
+-- Insertar datos en la tabla Usuario_has_Notificaciones
+INSERT INTO Usuario_has_Notificaciones (Usuario_idUsuario, Notificaciones_idNotificaciones)
+VALUES (1, 1),
+       (2, 2);
 
--- Insertar datos de prueba en la tabla Categoria
-INSERT INTO Categoria (DescripcionCategoria) VALUES
-    ('Categoría 1'),
-    ('Categoría 2'),
-    ('Categoría 3');
+-- Insertar datos en la tabla Proveedor
+INSERT INTO Proveedor (NombreProveedor, NumeroTelefonoProveedor, DireccionProveedor)
+VALUES ('Proveedor1', 1234567890, 'DirecciónProveedor1'),
+       ('Proveedor2', 9876543210, 'DirecciónProveedor2');
 
--- Insertar datos de prueba en la tabla Unidad_Medida
-INSERT INTO Unidad_Medida (UnidadMedida) VALUES
-    ('Unidad 1'),
-    ('Unidad 2'),
-    ('Unidad 3');
+-- Insertar datos en la tabla Categoria
+INSERT INTO Categoria (DescripcionCategoria) VALUES ('Categoria1'), ('Categoria2');
 
--- Insertar datos de prueba en la tabla Producto_Materia_Prima
-INSERT INTO Producto_Materia_Prima (NombreProducto, DescripcionProductoMateriaPrima, IdCategoria, IdUnidadMedida) VALUES
-    ('Producto 1', 'Descripción Producto 1', 1, 1),
-    ('Producto 2', 'Descripción Producto 2', 2, 2),
-    ('Producto 3', 'Descripción Producto 3', 3, 3);
+-- Insertar datos en la tabla Unidad_Medida
+INSERT INTO Unidad_Medida (UnidadMedida) VALUES ('Unidad1'), ('Unidad2');
 
--- Insertar datos de prueba en la tabla Motivo
-INSERT INTO Motivo (DescripcionMovimiento) VALUES
-    ('Motivo 1'),
-    ('Motivo 2'),
-    ('Motivo 3');
+-- Insertar datos en la tabla Producto_Materia_Prima
+INSERT INTO Producto_Materia_Prima (NombreProducto, DescripcionProductoMateriaPrima, IdCategoria, IdUnidadMedida)
+VALUES ('Producto1', 'DescripciónProducto1', 1, 1),
+       ('Producto2', 'DescripciónProducto2', 2, 2);
 
--- Insertar datos de prueba en la tabla UbicacionAlmacen
-INSERT INTO UbicacionAlmacen (NombreAlmacen) VALUES
-    ('Almacén 1'),
-    ('Almacén 2'),
-    ('Almacén 3');
+-- Insertar datos en la tabla UbicacionAlmacen
+INSERT INTO UbicacionAlmacen (NombreAlmacen) VALUES ('Almacen1'), ('Almacen2');
 
--- Insertar datos de prueba en la tabla Proveedor_has_Producto_MateriaPrima
-INSERT INTO Proveedor_has_Producto_MateriaPrima (NITProveedor, IdProductoMateriaPrima) VALUES
-    (1, 1),
-    (2, 2),
-    (1, 3);
+-- Insertar datos en la tabla Proveedor_has_Producto_MateriaPrima
+INSERT INTO Proveedor_has_Producto_MateriaPrima (NITProveedor, IdProductoMateriaPrima)
+VALUES (1, 1),
+       (2, 2);
 
--- Insertar datos de prueba en la tabla Movimiento
-INSERT INTO Movimiento (FechaMovimiento, CantidadProducto, PrecioProductoMovimiento, IdMotivo, IdUbicacionAlmacen, NITProveedor, IdProductoMateriaPrima, IdUsuario) VALUES
-    ('2023-09-01', 100, 50, 1, 1, 1, 1, 1),
-    ('2023-09-02', 200, 75, 2, 2, 2, 2, 2),
-    ('2023-09-03', 150, 60, 3, 3, 1, 3, 3);
+-- Insertar datos en la tabla Motivo
+INSERT INTO Motivo (DescripcionMovimiento) VALUES ('Entrada'), ('Salida');
 
--- Insertar datos de prueba en la tabla Existencias
-INSERT INTO Existencias (CantidadExistencias, CantidadConsumida, PuntoCompraProducto, PuntoMaximoProducto, FechaUltimaModificacion, IdProductoMateriaPrima) VALUES
-    (500, 200, 100, 400, '2023-09-01', 1),
-    (800, 300, 200, 600, '2023-09-02', 2),
-    (600, 250, 150, 500, '2023-09-03', 3);
+-- Insertar datos en la tabla Movimiento
+INSERT INTO Movimiento (FechaMovimiento, CantidadProducto, IdMotivo, IdProductoMateriaPrima, IdUsuario, TipoMovimiento)
+VALUES ('2023-01-01', 10, 1, 1, 1, 'Entrada'),
+       ('2023-01-02', 5, 2, 2, 2, 'Salida');
 
--- Insertar datos de prueba en la tabla PlantillaProducto
-INSERT INTO PlantillaProducto (NombreProductoPlantilla, ValorVenta) VALUES
-    ('Plantilla 1', '100'),
-    ('Plantilla 2', '200'),
-    ('Plantilla 3', '150');
+-- Insertar datos en la tabla Existencias
+INSERT INTO Existencias (CantidadExistencias, CantidadConsumida, PuntoCompraProducto, PuntoMaximoProducto, FechaUltimaModificacion, IdProductoMateriaPrima)
+VALUES (50, 20, 10, 100, '2023-01-01', 1),
+       (30, 10, 5, 80, '2023-01-02', 2);
 
--- Insertar datos de prueba en la tabla PlantillaProducto_has_ProductoMateriaPrima
-INSERT INTO PlantillaProducto_has_ProductoMateriaPrima (IdPlantillaProducto, IdProductoMateriaPrima) VALUES
-    (1, 1),
-    (2, 2),
-    (3, 3);
+-- Insertar datos en la tabla PlantillaProducto
+INSERT INTO PlantillaProducto (NombreProductoPlantilla, ValorVenta)
+VALUES ('Plantilla1', '100'),
+       ('Plantilla2', '150');
+
+-- Insertar datos en la tabla PlantillaProducto_has_ProductoMateriaPrima
+INSERT INTO PlantillaProducto_has_ProductoMateriaPrima (IdPlantillaProducto, IdProductoMateriaPrima)
+VALUES (1, 1),
+       (2, 2);

@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EdMovimientoComponent implements OnInit {
 
   id=''
-  movimiento= new MovimientoModel("","","","","","","","","");
+  movimiento = new MovimientoModel('', '', '', '', '', '','');
 
   constructor(
     private movimientoService: UsuariosService,
@@ -23,7 +23,7 @@ export class EdMovimientoComponent implements OnInit {
       this.id = this.route.snapshot.params['id']
       if(this.id){
         console.log("Editar");
-        this.movimientoService.obtenerMovimiento(this.id).subscribe(data=>{
+        this.movimientoService.obtenerMovimiento(this.id).subscribe((data: MovimientoModel[])=>{
           this.movimiento = data [0]
         })
       } else {
@@ -35,13 +35,13 @@ export class EdMovimientoComponent implements OnInit {
     console.log('onSubmit');
     
     if(this.movimiento.IdMovimiento){
-      this.movimientoService.actualizarMovimiento(this.movimiento).subscribe(data=>{
+      this.movimientoService.actualizarMovimiento(this.movimiento).subscribe((data: any)=>{
         alert(data)
         this.router.navigate(['/movimiento'])
       })
     } else {
       console.log('Creando');
-      this.movimientoService.agregarMovimiento(this.movimiento).subscribe(data=>{
+      this.movimientoService.agregarMovimiento(this.movimiento).subscribe((data: any)=>{
         alert(data)
         this.router.navigate(['/movimiento'])
       })

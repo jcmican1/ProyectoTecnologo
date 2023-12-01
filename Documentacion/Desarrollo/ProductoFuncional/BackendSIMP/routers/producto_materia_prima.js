@@ -3,8 +3,10 @@ const router = express.Router();
 const conexion = require('../conexion');
 
 // Consultar todos los registros de Producto Materia Prima
-router.get('/productos', (req, res) => {
-    const query = 'SELECT * FROM Producto_Materia_Prima';
+router.get('/', (req, res) => {
+    const query = `SELECT IdProductoMateriaPrima, NombreProducto, DescripcionProductoMateriaPrima,DescripcionCategoria,UnidadMedida 
+    FROM Producto_Materia_Prima as table1 INNER JOIN categoria ON table1.IdCategoria = categoria.IdCategoria INNER JOIN unidad_medida 
+    ON table1.IdUnidadMedida = unidad_medida.IDUnidadMedida`;
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
 
@@ -17,9 +19,10 @@ router.get('/productos', (req, res) => {
 });
 
 // Consultar por ID en la tabla Producto Materia Prima
-router.get('/productos/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params;
-    const query = `SELECT * FROM Producto_Materia_Prima WHERE IdProductoMateriaPrima=${id}`;
+    const query = `SELECT IdProductoMateriaPrima, NombreProducto, DescripcionProductoMateriaPrima,DescripcionCategoria,UnidadMedida FROM Producto_Materia_Prima as table1
+    INNER JOIN categoria ON table1.IdCategoria = categoria.IdCategoria INNER JOIN unidad_medida ON table1.IdUnidadMedida = unidad_medida.IDUnidadMedida WHERE IdProductoMateriaPrima=${id}`;
     
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
@@ -33,7 +36,7 @@ router.get('/productos/:id', (req, res) => {
 });
 
 // Agregar un nuevo registro a la tabla Producto Materia Prima
-router.post('/productos/agregar', (req, res) => {
+router.post('/agregar', (req, res) => {
     const nuevoProducto = {
         NombreProducto: req.body.NombreProducto,
         DescripcionProductoMateriaPrima: req.body.DescripcionProductoMateriaPrima,
@@ -53,7 +56,7 @@ router.post('/productos/agregar', (req, res) => {
 });
 
 // Actualizar un registro en la tabla Producto Materia Prima por su ID
-router.put('/productos/actualizar/:id', (req, res) => {
+router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
     const { NombreProducto, DescripcionProductoMateriaPrima, IdCategoria, IdUnidadMedida } = req.body;
 
@@ -75,7 +78,7 @@ router.put('/productos/actualizar/:id', (req, res) => {
 });
 
 // Borrar un registro en la tabla Producto Materia Prima por su ID
-router.delete('/productos/borrar/:id', (req, res) => {
+router.delete('/borrar/:id', (req, res) => {
     const { id } = req.params;
 
     const query = `DELETE FROM Producto_Materia_Prima WHERE IdProductoMateriaPrima=${id}`;

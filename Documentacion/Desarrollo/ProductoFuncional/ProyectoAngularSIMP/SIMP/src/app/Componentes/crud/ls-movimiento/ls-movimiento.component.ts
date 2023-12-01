@@ -19,7 +19,7 @@ export class LsMovimientoComponent implements OnInit {
   }
 
   borrarMovimiento(id:string){
-    this.movimientoService.borrarMovimiento(id).subscribe(data=>{
+    this.movimientoService.borrarMovimiento(id).subscribe((data: any)=>{
       console.log(data);
     })
     this.movimiento = this.movimientoService.obtenerMovimientos()
