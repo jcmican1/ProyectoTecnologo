@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { CentralComponent } from './central/central.component';
@@ -39,6 +41,7 @@ import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-
 import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
 import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-materia/ls-producto-materia.component';
 import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
+import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.service';
 
 
 @NgModule({
@@ -85,7 +88,13 @@ import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-mater
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorHttpService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
