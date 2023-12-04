@@ -1,7 +1,9 @@
+// src/app/ed-movimiento/ed-movimiento.component.ts
 import { Component, OnInit } from '@angular/core';
-import { MovimientoModel } from 'src/app/Modelos/Movimiento.model';
-import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { MovimientoEDModel } from 'src/app/Modelos/Movimiento-ed.model';
+import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
 
 @Component({
   selector: 'app-ed-movimiento',
@@ -10,8 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EdMovimientoComponent implements OnInit {
 
-  id=''
-  movimiento = new MovimientoModel('', '', '', '', '', '','');
+  id = '';
+  movimiento = new MovimientoEDModel('', '', '', '', '', '', '');
+  motivos: any[] = [];
+  productos: any[] = [];
 
   constructor(
     private movimientoService: UsuariosService,
@@ -20,31 +24,53 @@ export class EdMovimientoComponent implements OnInit {
   ){}
 
   ngOnInit() {
-      this.id = this.route.snapshot.params['id']
-      if(this.id){
-        console.log("Editar");
-        this.movimientoService.obtenerMovimiento(this.id).subscribe((data: MovimientoModel[])=>{
-          this.movimiento = data [0]
-        })
-      } else {
-        console.log("Crear");
-      }
+    this.id = this.route.snapshot.params['id'];
+    if (this.id) {
+      console.log("Editar");
+      this.movimientoService.obtenerMovimiento(this.id).subscribe((data: MovimientoEDModel) => {
+        this.movimiento = data;
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      console.log("Crear");
+    }
+
+    this.movimientoService.obtenerMotivos().subscribe((data: any[]) => {
+      this.motivos = data;
+    });
+
+    this.movimientoService.obtenerProductos().subscribe((data: any[]) => {
+      this.productos = data;
+    });
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log('onSubmit');
-    
-    if(this.movimiento.IdMovimiento){
-      this.movimientoService.actualizarMovimiento(this.movimiento).subscribe((data: any)=>{
-        alert(data)
-        this.router.navigate(['/movimiento'])
-      })
+
+    if (this.movimiento.IdMovimiento) {
+      this.movimientoService.actualizarMovimiento(this.movimiento).subscribe(
+        (data: any) => {
+          alert(data.mensaje);
+          this.router.navigate(['/movimiento']);
+        },
+        (error: any) => {
+          console.error('Error:', error);
+          alert('Hubo un error al actualizar el movimiento. Por favor, inténtalo de nuevo.');
+        }
+      );
     } else {
-      console.log('Creando');
-      this.movimientoService.agregarMovimiento(this.movimiento).subscribe((data: any)=>{
-        alert(data)
-        this.router.navigate(['/movimiento'])
-      })
+      console.log('Crear');
+      this.movimientoService.agregarMovimiento(this.movimiento).subscribe(
+        (data: any) => {
+          alert(data.mensaje);
+          this.router.navigate(['/movimiento']);
+        },
+        (error: any) => {
+          console.error('Error:', error);
+          alert('Hubo un error al agregar el movimiento. Por favor, inténtalo de nuevo.');
+        }
+      );
     }
   }
 }

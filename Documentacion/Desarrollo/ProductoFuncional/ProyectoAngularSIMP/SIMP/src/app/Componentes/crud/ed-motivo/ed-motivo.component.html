@@ -4,12 +4,6 @@
             <div class="col-sm-12">
               <form (ngSubmit)="onSubmit()" #motivoForm="ngForm" >
                 <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="IdMotivo">ID Motivo</label>
-                    <input type="text" class="form-control" required [(ngModel)]="motivo.IdMotivo" name="IdMotivo" readonly>
-                  </div>
-                </fieldset>
-                <fieldset class="form-group">
                     <div class="col-sm-12">
                       <label class="control-label" for="DescripcionMovimiento">Descripcion de Movimiento</label>
                       <input type="text" class="form-control" required [(ngModel)]="motivo.DescripcionMovimiento" name="DescripcionMovimiento">

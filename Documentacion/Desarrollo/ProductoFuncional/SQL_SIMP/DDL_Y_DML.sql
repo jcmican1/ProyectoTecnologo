@@ -33,34 +33,6 @@ CREATE TABLE Usuario
     FOREIGN KEY (Estado_idEstado) REFERENCES Estado (IdEstado) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- Crear tabla Notificaciones
-CREATE TABLE Notificaciones
-(
-    IdNotificaciones INT NOT NULL AUTO_INCREMENT,
-    Notificacionescol VARCHAR(45) NOT NULL,
-    PRIMARY KEY (IdNotificaciones)
-);
-
--- Crear tabla Usuario_has_Notificaciones
-CREATE TABLE Usuario_has_Notificaciones
-(
-    Usuario_idUsuario INT NOT NULL,
-    Notificaciones_idNotificaciones INT NOT NULL,
-    PRIMARY KEY (Usuario_idUsuario, Notificaciones_idNotificaciones),
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (Notificaciones_idNotificaciones) REFERENCES Notificaciones (IdNotificaciones) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
--- Crear tabla Proveedor
-CREATE TABLE Proveedor
-(
-    NITProveedor INT NOT NULL AUTO_INCREMENT,
-    NombreProveedor VARCHAR(45) NOT NULL,
-    NumeroTelefonoProveedor BIGINT NOT NULL,
-    DireccionProveedor VARCHAR(45) NOT NULL,
-    PRIMARY KEY (NITProveedor)
-);
-
 -- Crear tabla Categoria
 CREATE TABLE Categoria
 (
@@ -88,24 +60,6 @@ CREATE TABLE Producto_Materia_Prima
     PRIMARY KEY (IdProductoMateriaPrima),
     FOREIGN KEY (IdCategoria) REFERENCES Categoria (IdCategoria) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (IdUnidadMedida) REFERENCES Unidad_Medida (IdUnidadMedida) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
--- Crear tabla UbicacionAlmacen
-CREATE TABLE UbicacionAlmacen
-(
-    IdUbicacionAlmacen INT NOT NULL AUTO_INCREMENT,
-    NombreAlmacen VARCHAR(45) NOT NULL,
-    PRIMARY KEY (IdUbicacionAlmacen)
-);
-
--- Crear tabla Proveedor_has_Producto_MateriaPrima
-CREATE TABLE Proveedor_has_Producto_MateriaPrima
-(
-    NITProveedor INT NOT NULL AUTO_INCREMENT,
-    IdProductoMateriaPrima INT NOT NULL,
-    PRIMARY KEY (NITProveedor, IdProductoMateriaPrima),
-    FOREIGN KEY (NITProveedor) REFERENCES Proveedor (NITProveedor) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Crear tabla Motivo
@@ -165,26 +119,6 @@ BEGIN
 END;
 //
 DELIMITER ;
-
--- Crear tabla PlantillaProducto
-CREATE TABLE PlantillaProducto
-(
-    IdPlantillaProducto INT NOT NULL AUTO_INCREMENT,
-    NombreProductoPlantilla VARCHAR(45) NOT NULL,
-    ValorVenta VARCHAR(45) NOT NULL,
-    PRIMARY KEY (IdPlantillaProducto)
-);
-
--- Crear tabla PlantillaProducto_has_ProductoMateriaPrima
-CREATE TABLE PlantillaProducto_has_ProductoMateriaPrima
-(
-    IdProductoMateria INT NOT NULL AUTO_INCREMENT,
-    IdPlantillaProducto INT NOT NULL,
-    IdProductoMateriaPrima INT NOT NULL,
-    PRIMARY KEY (IdProductoMateria),
-    FOREIGN KEY (IdPlantillaProducto) REFERENCES PlantillaProducto (IdPlantillaProducto) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
-);
 
 -- Insertar datos en la tabla Rol
 INSERT INTO Rol (DescripcionRol) VALUES ('Administrador'), ('Usuario Normal');
