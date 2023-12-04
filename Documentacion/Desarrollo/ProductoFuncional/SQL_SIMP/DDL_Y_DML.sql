@@ -252,14 +252,14 @@ INSERT INTO Existencias (CantidadExistencias, CantidadConsumida, PuntoCompraProd
     (800, 300, 200, 600, '2023-09-02', 2),
     (600, 250, 150, 500, '2023-09-03', 3);
 
--- Insertar datos de prueba en la tabla PlantillaProducto
+/* -- Insertar datos de prueba en la tabla PlantillaProducto
 INSERT INTO PlantillaProducto (NombreProductoPlantilla, ValorVenta) VALUES
     ('Plantilla 1', '100'),
     ('Plantilla 2', '200'),
-    ('Plantilla 3', '150');
+    ('Plantilla 3', '150'); */
 
--- Insertar datos de prueba en la tabla PlantillaProducto_has_ProductoMateriaPrima
+/* -- Insertar datos de prueba en la tabla PlantillaProducto_has_ProductoMateriaPrima
 INSERT INTO PlantillaProducto_has_ProductoMateriaPrima (IdPlantillaProducto, IdProductoMateriaPrima) VALUES
     (1, 1),
     (2, 2),
-    (3, 3);
+    (3, 3); */
