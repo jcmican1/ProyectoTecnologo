@@ -149,25 +149,6 @@ create table Existencias
     foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
 );
 
--- Crear tabla PlantillaProducto
-create table PlantillaProducto
-(
-    IdPlantillaProducto int not null auto_increment,
-    NombreProductoPlantilla varchar(45) not null,
-    ValorVenta varchar(45) not null,
-    primary key (IdPlantillaProducto)
-);
-
--- Crear tabla PlantillaProducto_has_ProductoMateriaPrima
-create table PlantillaProducto_has_ProductoMateriaPrima
-(
-    IdProductoMateria int not null auto_increment,
-    IdPlantillaProducto int not null,
-    IdProductoMateriaPrima int not null,
-    primary key (IdProductoMateria),
-    foreign key (IdPlantillaProducto) references PlantillaProducto (IdPlantillaProducto) on update cascade on delete cascade,
-    foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
-);
 -- Insertar datos de prueba en la tabla Rol
 INSERT INTO Rol (DescripcionRol) VALUES
     ('Admin'),
