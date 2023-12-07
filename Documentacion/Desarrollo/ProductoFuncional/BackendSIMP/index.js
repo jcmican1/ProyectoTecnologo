@@ -69,7 +69,6 @@ app.use('/movimiento', auth, roleAuth([2]), movimientoRouter);
 app.use('/motivo', auth, roleAuth([2]), motivoRouter);
 
 
-
 //comienzo de rutas
 
 app.get('/', (req, res) => {
