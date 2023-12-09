@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, } from '@angular/router';
+import { Route, Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 import { UsuarioModel } from '../../Modelos/Usuarios.model';
@@ -17,13 +18,14 @@ export class LoginComponent implements OnInit {
 
   UsuarioModel = new UsuarioModel("", "", "", "", "", "", "");
 
-
+  
   constructor(
     private UsuariosService: UsuariosService,
+    private route: ActivatedRoute,
     private router: Router,
-    private Sesion: CompartidosService
+    private Sesion:CompartidosService
   ) { }
-
+  
 
   ngOnInit(): void {
     if (this.Sesion.Sesion) {
@@ -32,14 +34,11 @@ export class LoginComponent implements OnInit {
   }
 
   logeo() {
-    this.Sesion.deleteToken()
     this.UsuariosService.obtenerUsuariologin(this.UsuarioModel).subscribe(data => {
       if (data) {
-        this.Sesion.saveToken(data);
         this.Sesion.Sesion = true
-        this.Sesion.Correo = this.UsuarioModel.Correo
         this.router.navigate([''])
-      } else {
+      }else{
         alert("Logeo no posible  \n" + data)
       }
     })
