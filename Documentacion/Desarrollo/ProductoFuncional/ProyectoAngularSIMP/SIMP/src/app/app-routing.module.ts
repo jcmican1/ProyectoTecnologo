@@ -21,12 +21,8 @@ import { EdMovimientoComponent } from './Componentes/crud/ed-movimiento/ed-movim
 import { EdProductoMateriaPrimaComponent } from './Componentes/crud/ed-producto-materia-prima/ed-producto-materia-prima.component';
 import { LsCategoriasComponent } from './Componentes/crud/ls-categorias/ls-categorias.component';
 import { EdCategoriasComponent } from './Componentes/crud/ed-categorias/ed-categorias.component';
-
-import { EdPlantillaProductoComponent } from './Componentes/crud/ed-plantilla-producto/ed-plantilla-producto.component';
 import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-unidad-medida.component';
 import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
-import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-materia/ls-producto-materia.component';
-import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
 
 
 const routes: Routes = [
@@ -48,14 +44,9 @@ const routes: Routes = [
   { path: 'FormularioEstado/editar/:id', component: EstadoFormularioComponent },
   { path: 'FormularioEstado/agregar', component: EstadoFormularioComponent },
 
-  { path: 'Estado', component: EstadoComponent },
-  { path: 'FormularioEstado/editar/:id', component: EstadoFormularioComponent },
-  { path: 'FormularioEstado/agregar', component: EstadoFormularioComponent },
-
   { path:'motivo', component: LsMotivoComponent},
   { path:'motivo/editar/:id', component:EdMotivoComponent },
   { path:'motivo/agregar', component: EdMotivoComponent },
-
 
   { path:'existencias', component:LsExistenciasComponent },
   { path:'existencias/editar/:id', component:EdExistenciasComponent },
@@ -73,18 +64,9 @@ const routes: Routes = [
   { path:'categorias/editar/:id', component:EdCategoriasComponent },
   { path:'categorias/agregar', component:EdCategoriasComponent },
 
-  { path: 'Plantilla', component: PlantillaProductoComponent },
-  { path: 'Plantilla/editar/:id', component: EdPlantillaProductoComponent },
-  { path: 'Plantilla/agregar', component: EdPlantillaProductoComponent },
-
   { path:'unidades', component:LsUnidadMedidaComponent},
   { path:'unidades/editar/:id', component:EdUnidadMedidaComponent},
   { path:'unidades/agregar', component:EdUnidadMedidaComponent},
-
-
-  { path: 'productosMateria', component: LsProductoMateriaComponent },
-
-  { path:'productosMateria/agregar', component:EdProductoMateriaComponent },
 
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' }
