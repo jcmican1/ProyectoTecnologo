@@ -24,7 +24,7 @@ export class EdMotivoComponent implements OnInit {
     if(this.id){
       console.log("Editar");
       this.motivoService.obtenerMotivo(this.id).subscribe(data=>{
-        this.motivo = data[0]
+        this.motivo = data as MotivoModel;
       })
     } else {
       console.log("Crear");

@@ -27,7 +27,6 @@
                                 </a>
                             </li>
                             <li>
- 
                               <a class="nav-link" routerLink="/categorias">
                                    <img src="./assets/Imagenes/categoria.png" width="20" height="20"
                                       class="d-inline-block align-middle" alt="Categoria"> Categorías
@@ -39,7 +38,15 @@
                                     class="d-inline-block align-middle" alt="UnidadMedida"> Unidad Medida
                             </a>
                         </li>
-            
+                          
+                       <!--  <li>
+                          <a class="nav-link" routerLink="/productosMateria">
+                              <img src="./assets/Imagenes/plantillas.png" width="20" height="20"
+                                  class="d-inline-block align-middle" alt="Contacto"> Plantilla-Producto Materia
+                          </a>
+                      </li> -->
+
+           
                         </ul>
                     </li>
 
@@ -71,12 +78,6 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="nav-link" routerLink="/ubicacion-almacen">
-                                    <img src="./assets/Imagenes/ubicacionAlmacen.png" width="20" height="20"
-                                        class="d-inline-block align-middle" alt="Contacto"> Ubicacion Almacen
-                                </a>
-                            </li>
-                            <li>
                                 <a class="nav-link" routerLink="/motivo">
                                     <img src="./assets/Imagenes/motivo.png" width="20" height="20"
                                         class="d-inline-block align-middle" alt="Contacto"> Motivo
@@ -91,25 +92,7 @@
                         </ul>
                     </li>
                 </div>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img src="./assets/Imagenes/agregar-usuario.png" width="20" height="20"
-                            class="d-inline-block align-middle" alt="Contacto">
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <table *ngFor="let RegistroUsuariosVariable of UsuarioModel | async">
-                                <td>
-                                    {{RegistroUsuariosVariable.NombreUsuario}}
-                                </td>
-                                <td>
-                                    {{RegistroUsuariosVariable.DescripcionRol}}</td>
-                            </table>
-                            <button class="btn btn-primary" (click)="Cerrarsession()">Cerrar Sesión</button>
-                        </li>
-                    </ul>
-                </li>
+                <button class="btn btn-primary" (click)="Cerrarsession()">Cerrar Sesión</button>
             </div>
         </div>
     </nav>
