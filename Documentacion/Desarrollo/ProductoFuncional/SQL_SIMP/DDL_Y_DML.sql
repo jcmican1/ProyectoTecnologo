@@ -149,6 +149,25 @@ create table Existencias
     foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
 );
 
+-- Crear tabla PlantillaProducto
+create table PlantillaProducto
+(
+    IdPlantillaProducto int not null auto_increment,
+    NombreProductoPlantilla varchar(45) not null,
+    ValorVenta varchar(45) not null,
+    primary key (IdPlantillaProducto)
+);
+
+-- Crear tabla PlantillaProducto_has_ProductoMateriaPrima
+create table PlantillaProducto_has_ProductoMateriaPrima
+(
+    IdProductoMateria int not null auto_increment,
+    IdPlantillaProducto int not null,
+    IdProductoMateriaPrima int not null,
+    primary key (IdProductoMateria),
+    foreign key (IdPlantillaProducto) references PlantillaProducto (IdPlantillaProducto) on update cascade on delete cascade,
+    foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
+);
 -- Insertar datos de prueba en la tabla Rol
 INSERT INTO Rol (DescripcionRol) VALUES
     ('Admin'),
@@ -187,14 +206,15 @@ INSERT INTO Proveedor (NombreProveedor, NumeroTelefonoProveedor, DireccionProvee
 
 -- Insertar datos de prueba en la tabla Categoria
 INSERT INTO Categoria (DescripcionCategoria) VALUES
-    ('Lácteos'),
-    ('Vegetales'),
-    ('Carnes');
+    ('Categoría 1'),
+    ('Categoría 2'),
+    ('Categoría 3');
 
 -- Insertar datos de prueba en la tabla Unidad_Medida
 INSERT INTO Unidad_Medida (UnidadMedida) VALUES
-    ('Gramo'),
-    ('Unidad');
+    ('Unidad 1'),
+    ('Unidad 2'),
+    ('Unidad 3');
 
 -- Insertar datos de prueba en la tabla Producto_Materia_Prima
 INSERT INTO Producto_Materia_Prima (NombreProducto, DescripcionProductoMateriaPrima, IdCategoria, IdUnidadMedida) VALUES
@@ -214,6 +234,12 @@ INSERT INTO UbicacionAlmacen (NombreAlmacen) VALUES
     ('Almacén 2'),
     ('Almacén 3');
 
+-- Insertar datos de prueba en la tabla Proveedor_has_Producto_MateriaPrima
+INSERT INTO Proveedor_has_Producto_MateriaPrima (NITProveedor, IdProductoMateriaPrima) VALUES
+    (1, 1),
+    (2, 2),
+    (1, 3);
+
 -- Insertar datos de prueba en la tabla Movimiento
 INSERT INTO Movimiento (FechaMovimiento, CantidadProducto, PrecioProductoMovimiento, IdMotivo, IdUbicacionAlmacen, NITProveedor, IdProductoMateriaPrima, IdUsuario) VALUES
     ('2023-09-01', 100, 50, 1, 1, 1, 1, 1),
@@ -226,3 +252,14 @@ INSERT INTO Existencias (CantidadExistencias, CantidadConsumida, PuntoCompraProd
     (800, 300, 200, 600, '2023-09-02', 2),
     (600, 250, 150, 500, '2023-09-03', 3);
 
+-- Insertar datos de prueba en la tabla PlantillaProducto
+INSERT INTO PlantillaProducto (NombreProductoPlantilla, ValorVenta) VALUES
+    ('Plantilla 1', '100'),
+    ('Plantilla 2', '200'),
+    ('Plantilla 3', '150');
+
+-- Insertar datos de prueba en la tabla PlantillaProducto_has_ProductoMateriaPrima
+INSERT INTO PlantillaProducto_has_ProductoMateriaPrima (IdPlantillaProducto, IdProductoMateriaPrima) VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3);
