@@ -25,7 +25,7 @@ export class EdExistenciasComponent implements OnInit {
       if(this.id){
         console.log("Editar");
         this.existenciasService.obtenerExistencia(this.id).subscribe(data=>{
-          this.existencias = data as ExistenciasModel;
+          this.existencias = data[0]
         })
       } else {
         console.log("Crear");

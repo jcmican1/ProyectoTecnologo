@@ -1,56 +1,77 @@
 <main class="container mt-4">
   <div class="container border p-4">
-    <div class="row">
-      <div class="col-sm-12">
-        <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm">
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-              <label for="FechaMovimiento">Fecha de Movimiento</label>
-              <input type="date" class="form-control" required [(ngModel)]="movimiento.FechaMovimiento" name="FechaMovimiento">
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-              <label for="CantidadProducto">Cantidad de Producto (g)</label>
-              <input type="text" class="form-control" required [(ngModel)]="movimiento.CantidadProducto" name="CantidadProducto">
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-                <label for="IdMotivo">Motivo Movimiento</label>
-                <select class="form-control" required [(ngModel)]="movimiento.IdMotivo" name="IdMotivo">
-                    <option *ngFor="let motivo of motivos" [value]="motivo.IdMotivo">{{ motivo.DescripcionMovimiento }}</option>
-                </select>
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-                <label for="IdProductoMateriaPrima">ID Materia Prima</label>
-                <input type="text" class="form-control" required [(ngModel)]="movimiento.IdProductoMateriaPrima" name="IdProductoMateriaPrima">
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-              <label for="IdUsuario">Usuario que Realiza Movimiento</label>
-              <input type="text" class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario">
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-              <label for="TipoMovimiento">Tipo de Movimiento</label>
-              <select class="form-control" required [(ngModel)]="movimiento.TipoMovimiento" name="TipoMovimiento">
-                <option value="Entrada">Entrada</option>
-                <option value="Salida">Salida</option>
-              </select>
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-primary" [disabled]="!movimientoForm.form.valid">Enviar</button>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    </div>
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm" >
+              <fieldset class="form-group">
+                <div class="col-sm-12">
+                  <label class="control-label" for="IdMovimiento">ID Movimiento</label>
+                  <input type="text" class="form-control" required [(ngModel)]="movimiento.IdMovimiento" name="IdMovimiento" readonly>
+                </div>
+              </fieldset>
+              <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="FechaMovimiento">Fecha de Movimiento</label>
+                    <input type="date" class="form-control" required [(ngModel)]="movimiento.FechaMovimiento" name="FechaMovimiento">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="CantidadProducto">Cantidad de Producto (kg)</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.CantidadProducto" name="CantidadProducto">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="PrecioProductoMovimiento">Precio del Producto</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.PrecioProductoMovimiento" name="PrecioProductoMovimiento">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="DescripcionMovimiento">Motivo Movimiento</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.DescripcionMovimiento" name="DescripcionMovimiento">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NombreAlmacen">Ubicación de Almacén</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.NombreAlmacen" name="NombreAlmacen">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NombreProveedor">Nombre Proveedor</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.NombreProveedor" name="NombreProveedor">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NombreProducto">Nombre Materia Prima</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.NombreProducto" name="NombreProducto">
+                  </div>
+                  <br>
+                </fieldset>
+                <fieldset class="form-group">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="NombreUsuario">Usuario que Realiza Movimiento</label>
+                    <input type="text" class="form-control" required [(ngModel)]="movimiento.NombreUsuario" name="NombreUsuario">
+                  </div>
+                  <br>
+                </fieldset>
+              <fieldset class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary" [disabled]="!movimientoForm.form.valid">Enviar</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
   </div>
 </main>

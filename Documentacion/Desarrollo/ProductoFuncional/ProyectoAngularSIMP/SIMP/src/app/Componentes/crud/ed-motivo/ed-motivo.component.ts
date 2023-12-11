@@ -24,7 +24,7 @@ export class EdMotivoComponent implements OnInit {
     if(this.id){
       console.log("Editar");
       this.motivoService.obtenerMotivo(this.id).subscribe(data=>{
-        this.motivo = data as MotivoModel;
+        this.motivo = data[0]
       })
     } else {
       console.log("Crear");
@@ -37,13 +37,13 @@ export class EdMotivoComponent implements OnInit {
     if(this.motivo.IdMotivo){
       this.motivoService.actualizarMotivo(this.motivo).subscribe(data=>{
         alert(data)
-        this.router.navigate(['/motivo'])
+        this.router.navigate(['/existencias'])
       })
     } else {
       console.log('Creando');
       this.motivoService.agregarMotivo(this.motivo).subscribe(data=>{
         alert(data)
-        this.router.navigate(['/motivo'])
+        this.router.navigate(['/existencias'])
       })
     }
   }

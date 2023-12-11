@@ -3,10 +3,11 @@ export class MovimientoModel {
         public IdMovimiento: string,
         public FechaMovimiento: string,
         public CantidadProducto: string,
-        public DescripcionMovimiento: string, 
-        public IdProductoMateriaPrima: string,  
-        public NombreProducto: string,
-        public NombreUsuario: string,
-        public TipoMovimiento: string
+        public PrecioProductoMovimiento: string,
+        public DescripcionMovimiento: string, // Agregar descripción de motivo
+        public NombreAlmacen: string, // Agregar nombre de almacén
+        public NombreProveedor: string, // Agregar nombre de proveedor
+        public NombreProducto: string, // Agregar nombre de producto materia prima
+        public NombreUsuario: string // Agregar nombre de usuario
     ) {}
 }
