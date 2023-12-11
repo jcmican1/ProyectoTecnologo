@@ -1,11 +1,11 @@
 <main class="container mt-4">
     <div class="container border p-4">
-        <h1>Unidades Medida</h1>
+        <h1>Unidades de Medida</h1>
         <div class="m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
-                <button class="btn btn-success" type="button" [routerLink]="['/unidades/agregar']">
+                <!-- <button class="btn btn-success" type="button" [routerLink]="['/unidades/agregar']">
                   <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
-                </button>
+                </button> -->
             </div>
 
 
@@ -27,8 +27,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Unidad Medida</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                       <!--  <th>Editar</th>
+                        <th>Borrar</th> -->
+
                     </tr>
                 </thead>
                 <tbody>
@@ -36,12 +37,14 @@
                       <tr *ngFor="let un of unidades">
                           <td>{{ un.IdUnidadMedida }}</td>
                           <td>{{ un.UnidadMedida }}</td>
-                          <td>
+                         <!--  <td>
+
                               <a class="btn btn-warning" [routerLink]="['/unidades/editar/', un.IdUnidadMedida]">Editar</a>
                           </td>
                           <td>
                               <a class="btn btn-danger" (click)="borrarUnidadMedida(un.IdUnidadMedida)">Borrar</a>
-                          </td>
+                          </td> -->
+
                       </tr>
                     </ng-container>
                     <ng-template #noDataMessage>

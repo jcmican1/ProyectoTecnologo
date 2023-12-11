@@ -16,7 +16,6 @@
                     <tr>
                         <th>ID Motivo</th>
                         <th>Descripción de Motivo</th>
-                        <th>Editar</th>
                         <th>Borrar</th>
                     </tr>
                 </thead>
@@ -24,9 +23,6 @@
                     <tr *ngFor="let mt of motivo | async">
                         <td>{{ mt.IdMotivo }}</td>
                         <td>{{ mt.DescripcionMovimiento }}</td>
-                        <td>
-                            <a class="btn btn-warning" [routerLink]="['/motivo/editar/', mt.IdMotivo]">Editar</a>
-                        </td>
                         <td>
                             <a class="btn btn-danger" (click)="borrarMotivo(mt.IdMotivo)">Borrar</a>
                         </td>

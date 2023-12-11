@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,7 +13,6 @@ import { FooterComponent } from './compartidos/footer/footer.component';
 import { InventarioGeneralComponent } from './Componentes/TablasVista/inventario-general/inventario-general.component';
 import { LoginComponent } from './Componentes/login/login.component';
 import { EntradasInventarioComponent } from './Componentes/TablasVista/entradas-inventario/entradas-inventario.component';
-import { PlantillaProductoComponent } from './Componentes/TablasVista/plantilla-producto/plantilla-producto.component';
 import { SalidasComponent } from './Componentes/TablasVista/salidas/salidas.component';
 import { ProductoMateriaPrimaComponent } from './Componentes/TablasVista/producto-materia-prima/producto-materia-prima.component';
 import { NotificacionesComponent } from './Componentes/notificaciones/notificaciones.component';
@@ -23,6 +22,8 @@ import { EstadoComponent } from './Componentes/TablasVista/usuarios/Estadoc/Tabl
 import { RolFormularioComponent } from './Componentes/TablasVista/usuarios/RolC/rol-formulario/rol-formulario.component';
 import { EstadoFormularioComponent } from './Componentes/TablasVista/usuarios/Estadoc/estado-formulario/estado-formulario.component';
 import { UsuariosComponent } from './Componentes/TablasVista/usuarios/UsuariosC/TablaUsuarios/usuarios.component';
+import { LsMotivoComponent } from './Componentes/crud/ls-motivo/ls-motivo.component';
+import { EdMotivoComponent } from './Componentes/crud/ed-motivo/ed-motivo.component';
 import { EdProveedorComponent } from './Componentes/crud/ed-proveedor/ed-proveedor.component';
 import { LsProveedorComponent } from './Componentes/crud/ls-proveedor/ls-proveedor.component';
 import { LsMotivoComponent } from './Componentes/crud/ls-motivo/ls-motivo.component';
@@ -36,6 +37,9 @@ import { EdMovimientoComponent } from './Componentes/crud/ed-movimiento/ed-movim
 import { EdProductoMateriaPrimaComponent } from './Componentes/crud/ed-producto-materia-prima/ed-producto-materia-prima.component';
 import { LsCategoriasComponent } from './Componentes/crud/ls-categorias/ls-categorias.component';
 import { EdCategoriasComponent } from './Componentes/crud/ed-categorias/ed-categorias.component';
+import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-unidad-medida.component';
+import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
+import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-movimientos.component';
 import { EdPlantillaProductoComponent } from './Componentes/crud/ed-plantilla-producto/ed-plantilla-producto.component';
 import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-unidad-medida.component';
 import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
@@ -52,7 +56,6 @@ import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.se
     InventarioGeneralComponent,
     LoginComponent,
     EntradasInventarioComponent,
-    PlantillaProductoComponent,
     SalidasComponent,
     ProductoMateriaPrimaComponent,
     UsuariosComponent,
@@ -63,12 +66,8 @@ import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.se
     EstadoComponent,
     RolFormularioComponent,
     EstadoFormularioComponent,
-    EdProveedorComponent,
-    LsProveedorComponent,
     LsMotivoComponent,
     EdMotivoComponent,
-    LsUbicacionComponent,
-    EdUbicacionComponent,
     LsExistenciasComponent,
     EdExistenciasComponent,
     LsMovimientoComponent,
@@ -76,6 +75,9 @@ import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.se
     EdProductoMateriaPrimaComponent,
     LsCategoriasComponent,
     EdCategoriasComponent,
+    LsUnidadMedidaComponent,
+    EdUnidadMedidaComponent,
+    AcMovimientosComponent,
     EdPlantillaProductoComponent,
     LsUnidadMedidaComponent,
     EdUnidadMedidaComponent,
@@ -86,6 +88,7 @@ import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.se
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
