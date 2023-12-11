@@ -6,6 +6,7 @@ const { tokenSign } = require('./generateToken')
 
 // Endpoint para manipular la tabla Usuario
 router.get('/', (req, res) => {
+    console.log("Consulta de todos los usuarios");
     const query = 'SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado';
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
@@ -93,13 +94,21 @@ router.post('/agregar', (req, res) => {
 
 // Endpoint para actualizar un usuario existente
 router.put('/actualizar/:id', (req, res) => {
+    console.log("Actualizacion de usuarios siiii",req,"1111||||2222",res);
     const { id } = req.params;
+    console.log(id,"Mijo este es el ID");
     const NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado
-
+    let hash = crypto.createHash('md5');
+    hash.update(req.body.Clave);
+    let hashMD5 = hash.digest('hex');
+    req.body.Clave = hashMD5
     const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Clave='${Clave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
+    console.log('==================query==================');
+    console.log(query);
+    console.log('===================query=================');
     conexion.query(query, (error) => {
         if (error) return console.error(error.message);
-
+        console.log("Correcta actualizacion");
         res.json(`Se actualizó correctamente el usuario`);
     });
 });

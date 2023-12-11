@@ -6,11 +6,15 @@ const auth = require('./middleware/auth')
 const roleAuth = require('./middleware/roleAuth')
 const cors = require('cors')
 
-const listaBlanca = ['http://localhost:4200']
+// const listaBlanca = ['http://localhost:4200', 'http://10.0.2.2:3000', 'http://localhost:3000'];
 
-app.use(cors({
-    origin: listaBlanca
-}))
+
+// app.use(cors({
+//     origin: listaBlanca
+// }))
+
+app.use(cors({}))
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', '*');
@@ -52,21 +56,21 @@ const motivoRouter = require('./routers/motivoRouter');
 app.use('/estados', auth, roleAuth([1]), estadosRouter);
 app.use('/roles', auth, roleAuth([1]), rolesRouter);
 app.use('/usuarios', auth, roleAuth([1]), usuariosRouter);
-app.use('/notificaciones', auth, roleAuth([2]), notificacionesRouter);
-app.use('/usuario-notificaciones', auth, roleAuth([2]), usuarioNotificacionesRouter);
+app.use('/notificaciones', auth, notificacionesRouter);
+app.use('/usuario-notificaciones', auth, usuarioNotificacionesRouter);
 app.use('/login', login);
 
-app.use('/unidad-medida', auth, roleAuth([2]), unidad_medidaRouter);
-app.use('/producto-materia', auth, roleAuth([2]), plantilla_producto_has_producto_materia_prima);
-app.use('/plantilla-producto', auth, roleAuth([2]), plantilla_producto);
-app.use('/categoria', auth, roleAuth([2]), categoriaRouter);
-app.use('/materia-prima', auth, roleAuth([2]), producto_materia_prima);
+app.use('/unidad-medida', auth, unidad_medidaRouter);
+app.use('/producto-materia', auth, plantilla_producto_has_producto_materia_prima);
+app.use('/plantilla-producto', auth, plantilla_producto);
+app.use('/categoria', auth, categoriaRouter);
+app.use('/materia-prima', auth, producto_materia_prima);
 
-app.use('/proveedor', auth, roleAuth([2]), proveedorRouter);
-app.use('/ubicacion-almacen/', auth, roleAuth([2]), ubicacionAlmacenRouter);
-app.use('/existencias', auth, roleAuth([2]), existenciasRouter);
-app.use('/movimiento', auth, roleAuth([2]), movimientoRouter);
-app.use('/motivo', auth, roleAuth([2]), motivoRouter);
+app.use('/proveedor', auth, proveedorRouter);
+app.use('/ubicacion-almacen/', auth, ubicacionAlmacenRouter);
+app.use('/existencias', auth, existenciasRouter);
+app.use('/movimiento', auth, movimientoRouter);
+app.use('/motivo', auth, motivoRouter);
 
 
 

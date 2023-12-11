@@ -18,18 +18,20 @@ router.post('/', (req, res) => {
     const query = `SELECT * FROM usuario WHERE Correo = '${nuevoUsuario.Correo}' AND Clave = '${nuevoUsuario.Clave}';`
 
     conexion.query(query, async (error, resultado) => {
-        if (error) return console.error(error.message);
-        let rol = resultado[0].Rol_IdRol;
-        console.log("esto es rol", rol);
+        try {
 
-        const tokenSession = await tokenSign(resultado[0]);
+            const tokenSession = await tokenSign(resultado[0]);
+            if (resultado.length > 0) {
+                console.log("Chido");
+                res.json(tokenSession)
+            } else {
+                res.json(false)
+            }
 
+        } catch (error) {
 
-        if (resultado.length > 0) {
-            console.log("Chido");
-            res.json(tokenSession)
-        } else {
-            res.json(false)
+            if (error) return console.error(error.message);
+
         }
     });
 });
