@@ -3,7 +3,7 @@ const conexion = require('../conexion');
 const router = express.Router();
 router.get('/', (req, res) => {
     const query = `
-        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto, Motivo.DescripcionMovimiento, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
+        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto, Movimiento.TipoMovimiento, Motivo.DescripcionMovimiento, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
         FROM Movimiento
         INNER JOIN Motivo ON Movimiento.IdMotivo = Motivo.IdMotivo
         INNER JOIN Producto_Materia_Prima ON Movimiento.IdProductoMateriaPrima = Producto_Materia_Prima.IdProductoMateriaPrima
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const { id } = req.params;
     const query = `
-        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto, Motivo.DescripcionMovimiento, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
+        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto, Movimiento.TipoMovimiento, Motivo.DescripcionMovimiento, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
         FROM Movimiento
         INNER JOIN Motivo ON Movimiento.IdMotivo = Motivo.IdMotivo
         INNER JOIN Producto_Materia_Prima ON Movimiento.IdProductoMateriaPrima = Producto_Materia_Prima.IdProductoMateriaPrima
@@ -56,8 +56,6 @@ router.post('/agregar', (req, res) => {
         IdUsuario: req.body.IdUsuario,
         TipoMovimiento: req.body.TipoMovimiento
     };
-
-
 
     const query = `INSERT INTO Movimiento SET ?`;
 

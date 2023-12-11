@@ -90,9 +90,7 @@ CREATE TABLE Existencias
 (
     IdExistencias INT NOT NULL AUTO_INCREMENT,
     CantidadExistencias INT NOT NULL,
-    CantidadConsumida INT NOT NULL,
     PuntoCompraProducto INT NOT NULL,
-    PuntoMaximoProducto INT NOT NULL,
     FechaUltimaModificacion DATE NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
     PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),

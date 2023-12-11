@@ -37,13 +37,13 @@ export class EdMotivoComponent implements OnInit {
     if(this.motivo.IdMotivo){
       this.motivoService.actualizarMotivo(this.motivo).subscribe(data=>{
         alert(data)
-        this.router.navigate(['/existencias'])
+        this.router.navigate(['/motivo'])
       })
     } else {
       console.log('Creando');
       this.motivoService.agregarMotivo(this.motivo).subscribe(data=>{
         alert(data)
-        this.router.navigate(['/existencias'])
+        this.router.navigate(['/motivo'])
       })
     }
   }

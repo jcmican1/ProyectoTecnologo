@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,6 +31,7 @@ import { LsCategoriasComponent } from './Componentes/crud/ls-categorias/ls-categ
 import { EdCategoriasComponent } from './Componentes/crud/ed-categorias/ed-categorias.component';
 import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-unidad-medida.component';
 import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
+import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-movimientos.component';
 
 
 @NgModule({
@@ -62,11 +63,13 @@ import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-
     EdCategoriasComponent,
     LsUnidadMedidaComponent,
     EdUnidadMedidaComponent,
+    AcMovimientosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
