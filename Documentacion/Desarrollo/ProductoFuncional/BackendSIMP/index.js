@@ -11,6 +11,9 @@ const app = express()
 //     origin: listaBlanca
 // }))
 
+// cosas que pasan en los mercheos 
+
+
 app.use(cors({}))
 
 app.use(function (req, res, next) {
