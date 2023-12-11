@@ -5,6 +5,7 @@
         <div class="m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
                 <button class="btn btn-success" type="button" [routerLink]="['/movimiento/agregar']">Agregar</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/existencias/']">Ir a Existencias</button>
                 <button class="btn btn-primary" type="button" [routerLink]="['/motivo/']">Ir a Motivo</button>
                 <button class="btn btn-primary" type="button" [routerLink]="['/Usuarios/']">Ir a Usuarios</button>
             </div>
@@ -22,6 +23,7 @@
                         <th>ID Motivo</th>
                         <th>ID Producto Materia Prima</th>
                         <th>ID Usuario</th>
+                        <th>Tipo Movimiento</th>
                         <th>Editar</th>
                     </tr>
                 </thead>
@@ -33,6 +35,7 @@
                         <td>{{ mv.DescripcionMovimiento }}</td>
                         <td>{{ mv.NombreProducto }}</td>
                         <td>{{ mv.NombreUsuario }}</td>
+                        <td>{{ mv.TipoMovimiento }}</td>
                         <td>
                             <a class="btn btn-warning" [routerLink]="['/movimiento/editar/', mv.IdMovimiento]">Editar</a>
                         </td>
