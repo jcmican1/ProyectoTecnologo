@@ -1,11 +1,12 @@
-// plantillaProductoRouter.js
 const crypto = require('crypto');
 const express = require('express');
 const router = express.Router();
 const conexion = require('../conexion'); // Importa tu conexión a la base de datos aquí
+const { tokenSign } = require('./generateToken')
 
 // Endpoint para manipular la tabla Usuario
 router.get('/', (req, res) => {
+    console.log("Consulta de todos los usuarios");
     const query = 'SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado';
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
@@ -32,6 +33,39 @@ router.get('/:id', (req, res) => {
         }
     })
 })
+
+router.get('/Correo/:id', (req, res) => {
+    const { id } = req.params;
+
+    // Utilizamos placeholders para la consulta y un array de valores
+    const query = `
+        SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado
+        FROM Usuario
+        INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol
+        INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado
+        WHERE Correo = ?;
+    `;
+
+    // Verificamos el formato del correo electrónico
+    const correo = `${id}`;
+
+    conexion.query(query, [correo], (error, resultado) => {
+        if (error) {
+            console.error(error.message);
+            return res.status(500).json({ error: 'Error en la consulta SQL' });
+        }
+
+        console.log('====================================');
+        console.log(resultado);
+        console.log('====================================');
+
+        if (resultado.length > 0 || !resultado == null) {
+            res.json(resultado);
+        } else {
+            res.json(`No hay registros`);
+        }
+    });
+});
 
 
 // Endpoint para crear un nuevo usuario
@@ -60,13 +94,21 @@ router.post('/agregar', (req, res) => {
 
 // Endpoint para actualizar un usuario existente
 router.put('/actualizar/:id', (req, res) => {
+    console.log("Actualizacion de usuarios siiii",req,"1111||||2222",res);
     const { id } = req.params;
+    console.log(id,"Mijo este es el ID");
     const NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado
-
+    let hash = crypto.createHash('md5');
+    hash.update(req.body.Clave);
+    let hashMD5 = hash.digest('hex');
+    req.body.Clave = hashMD5
     const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Clave='${Clave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
+    console.log('==================query==================');
+    console.log(query);
+    console.log('===================query=================');
     conexion.query(query, (error) => {
         if (error) return console.error(error.message);
-
+        console.log("Correcta actualizacion");
         res.json(`Se actualizó correctamente el usuario`);
     });
 });
@@ -81,29 +123,6 @@ router.delete('/borrar/:id', (req, res) => {
         if (error) console.error(error.message);
 
         res.json(`Se eliminó correctamente el usuario`);
-    });
-});
-
-router.post('/login', (req, res) => {
-    const nuevoUsuario = {
-        Correo: req.body.Correo,
-        Clave: req.body.Clave
-    };
-
-    let hash = crypto.createHash('md5');
-    hash.update(nuevoUsuario.Clave);
-    let hashMD5 = hash.digest('hex');
-    nuevoUsuario.Clave = hashMD5
-    
-    const query = `SELECT * FROM usuario WHERE Correo = '${nuevoUsuario.Correo}' AND Clave = '${nuevoUsuario.Clave}';`
-    conexion.query(query, (error, resultado) => {
-        if (error) return console.error(error.message);
-
-        if (resultado.length > 0) {
-            res.json(true)
-        } else {
-            res.json(false)
-        }
     });
 });
 

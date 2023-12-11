@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductoMateriaPrimaModel } from 'src/app/Modelos/Producto_Materia_Prima.model';
 import { CategoriaModel } from 'src/app/Modelos/Categoria.model';
+import { PlantillaProductoModel } from 'src/app/Modelos/Plantilla_Producto.model';
 import { UnidadMedidaModel } from 'src/app/Modelos/Unidad_Medida.model';
 import { ProductoMateriaModel } from 'src/app/Modelos/Producto_Materia.model';
 @Injectable({
@@ -54,6 +55,27 @@ export class ProductosService {
 
   eliminarCategoria(idCategoria: string) {
     return this.http.delete<string>(`${this.url}/categoria/borrar/${idCategoria}`)
+  }
+
+  //plantilla producto
+  obtenerPlantillaProductos() {
+    return this.http.get<PlantillaProductoModel[]>(this.url + '/plantilla-producto');
+  }
+
+  obtenerPlantillaProducto(idPlantillaProducto: string) {
+    return this.http.get<PlantillaProductoModel[]>(`${this.url}/plantilla-producto/${idPlantillaProducto}`);
+  }
+
+  agregarPlantillaProducto(PlantillaProductoModel: PlantillaProductoModel) {
+    return this.http.post<string>(`${this.url}/plantilla-producto/agregar`, PlantillaProductoModel);
+  }
+
+  actualizarPlantillaProducto(PlantillaProductoModel: PlantillaProductoModel) {
+    return this.http.put<string>(`${this.url}/plantilla-producto/actualizar/${PlantillaProductoModel.IdPlantillaProducto}`, PlantillaProductoModel)
+  }
+
+  eliminarPlantillaProducto(idPlantillaProducto: string) {
+    return this.http.delete<string>(`${this.url}/plantilla-producto/borrar/${idPlantillaProducto}`)
   }
 
   //unidad medida

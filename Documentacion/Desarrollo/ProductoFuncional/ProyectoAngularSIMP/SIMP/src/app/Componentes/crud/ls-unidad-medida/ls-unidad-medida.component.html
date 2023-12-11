@@ -29,6 +29,7 @@
                         <th>Unidad Medida</th>
                        <!--  <th>Editar</th>
                         <th>Borrar</th> -->
+
                     </tr>
                 </thead>
                 <tbody>
@@ -37,11 +38,13 @@
                           <td>{{ un.IdUnidadMedida }}</td>
                           <td>{{ un.UnidadMedida }}</td>
                          <!--  <td>
+
                               <a class="btn btn-warning" [routerLink]="['/unidades/editar/', un.IdUnidadMedida]">Editar</a>
                           </td>
                           <td>
                               <a class="btn btn-danger" (click)="borrarUnidadMedida(un.IdUnidadMedida)">Borrar</a>
                           </td> -->
+
                       </tr>
                     </ng-container>
                     <ng-template #noDataMessage>
