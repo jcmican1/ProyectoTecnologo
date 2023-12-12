@@ -15,7 +15,7 @@ export class CentralComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/Inventario'])
+    this.router.navigate(['/existencias'])
   }
 
 
