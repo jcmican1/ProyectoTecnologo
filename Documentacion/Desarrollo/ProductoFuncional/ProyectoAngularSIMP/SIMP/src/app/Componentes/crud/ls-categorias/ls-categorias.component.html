@@ -2,11 +2,11 @@
     <div class="container border p-4">
         <h1>Categorias</h1>
         <div class="m-3 container text-center row justify-content-md-center">
-            <div class="ZonaBotones container col-lg-8">
+            <!-- <div class="ZonaBotones container col-lg-8">
                 <button class="btn btn-success" type="button" [routerLink]="['/categorias/agregar']">
                   <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
                 </button>
-            </div>
+            </div> -->
 
 
           <div class="col-lg-4">
@@ -26,9 +26,9 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Descripción Categoria</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                        <th>Descripción Categoría</th>
+                        <!-- <th>Editar</th>
+                        <th>Borrar</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -37,11 +37,11 @@
                         <td>{{ ca.IdCategoria }}</td>
                         <td>{{ ca.DescripcionCategoria }}</td>
                         <td>
-                            <a class="btn btn-warning" [routerLink]="['/categorias/editar/', ca.IdCategoria]">Editar</a>
+                       <!--      <a class="btn btn-warning" [routerLink]="['/categorias/editar/', ca.IdCategoria]">Editar</a>
                         </td>
                         <td>
                             <a class="btn btn-danger" (click)="borrarCategoria(ca.IdCategoria)">Borrar</a>
-                        </td>
+                        </td> -->
                     </tr>
                   </ng-container>
                   <ng-template #noDataMessage>
