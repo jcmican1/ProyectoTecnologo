@@ -15,14 +15,15 @@ export class LsMovimientoComponent implements OnInit {
   constructor(private movimientoService: UsuariosService){}
 
   ngOnInit() {
-      this.movimiento = this.movimientoService.obtenerMovimientos();
+      this.movimiento = this.movimientoService.obtenerMovimientosls();
   }
 
   borrarMovimiento(id:string){
-    this.movimientoService.borrarMovimiento(id).subscribe(data=>{
+    this.movimientoService.borrarMovimiento(id).subscribe((data: any)=>{
       console.log(data);
     })
-    this.movimiento = this.movimientoService.obtenerMovimientos()
+    this.movimiento = this.movimientoService.obtenerMovimientosls()
   }
 
 }
+

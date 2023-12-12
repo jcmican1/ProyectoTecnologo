@@ -16,9 +16,7 @@
                     <tr>
                         <th>ID Existencias</th>
                         <th>Cantidad Existencias</th>
-                        <th>Cantidad Consumida</th>
                         <th>Punto de Compra</th>
-                        <th>Punto Máximo</th>
                         <th>Fecha Ultima Modificación</th>
                         <th>Id Producto Materia Prima</th>
                         <th>Editar</th>
@@ -30,9 +28,7 @@
                     <tr *ngFor="let ex of existencias">
                         <td>{{ ex.IdExistencias }}</td>
                         <td>{{ ex.CantidadExistencias }}</td>
-                        <td>{{ ex.CantidadConsumida }}</td>
                         <td>{{ ex.PuntoCompraProducto }}</td>
-                        <td>{{ ex.PuntoMaximoProducto }}</td>
                         <td type="date">{{ ex.FechaUltimaModificacion }}</td>
                         <td>{{ ex.IdProductoMateriaPrima }}</td>
                         <td>

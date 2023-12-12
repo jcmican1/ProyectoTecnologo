@@ -31,6 +31,7 @@ import { LsUnidadMedidaComponent } from './Componentes/crud/ls-unidad-medida/ls-
 import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-unidad-medida.component';
 import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-materia/ls-producto-materia.component';
 import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
+import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-movimientos.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,7 @@ const routes: Routes = [
   { path:'existencias/agregar', component:EdExistenciasComponent },
 
   { path:'movimiento', component:LsMovimientoComponent },
-  { path:'movimiento/editar/:id', component:EdMovimientoComponent },
+  { path:'movimiento/editar/:id', component:AcMovimientosComponent },
   { path:'movimiento/agregar', component:EdMovimientoComponent },
 
   { path: 'ProductoMateria', component: ProductoMateriaPrimaComponent },
