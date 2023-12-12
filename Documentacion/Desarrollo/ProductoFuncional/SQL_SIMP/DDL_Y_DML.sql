@@ -90,14 +90,6 @@ create table Producto_Materia_Prima
     foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade on delete cascade
 );
 
--- Crear tabla Motivo
-create table Motivo
-(
-    IdMotivo int not null auto_increment,
-    DescripcionMovimiento varchar(45) not null,
-    primary key (IdMotivo)
-);
-
 -- Crear tabla UbicacionAlmacen
 create table UbicacionAlmacen
 (
@@ -116,38 +108,6 @@ create table Proveedor_has_Producto_MateriaPrima
     foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
 );
 
--- Crear tabla Movimiento
-create table Movimiento
-(
-    IdMovimiento int not null auto_increment,
-    FechaMovimiento date,
-    CantidadProducto int not null,
-    PrecioProductoMovimiento int null,
-    IdMotivo int not null,
-    IdUbicacionAlmacen int not null,
-    NITProveedor int not null,
-    IdProductoMateriaPrima int not null,
-    IdUsuario int not null,
-    primary key (IdMovimiento),
-    foreign key (IdMotivo) references Motivo (IdMotivo) on update cascade on delete cascade,
-    foreign key (IdUbicacionAlmacen) references UbicacionAlmacen (IdUbicacionAlmacen) on update cascade on delete cascade,
-    foreign key (NITProveedor, IdProductoMateriaPrima) references Proveedor_has_Producto_MateriaPrima (NITProveedor, IdProductoMateriaPrima) on update cascade on delete cascade,
-    foreign key (IdUsuario) references Usuario (IdUsuario) on update cascade on delete cascade
-);
-
--- Crear tabla Existencias
-create table Existencias
-(
-    IdExistencias int not null auto_increment,
-    CantidadExistencias int not null,
-    CantidadConsumida int not null,
-    PuntoCompraProducto int not null,
-    PuntoMaximoProducto int not null,
-    FechaUltimaModificacion date not null,
-    IdProductoMateriaPrima int not null,
-    primary key (IdExistencias, IdProductoMateriaPrima),
-    foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
-);
 
 -- Crear tabla PlantillaProducto
 create table PlantillaProducto
@@ -168,6 +128,64 @@ create table PlantillaProducto_has_ProductoMateriaPrima
     foreign key (IdPlantillaProducto) references PlantillaProducto (IdPlantillaProducto) on update cascade on delete cascade,
     foreign key (IdProductoMateriaPrima) references Producto_Materia_Prima (IdProductoMateriaPrima) on update cascade on delete cascade
 );
+
+-- Crear tabla Motivo
+CREATE TABLE Motivo
+(
+    IdMotivo INT NOT NULL AUTO_INCREMENT,
+    DescripcionMovimiento VARCHAR(45) NOT NULL,
+    PRIMARY KEY (IdMotivo)
+);
+
+-- Crear tabla Movimiento
+CREATE TABLE Movimiento
+(
+    IdMovimiento INT NOT NULL AUTO_INCREMENT,
+    FechaMovimiento DATE,
+    CantidadProducto INT NOT NULL,
+    IdMotivo INT NOT NULL,
+    IdProductoMateriaPrima INT NOT NULL,
+    IdUsuario INT NOT NULL,
+    TipoMovimiento ENUM('Entrada', 'Salida') NOT NULL,
+    PRIMARY KEY (IdMovimiento),
+    FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- Crear tabla Existencias
+CREATE TABLE Existencias
+(
+    IdExistencias INT NOT NULL AUTO_INCREMENT,
+    CantidadExistencias INT NOT NULL,
+    PuntoCompraProducto INT NOT NULL,
+    FechaUltimaModificacion DATE NOT NULL,
+    IdProductoMateriaPrima INT NOT NULL,
+    PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- Trigger para actualizar existencias
+DELIMITER //
+CREATE TRIGGER tr_actualizar_existencias AFTER INSERT ON Movimiento
+FOR EACH ROW
+BEGIN
+    DECLARE factor INT;
+
+    IF NEW.TipoMovimiento = 'Entrada' THEN
+        SET factor = 1;
+    ELSE
+        SET factor = -1;
+    END IF;
+
+    UPDATE Existencias
+    SET CantidadExistencias = CantidadExistencias + (NEW.CantidadProducto * factor),
+        FechaUltimaModificacion = CURRENT_DATE
+    WHERE IdProductoMateriaPrima = NEW.IdProductoMateriaPrima;
+END;
+//
+DELIMITER ;
+
+
 -- Insertar datos de prueba en la tabla Rol
 INSERT INTO Rol (DescripcionRol) VALUES
     ('Admin'),
@@ -186,80 +204,38 @@ INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_i
     ('ana456', 'López', 'ana@example.com', 'clave456', 2, 1),
     ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 1, 3);
 
--- Insertar datos de prueba en la tabla Notificaciones
-INSERT INTO Notificaciones (Notificacionescol) VALUES
-    ('Notificación 1'),
-    ('Notificación 2'),
-    ('Notificación 3');
-
--- Insertar datos de prueba en la tabla Usuario_has_Notificaciones
-INSERT INTO Usuario_has_Notificaciones (Usuario_idUsuario, Notificaciones_idNotificaciones) VALUES
-    (1, 1),
-    (1, 2),
-    (2, 3),
-    (3, 1);
-
--- Insertar datos de prueba en la tabla Proveedor
-INSERT INTO Proveedor (NombreProveedor, NumeroTelefonoProveedor, DireccionProveedor) VALUES
-    ('Proveedor 1', 1234567890, 'Calle 123, Ciudad'),
-    ('Proveedor 2', 9876543210, 'Avenida 456, Otra Ciudad');
-
--- Insertar datos de prueba en la tabla Categoria
+-- Insertar datos en la tabla Categoria
 INSERT INTO Categoria (DescripcionCategoria) VALUES
-    ('Categoría 1'),
-    ('Categoría 2'),
-    ('Categoría 3');
+('Ingredientes'),
+('Bebidas');
 
--- Insertar datos de prueba en la tabla Unidad_Medida
+-- Insertar datos en la tabla Unidad_Medida
 INSERT INTO Unidad_Medida (UnidadMedida) VALUES
-    ('Unidad 1'),
-    ('Unidad 2'),
-    ('Unidad 3');
+('Gramos'),
+('Unidades');
 
--- Insertar datos de prueba en la tabla Producto_Materia_Prima
+-- Insertar datos en la tabla Producto_Materia_Prima
 INSERT INTO Producto_Materia_Prima (NombreProducto, DescripcionProductoMateriaPrima, IdCategoria, IdUnidadMedida) VALUES
-    ('Producto 1', 'Descripción Producto 1', 1, 1),
-    ('Producto 2', 'Descripción Producto 2', 2, 2),
-    ('Producto 3', 'Descripción Producto 3', 3, 3);
+('Queso', 'Queso mozzarella rallado', 1, 1),
+('Tomate', 'Tomate triturado', 1, 1),
+('Pepperoni', 'Pepperoni en rodajas', 1, 1),
+('Salsa de Tomate', 'Salsa de tomate para pizza', 1, 2),
+('Refresco', 'Refresco de cola', 2, 2);
 
--- Insertar datos de prueba en la tabla Motivo
+-- Insertar datos en la tabla Motivo
 INSERT INTO Motivo (DescripcionMovimiento) VALUES
-    ('Motivo 1'),
-    ('Motivo 2'),
-    ('Motivo 3');
+('Compra'),
+('Venta'),
+('Devolución');
 
--- Insertar datos de prueba en la tabla UbicacionAlmacen
-INSERT INTO UbicacionAlmacen (NombreAlmacen) VALUES
-    ('Almacén 1'),
-    ('Almacén 2'),
-    ('Almacén 3');
+-- Insertar datos en la tabla Movimiento
+INSERT INTO Movimiento (FechaMovimiento, CantidadProducto, IdMotivo, IdProductoMateriaPrima, IdUsuario, TipoMovimiento) VALUES
+('2023-01-15', 500, 1, 1, 1, 'Entrada'),
+('2023-01-16', 200, 2, 2, 2, 'Salida'),
+('2023-01-17', 100, 1, 3, 3, 'Entrada');
 
--- Insertar datos de prueba en la tabla Proveedor_has_Producto_MateriaPrima
-INSERT INTO Proveedor_has_Producto_MateriaPrima (NITProveedor, IdProductoMateriaPrima) VALUES
-    (1, 1),
-    (2, 2),
-    (1, 3);
-
--- Insertar datos de prueba en la tabla Movimiento
-INSERT INTO Movimiento (FechaMovimiento, CantidadProducto, PrecioProductoMovimiento, IdMotivo, IdUbicacionAlmacen, NITProveedor, IdProductoMateriaPrima, IdUsuario) VALUES
-    ('2023-09-01', 100, 50, 1, 1, 1, 1, 1),
-    ('2023-09-02', 200, 75, 2, 2, 2, 2, 2),
-    ('2023-09-03', 150, 60, 3, 3, 1, 3, 3);
-
--- Insertar datos de prueba en la tabla Existencias
-INSERT INTO Existencias (CantidadExistencias, CantidadConsumida, PuntoCompraProducto, PuntoMaximoProducto, FechaUltimaModificacion, IdProductoMateriaPrima) VALUES
-    (500, 200, 100, 400, '2023-09-01', 1),
-    (800, 300, 200, 600, '2023-09-02', 2),
-    (600, 250, 150, 500, '2023-09-03', 3);
-
--- Insertar datos de prueba en la tabla PlantillaProducto
-INSERT INTO PlantillaProducto (NombreProductoPlantilla, ValorVenta) VALUES
-    ('Plantilla 1', '100'),
-    ('Plantilla 2', '200'),
-    ('Plantilla 3', '150');
-
--- Insertar datos de prueba en la tabla PlantillaProducto_has_ProductoMateriaPrima
-INSERT INTO PlantillaProducto_has_ProductoMateriaPrima (IdPlantillaProducto, IdProductoMateriaPrima) VALUES
-    (1, 1),
-    (2, 2),
-    (3, 3);
+-- Insertar datos en la tabla Existencias
+INSERT INTO Existencias (CantidadExistencias, PuntoCompraProducto, FechaUltimaModificacion, IdProductoMateriaPrima) VALUES
+(500, 100, '2023-01-15', 1),
+(300, 50, '2023-01-16', 2),
+(100, 20, '2023-01-17', 3);

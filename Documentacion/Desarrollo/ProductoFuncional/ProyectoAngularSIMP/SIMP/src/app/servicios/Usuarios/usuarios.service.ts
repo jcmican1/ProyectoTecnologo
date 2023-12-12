@@ -11,6 +11,7 @@ import { MotivoModel } from '../../Modelos/Motivo.model';
 import { UbicacionModel } from '../../Modelos/UbicacionAlmacen.module';
 import { ExistenciasModel } from '../../Modelos/Existencias.model';
 import { MovimientoModel } from '../../Modelos/Movimiento.model';
+import { MovimientoEDModel } from '../../Modelos/Movimiento-ed.model';
 
 @Injectable({
   providedIn: 'root'
@@ -155,24 +156,6 @@ export class UsuariosService {
     return this.http.delete<string>(`${this.url}/proveedor/borrar/${id}`);
   }
 
-  //Motivo
-
-  obtenerMotivos() {
-    return this.http.get<MotivoModel[]>(this.url + '/motivo');
-  }
-  obtenerMotivo(id: string) {
-    return this.http.get<MotivoModel[]>(`${this.url}/motivo/${id}`);
-  }
-  agregarMotivo(motivo: MotivoModel) {
-    return this.http.post<string>(`${this.url}/motivo/agregar`, motivo);
-  }
-  actualizarMotivo(motivo: MotivoModel) {
-    return this.http.put<string>(`${this.url}/motivo/actualizar/${motivo.IdMotivo}`, motivo);
-  }
-  borrarMotivo(id: string) {
-    return this.http.delete<string>(`${this.url}/motivo/borrar/${id}`);
-  }
-
   //UbicacionAlmacen
 
   obtenerUbicaciones() {
@@ -191,40 +174,65 @@ export class UsuariosService {
     return this.http.delete<string>(`${this.url}/ubicacion-almacen/borrar/${id}`);
   }
 
-  //Existencias
+  //Motivo
+  obtenerMotivos(){
+    return this.http.get<MotivoModel[]>(this.url+'/motivo');
+  }
+  obtenerMotivo(id:string){
+    return this.http.get<MotivoModel>(`${this.url}/motivo/${id}`);
+  }
+  agregarMotivo(motivo: MotivoModel){
+    return this.http.post<string>(`${this.url}/motivo/agregar`, motivo);
+  }
+  actualizarMotivo(motivo: MotivoModel){
+    return this.http.put<string>(`${this.url}/motivo/actualizar/${motivo.IdMotivo}`, motivo);
+  }
+  borrarMotivo(id:string){
+    return this.http.delete<string>(`${this.url}/motivo/borrar/${id}`);
+  }
 
-  obtenerExistencias() {
-    return this.http.get<ExistenciasModel[]>(this.url + `/existencias`);
+  //Existencias
+  obtenerExistencias(){
+    return this.http.get<ExistenciasModel[]>(this.url+`/existencias`);
   }
-  obtenerExistencia(id: string) {
-    return this.http.get<ExistenciasModel[]>(`${this.url}/existencias/${id}`);
+  obtenerExistencia(id:string){
+    return this.http.get<ExistenciasModel>(`${this.url}/existencias/${id}`);
   }
-  agregarExistencia(existencias: ExistenciasModel) {
+  agregarExistencia(existencias: ExistenciasModel){
     return this.http.post<string>(`${this.url}/existencias/agregar`, existencias);
   }
-  actualizarExistencia(existencias: ExistenciasModel) {
+  actualizarExistencia(existencias: ExistenciasModel){
     return this.http.put<string>(`${this.url}/existencias/actualizar/${existencias.IdExistencias}`, existencias);
   }
-  borrarExistencia(id: string) {
+  borrarExistencia(id:string){
     return this.http.delete<string>(`${this.url}/existencias/borrar/${id}`);
   }
 
   //Movimiento
-
-  obtenerMovimientos() {
-    return this.http.get<MovimientoModel[]>(this.url + `/movimiento`);
+  obtenerMovimientos(){
+    return this.http.get<MovimientoEDModel[]>(this.url+`/movimiento`);
   }
-  obtenerMovimiento(id: string) {
-    return this.http.get<MovimientoModel[]>(`${this.url}/movimiento/${id}`);
+  obtenerMovimiento(id:string){
+    return this.http.get<MovimientoEDModel>(`${this.url}/movimiento/${id}`);
   }
-  agregarMovimiento(movimiento: MovimientoModel) {
+  obtenerMovimientosls(){
+    return this.http.get<MovimientoModel[]>(this.url+`/movimiento`);
+  }
+  obtenerMovimientols(id:string){
+    return this.http.get<MovimientoModel>(`${this.url}/movimiento/${id}`);
+  }
+  agregarMovimiento(movimiento: MovimientoEDModel){
     return this.http.post<string>(`${this.url}/movimiento/agregar`, movimiento);
   }
-  actualizarMovimiento(movimiento: MovimientoModel) {
+  actualizarMovimiento(movimiento: MovimientoEDModel){
     return this.http.put<string>(`${this.url}/movimiento/actualizar/${movimiento.IdMovimiento}`, movimiento);
   }
-  borrarMovimiento(id: string) {
+  borrarMovimiento(id:string){
     return this.http.delete<string>(`${this.url}/movimiento/borrar/${id}`);
   }
 
+  //Productos
+  obtenerProductos(){
+    return this.http.get<any[]>(this.url+'/Existencias');
+  }
 }

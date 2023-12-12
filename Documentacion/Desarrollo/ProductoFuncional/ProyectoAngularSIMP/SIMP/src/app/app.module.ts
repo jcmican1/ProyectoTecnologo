@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,6 +42,7 @@ import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-
 import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-materia/ls-producto-materia.component';
 import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
 import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.service';
+import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-movimientos.component';
 
 
 @NgModule({
@@ -80,12 +81,14 @@ import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.se
     LsUnidadMedidaComponent,
     EdUnidadMedidaComponent,
     LsProductoMateriaComponent,
-    EdProductoMateriaComponent
+    EdProductoMateriaComponent,
+    AcMovimientosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
