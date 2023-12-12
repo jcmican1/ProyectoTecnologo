@@ -130,8 +130,7 @@ INSERT INTO Rol (DescripcionRol) VALUES
 -- Insertar datos de prueba en la tabla Estado
 INSERT INTO Estado (DescripcionEstado) VALUES
     ('Activo'),
-    ('Inactivo'),
-    ('En Espera');
+    ('Inactivo');
 
 -- Insertar datos de prueba en la tabla Usuario
 INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado) VALUES
