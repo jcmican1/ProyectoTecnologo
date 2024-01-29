@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
 import { MovimientoEDModel } from 'src/app/Modelos/Movimiento-ed.model';
+import { CompartidosService } from 'src/app/servicios/Compartidos/compartidos.service';
+import { UsuarioModel } from 'src/app/Modelos/Usuarios.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movimiento',
@@ -12,9 +15,32 @@ export class AcMovimientosComponent implements OnInit {
   movimientoForm!: FormGroup;
   idMovimiento!: string; 
 
-  constructor(private formBuilder: FormBuilder, private usuariosService: UsuariosService) { }
+  UsuarioModel: Observable<UsuarioModel[]> | undefined;
+  idUsuario: any;
+  constructor(private formBuilder: FormBuilder,
+     private usuariosService: UsuariosService,
+     private Sesion: CompartidosService) { }
 
   ngOnInit() {
+    this.usuariosService.obtenerNavUser(this.Sesion.Correo).subscribe(
+      (usuarios: UsuarioModel[]) => {
+        if (usuarios && usuarios.length > 0) {
+          const primerUsuario = usuarios[0]; // Suponiendo que solo obtendrás un usuario
+          const idUsuario = primerUsuario.idUsuario;
+          this.idUsuario = idUsuario
+          // Haz lo que necesites con el idUsuario, por ejemplo, asignarlo a una variable de clase
+          // this.idUsuario = idUsuario;
+    
+          console.log('Id de Usuario:', idUsuario);
+        } else {
+          console.log('No se obtuvieron usuarios o la lista está vacía.');
+        }
+      },
+      error => {
+        console.error('Error al obtener los datos del usuario:', error);
+      }
+    );
+
     this.movimientoForm = this.formBuilder.group({
       IdMovimiento: [''],
       fechaMovimiento: [''],

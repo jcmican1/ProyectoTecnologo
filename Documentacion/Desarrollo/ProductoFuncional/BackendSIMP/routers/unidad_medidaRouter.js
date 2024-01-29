@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const conexion = require('../conexion');
+const auth = require('../middleware/auth')
+const roleAuth = require('../middleware/roleAuth')
 
 // Consultar todos los registros de Unidad_Medida
 router.get('/', (req, res) => {
@@ -33,7 +35,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Agregar un nuevo registro a la tabla Unidad_Medida
-router.post('/agregar', (req, res) => {
+router.post('/agregar',roleAuth([1]), (req, res) => {
     const nuevaUnidadMedida = {
         UnidadMedida: req.body.UnidadMedida 
     };
@@ -50,7 +52,7 @@ router.post('/agregar', (req, res) => {
 });
 
 // Actualizar un registro en la tabla Unidad_Medida por su ID
-router.put('/actualizar/:id', (req, res) => {
+router.put('/actualizar/:id',roleAuth([1]), (req, res) => {
     const { id } = req.params;
     const { UnidadMedida } = req.body;
 
@@ -67,7 +69,7 @@ router.put('/actualizar/:id', (req, res) => {
 });
 
 // Borrar un registro en la tabla Unidad_Medida por su ID
-router.delete('/borrar/:id', (req, res) => {
+router.delete('/borrar/:id',roleAuth([1]), (req, res) => {
     const { id } = req.params;
 
     const query = `DELETE FROM Unidad_Medida WHERE IdUnidadMedida=${id}`;

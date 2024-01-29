@@ -94,9 +94,9 @@ router.post('/agregar', (req, res) => {
 
 // Endpoint para actualizar un usuario existente
 router.put('/actualizar/:id', (req, res) => {
-    console.log("Actualizacion de usuarios siiii",req,"1111||||2222",res);
+    console.log("Actualizacion de usuarios siiii", req, "1111||||2222", res);
     const { id } = req.params;
-    console.log(id,"Mijo este es el ID");
+    console.log(id, "Mijo este es el ID");
     let NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado
     let hash = crypto.createHash('md5');
     hash.update(Clave);
