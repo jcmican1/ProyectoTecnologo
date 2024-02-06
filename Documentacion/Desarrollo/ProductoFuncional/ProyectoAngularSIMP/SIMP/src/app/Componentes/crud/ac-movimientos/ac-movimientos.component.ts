@@ -25,12 +25,9 @@ export class AcMovimientosComponent implements OnInit {
     this.usuariosService.obtenerNavUser(this.Sesion.Correo).subscribe(
       (usuarios: UsuarioModel[]) => {
         if (usuarios && usuarios.length > 0) {
-          const primerUsuario = usuarios[0]; // Suponiendo que solo obtendrás un usuario
+          const primerUsuario = usuarios[0];
           const idUsuario = primerUsuario.idUsuario;
-          this.idUsuario = idUsuario
-          // Haz lo que necesites con el idUsuario, por ejemplo, asignarlo a una variable de clase
-          // this.idUsuario = idUsuario;
-    
+          this.idUsuario = idUsuario   //este hace cosas automaticas  
           console.log('Id de Usuario:', idUsuario);
         } else {
           console.log('No se obtuvieron usuarios o la lista está vacía.');
