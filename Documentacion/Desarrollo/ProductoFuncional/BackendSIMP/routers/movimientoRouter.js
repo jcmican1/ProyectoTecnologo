@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
     });
 });
 router.post('/agregar', (req, res) => {
-    console.log("En la ruta de Agregar Movimiento");
+    console.log("En la ruta de Agregar Movimiento", req.body);
     const movimiento = {
         FechaMovimiento: req.body.FechaMovimiento,
         CantidadProducto: req.body.CantidadProducto,

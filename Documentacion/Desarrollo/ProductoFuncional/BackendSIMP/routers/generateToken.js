@@ -27,6 +27,4 @@ const decodeSign = (token) => {
     return jwt.decode(token, null)
 }
 
-
-
 module.exports = { tokenSign, decodeSign, verifyToken }
