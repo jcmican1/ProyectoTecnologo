@@ -84,6 +84,7 @@ export class AcMovimientosComponent implements OnInit {
           this.movimientoForm.get('idUsuario')?.value,
           this.movimientoForm.get('tipoMovimiento')?.value
         );
+        movimiento.IdUsuario = this.idUsuario
         this.usuariosService.actualizarMovimiento(movimiento).subscribe(
           () => {
             console.log('Movimiento actualizado con éxito');
