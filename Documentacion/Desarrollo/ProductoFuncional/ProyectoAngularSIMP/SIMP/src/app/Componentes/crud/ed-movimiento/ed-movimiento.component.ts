@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CompartidosService } from 'src/app/servicios/Compartidos/compartidos.service';
-
 import { MovimientoEDModel } from 'src/app/Modelos/Movimiento-ed.model';
+
 import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
+
+import { CompartidosService } from 'src/app/servicios/Compartidos/compartidos.service';
 import { UsuarioModel } from 'src/app/Modelos/Usuarios.model';
 import { Observable } from 'rxjs';
 
@@ -22,18 +23,18 @@ export class EdMovimientoComponent implements OnInit {
   idUsuario: any;
 
   constructor(
-    private movimientoService: UsuariosService, 
+    private movimientoService: UsuariosService,
     private route: ActivatedRoute,
     private router: Router,
     private Sesion: CompartidosService
-     ) {}
+  ) { }
 
   ngOnInit() {
     this.movimientoService.obtenerNavUser(this.Sesion.Correo).subscribe(
       (usuarios: UsuarioModel[]) => {
         if (usuarios && usuarios.length > 0) {
-          const primerUsuario = usuarios[0];
-          const idUsuario = primerUsuario.idUsuario;
+          let primerUsuario = usuarios[0];
+          let idUsuario = primerUsuario.idUsuario;
           this.idUsuario = idUsuario   //este hace cosas automaticas  
           console.log('Id de Usuario:', idUsuario);
         } else {
@@ -49,7 +50,6 @@ export class EdMovimientoComponent implements OnInit {
       console.log("EDITAR");
       this.movimientoService.obtenerMovimiento(this.id).subscribe(data => {
         this.movimiento = data
-        this.movimiento.IdUsuario == this.idUsuario
       }, error => {
         console.log(error);
       })
@@ -62,13 +62,17 @@ export class EdMovimientoComponent implements OnInit {
   }
 
   onSubmit() {
-    
+
     console.log('onSubmit');
     console.log('id para actualizar', this.movimiento.IdMovimiento);
 
     if (this.movimiento.IdMovimiento) {
+      this.movimiento.IdUsuario == this.idUsuario
+      console.log('====================================');
+      console.log(this.movimiento);
+      console.log('====================================');
       console.log('Movimiento-a-actualizar', this.movimiento);
-      
+
       this.movimientoService.actualizarMovimiento(this.movimiento).subscribe(
         (data) => {
           alert(data);
@@ -81,6 +85,10 @@ export class EdMovimientoComponent implements OnInit {
       );
     } else {
       console.log('Movimiento-a-agregar', this.movimiento);
+      this.movimiento.IdUsuario == this.idUsuario
+      console.log('====================================');
+      console.log(this.movimiento);
+      console.log('====================================');
       this.movimientoService.agregarMovimiento(this.movimiento).subscribe(
         (data: any) => {
           alert(data.mensaje);
