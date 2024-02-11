@@ -94,7 +94,7 @@ CREATE TABLE Existencias
     IdExistencias INT NOT NULL AUTO_INCREMENT,
     CantidadExistencias INT NOT NULL,
     PuntoCompraProducto INT NOT NULL,
-    FechaUltimaModificacion DATE NOT NULL,
+    FechaUltimaModificacion DATETIME NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
     PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
     FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
