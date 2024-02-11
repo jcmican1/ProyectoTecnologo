@@ -1,3 +1,11 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card login-card">
+          <div class="card-header login-header">
+            <h2 class="text-center">Iniciar Sesión</h2>
+          </div>
+
 <form (ngSubmit)="logeo()" #LoginForm="ngForm" style="text-align: center;"
     class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
     <div class="form-outline mb-4">
@@ -13,5 +21,21 @@
         <label class="form-label">Clave</label>
     </div>
     <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar sesion</button>
-    <h4>Para probar el login intenta con el correo: J@E.com y con la contraseña: Papasconjamon</h4>
-</form>
+<!--     <h4>Para probar el login intenta con el correo: J@E.com y con la contraseña: Papasconjamon</h4> -->
+ </form>
+
+<style>
+    .login-card {
+      background-color: #FEFBD2; /* Light background */
+      border: 1px solid #061727; /* Dark border */
+    }
+  
+    .login-header {
+      background-color: #061727; /* Dark background */
+      color: #FEFBD2; /* Light text */
+    }
+  
+    .login-body {
+      padding: 20px; /* Add some padding */
+    }
+  </style>
