@@ -77,7 +77,7 @@ CREATE TABLE Motivo
 CREATE TABLE Movimiento
 (
     IdMovimiento INT NOT NULL AUTO_INCREMENT,
-    FechaMovimiento DATE,
+    FechaMovimiento DATETIME,
     CantidadProducto INT NOT NULL,
     IdMotivo INT NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
