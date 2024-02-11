@@ -5,37 +5,44 @@
           <div class="card-header login-header">
             <h2 class="text-center">Iniciar Sesión</h2>
           </div>
-
-<form (ngSubmit)="logeo()" #LoginForm="ngForm" style="text-align: center;"
-    class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
-    <div class="form-outline mb-4">
-        <h1>Login SIMP</h1>
-    </div>
-    <div class="form-outline mb-4">
-        <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="UsuarioModel.Correo" required />
-        <label class="form-label">Correo</label>
-    </div>
-
-    <div class="form-outline mb-4">
-        <input type="password" class="form-control" name="Clave" [(ngModel)]="UsuarioModel.Clave" required />
-        <label class="form-label">Clave</label>
-    </div>
-    <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar sesion</button>
-<!--     <h4>Para probar el login intenta con el correo: J@E.com y con la contraseña: Papasconjamon</h4> -->
- </form>
-
-<style>
-    .login-card {
-      background-color: #FEFBD2; /* Light background */
-      border: 1px solid #061727; /* Dark border */
-    }
   
-    .login-header {
-      background-color: #061727; /* Dark background */
-      color: #FEFBD2; /* Light text */
-    }
+          <form (ngSubmit)="logeo()" #LoginForm="ngForm" style="text-align: center;"
+                class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
+            <div class="form-outline mb-4">
+              <h1>Login SIMP</h1>
+            </div>
+            <div class="form-outline mb-4">
+              <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="UsuarioModel.Correo" required />
+              <label class="form-label">Correo</label>
+            </div>
   
-    .login-body {
-      padding: 20px; /* Add some padding */
-    }
-  </style>
+            <div class="form-outline mb-4">
+              <input type="password" class="form-control" name="Clave" [(ngModel)]="UsuarioModel.Clave" required />
+              <label class="form-label">Clave</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar Sesión</button> <br>
+  
+            <a class="text-decoration-none text-muted" href="#">¿Olvidaste tu contraseña?</a>  <br><br><br>
+
+          </form>
+  
+          <style>
+            .login-card {
+              background-color: #FEFBD2; /* Light background */
+              border: 1px solid #061727; /* Dark border */
+            }
+  
+            .login-header {
+              background-color: #061727; /* Dark background */
+              color: #FEFBD2; /* Light text */
+            }
+  
+            .login-body {
+              padding: 30px; /* Add some padding */
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+  </div>
+
