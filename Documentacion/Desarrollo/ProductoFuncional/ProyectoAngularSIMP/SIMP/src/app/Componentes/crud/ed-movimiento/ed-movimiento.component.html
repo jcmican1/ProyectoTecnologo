@@ -18,7 +18,7 @@
               <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-12">
                   <label for="IdMotivo" style="color: #061727;">Motivo Movimiento</label>
-                  <select class="form-control" required [(ngModel)]="movimiento.IdMotivo" name="IdMotivo" style="color: white;">
+                  <select class="form-control" required [(ngModel)]="movimiento.IdMotivo" name="IdMotivo" style="color: #061727;">
                     <option *ngFor="let motivo of motivos" [value]="motivo.IdMotivo">{{ motivo.DescripcionMovimiento }}</option>
                   </select>
                 </div>
@@ -32,13 +32,13 @@
               <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-12">
                   <label for="IdUsuario" style="color: #061727;">Usuario que Realiza Movimiento</label>
-                  <input type="text" class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario" style="color: white;">
+                  <input type="text" class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario" style="color: #061727;">
                 </div>
               </fieldset>
               <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-12">
                   <label for="TipoMovimiento" style="color: #061727;">Tipo de Movimiento</label>
-                  <select class="form-control" required [(ngModel)]="movimiento.TipoMovimiento" name="TipoMovimiento" style="color: white;">
+                  <select class="form-control" required [(ngModel)]="movimiento.TipoMovimiento" name="TipoMovimiento" style="color: #061727;">
                     <option value="Entrada">Entrada</option>
                     <option value="Salida">Salida</option>
                   </select>

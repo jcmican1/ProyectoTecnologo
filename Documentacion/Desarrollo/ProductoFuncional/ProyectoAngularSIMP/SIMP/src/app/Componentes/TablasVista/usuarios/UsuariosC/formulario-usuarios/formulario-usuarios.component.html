@@ -1,46 +1,44 @@
-<div class="container">
+<div class="container" style="background-color: #FEFBD2;">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <form (ngSubmit)="onSubmit()" #RegistroForm="ngForm">
-                <div class="form-group">
-                    <label for="NombreUsuario">Nombre</label>
-                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.NombreUsuario" name="NombreUsuario" id="NombreUsuario">
+            <form (ngSubmit)="onSubmit()" #RegistroForm="ngForm" style="background-color: #061727; color: white;">
+                <div class="form-group" style="border: 1px solid white;">
+                    <label for="NombreUsuario" style="color: white;">Nombre</label>
+                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.NombreUsuario" name="NombreUsuario" id="NombreUsuario" style="color: white;">
                 </div>
-                <div class="form-group">
-                    <label for="Apellido">Apellido</label>
-                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Apellido" name="Apellido" id="Apellido">
+                <div class="form-group" style="border: 1px solid white;">
+                    <label for="Apellido" style="color: white;">Apellido</label>
+                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Apellido" name="Apellido" id="Apellido" style="color: white;">
                 </div>
-                <div class="form-group">
-                    <label for="Correo">Correo</label>
-                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Correo" name="Correo" id="Correo">
+                <div class="form-group" style="border: 1px solid white;">
+                    <label for="Correo" style="color: white;">Correo</label>
+                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Correo" name="Correo" id="Correo" style="color: white;">
                 </div>
-                <div class="form-group">
-                    <label for="Clave">Clave</label>
-                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Clave" name="Clave" id="Clave">
+                <div class="form-group" style="border: 1px solid white;">
+                    <label for="Clave" style="color: white;">Clave</label>
+                    <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Clave" name="Clave" id="Clave" style="color: white;">
                 </div>
-                <div class="form-group">
-                    <label for="Rol_IdRol">Rol_IdRol</label><br>
-                    <select [(ngModel)]="UsuarioModel.DescripcionRol" name="Rol_IdRol" >
+                <div class="form-group" style="border: 1px solid white;">
+                    <label for="Rol_IdRol" style="color: white;">Rol_IdRol</label><br>
+                    <select [(ngModel)]="UsuarioModel.DescripcionRol" name="Rol_IdRol" style="color: white;">
                         <option value="1">Administrador</option>
                         <option value="2">Empleado</option>
-                        
-                    </select>                    
+                    </select>               
                 </div>
-                <div class="form-group">
-                    <label for="Estado_idEstado">Estado_idEstado</label><br>
-                    <select [(ngModel)]="UsuarioModel.DescripcionEstado" name="Estado_idEstado">
+                <div class="form-group" style="border: 1px solid white;">
+                    <label for="Estado_idEstado" style="color: white;">Estado_idEstado</label><br>
+                    <select [(ngModel)]="UsuarioModel.DescripcionEstado" name="Estado_idEstado" style="color: white;">
                         <option value="1">Activo</option>
                         <option value="2">Inactivo</option>
-                        
                     </select>  
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" [disabled]="!RegistroForm.form.valid">Enviar</button>
+                <div class="form-group" style="border: 1px solid white;">
+                    <button type="submit" class="btn btn-primary" [disabled]="!RegistroForm.form.valid" style="background-color: #FEFBD2; border: none;">Enviar</button>
                 </div>
             </form>
             <hr>
             <br>
-            <button class="btn btn-success" routerLink="/Usuarios" >Regresar</button>
+            <button class="btn btn-success" routerLink="/Usuarios" style="background-color: #061727; color: white; border: none;">Regresar</button>
 
         </div>
     </div>
