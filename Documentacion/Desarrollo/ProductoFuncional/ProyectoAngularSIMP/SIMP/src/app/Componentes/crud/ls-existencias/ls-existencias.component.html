@@ -14,7 +14,7 @@
             <table class="table table-dark table-sm">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID Existencias</th>
+                       <!--  <th>ID Existencias</th> -->
                         <th>Cantidad Existencias</th>
                         <th>Punto de Compra</th>
                         <th>Fecha Ultima Modificación</th>
@@ -26,7 +26,7 @@
                 <tbody>
                   <ng-container *ngIf="existencias.length > 0; else noDataMessage">
                     <tr *ngFor="let ex of existencias">
-                        <td>{{ ex.IdExistencias }}</td>
+                        <!-- <td>{{ ex.IdExistencias }}</td> -->
                         <td>{{ ex.CantidadExistencias }}</td>
                         <td>{{ ex.PuntoCompraProducto }}</td>
                         <td type="date">{{ ex.FechaUltimaModificacion }}</td>
