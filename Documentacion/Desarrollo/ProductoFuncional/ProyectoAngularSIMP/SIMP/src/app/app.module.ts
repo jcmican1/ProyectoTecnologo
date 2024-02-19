@@ -43,6 +43,7 @@ import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-mater
 import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
 import { InterceptorHttpService } from './servicios/Usuarios/interceptor-http.service';
 import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-movimientos.component';
+import { ReportesComponent } from './Componentes/TablasVista/reportes/reportes.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-mov
     EdUnidadMedidaComponent,
     LsProductoMateriaComponent,
     EdProductoMateriaComponent,
-    AcMovimientosComponent
+    AcMovimientosComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
