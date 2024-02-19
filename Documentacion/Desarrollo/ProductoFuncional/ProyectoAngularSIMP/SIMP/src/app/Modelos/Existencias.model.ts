@@ -5,7 +5,7 @@ export class ExistenciasModel{
         public CantidadConsumida:string,
         public PuntoCompraProducto:string,
         public PuntoMaximoProducto: string,
-        public FechaUltimaModificacion:string,
+        public FechaUltimaModificacionFormateada:string,
         public IdProductoMateriaPrima:string
     ){}
 }
