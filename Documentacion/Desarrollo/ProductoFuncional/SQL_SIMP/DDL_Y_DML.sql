@@ -100,6 +100,17 @@ CREATE TABLE Existencias
     FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE 
 );
 
+
+-- Crear tabla Reportes
+CREATE TABLE Reportes
+(
+    IdReporte INT NOT NULL AUTO_INCREMENT,
+    IdProductoMateriaPrima INT NOT NULL,
+    TotalVendido INT NOT NULL,
+    PRIMARY KEY (IdReporte),
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima)
+);
+
 -- Trigger para actualizar existencias
 DELIMITER //
 CREATE TRIGGER tr_actualizar_existencias AFTER INSERT ON Movimiento
