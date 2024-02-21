@@ -1,63 +1,63 @@
-<main class="container mt-4">
-  <div class="container border p-4">
+<main class="container mt-4" style="background-color: #061727;">
+  <div class="container border p-4" style="border-color: #FEFBD2;">
       <div class="row">
           <div class="col-sm-12">
-            <form (ngSubmit)="onSubmit()" #existenciasForm="ngForm" >
-              <fieldset class="form-group">
+            <form (ngSubmit)="onSubmit()" #existenciasForm="ngForm" style="background-color: ; color: white;">
+              <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-12">
-                  <label class="control-label" for="IdMovimiento">ID Movimiento</label>
-                  <input type="text" class="form-control" required [(ngModel)]="existencias.IdExistencias" name="IdMovimiento" readonly>
+                  <label for="IdMovimiento" style="color: #FEFBD2;">ID Movimiento</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.IdExistencias" name="IdMovimiento" style="color: #061727;" readonly>
                 </div>
               </fieldset>
-              <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="FechaMovimiento">Fecha de Movimiento</label>
-                    <input type="date" class="form-control" required [(ngModel)]="existencias.CantidadExistencias" name="FechaMovimiento">
-                  </div>
-                  <br>
-                </fieldset>
-                <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="CantidadProducto">Cantidad de Producto (kg)</label>
-                    <input type="text" class="form-control" required [(ngModel)]="existencias.CantidadConsumida" name="CantidadProducto">
-                  </div>
-                  <br>
-                </fieldset>
-                <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="PrecioProductoMovimiento">Precio del Producto</label>
-                    <input type="text" class="form-control" required [(ngModel)]="existencias.PuntoCompraProducto" name="PrecioProductoMovimiento">
-                  </div>
-                  <br>
-                </fieldset>
-                <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="IdMotivo">Motivo Movimiento</label>
-                    <input type="text" class="form-control" required [(ngModel)]="existencias.PuntoMaximoProducto" name="IdMotivo">
-                  </div>
-                  <br>
-                </fieldset>
-                <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="IdUbicacionAlmacen">Ubicacion de Almacen</label>
-                    <input type="text" class="form-control" required [(ngModel)]="existencias.FechaUltimaModificacionFormateada" name="IdUbicacionAlmacen">
-                  </div>
-                  <br>
-                </fieldset>
-                <fieldset class="form-group">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="NITProveedor">ID Proveedor</label>
-                    <input type="text" class="form-control" required [(ngModel)]="existencias.IdProductoMateriaPrima" name="NITProveedor">
-                  </div>
-                  <br>
-                </fieldset>      
-              <fieldset class="form-group">
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="FechaMovimiento" style="color: #FEFBD2;">Fecha de Movimiento</label>
+                  <input type="date" class="form-control" required [(ngModel)]="existencias.CantidadExistencias" name="FechaMovimiento" style="color: #061727;">
+                </div>
+                <br>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="CantidadProducto" style="color: #FEFBD2;">Cantidad de Producto (kg)</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.CantidadConsumida" name="CantidadProducto" style="color: #061727;">
+                </div>
+                <br>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="PrecioProductoMovimiento" style="color: #FEFBD2;">Precio del Producto</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.PuntoCompraProducto" name="PrecioProductoMovimiento" style="color: #061727;">
+                </div>
+                <br>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="IdMotivo" style="color: #FEFBD2;">Motivo Movimiento</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.PuntoMaximoProducto" name="IdMotivo" style="color: #061727;">
+                </div>
+                <br>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="IdUbicacionAlmacen" style="color: #FEFBD2;">Ubicacion de Almacen</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.FechaUltimaModificacionFormateada" name="IdUbicacionAlmacen" style="color: #061727;">
+                </div>
+                <br>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="NITProveedor" style="color: #FEFBD2;">ID Proveedor</label>
+                  <input type="text" class="form-control" required [(ngModel)]="existencias.IdProductoMateriaPrima" name="NITProveedor" style="color: #061727;">
+                </div>
+                <br>
+              </fieldset>      
+              <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary" [disabled]="!existenciasForm.form.valid">Enviar</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!existenciasForm.form.valid" style="background-color: #FEFBD2; border: #061727; color: #061727;">Enviar</button>
                 </div>
               </fieldset>
             </form>
           </div>
         </div>
-  </div>
+    </div>
 </main>
