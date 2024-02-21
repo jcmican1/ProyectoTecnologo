@@ -77,7 +77,7 @@ CREATE TABLE Motivo
 CREATE TABLE Movimiento
 (
     IdMovimiento INT NOT NULL AUTO_INCREMENT,
-    FechaMovimiento DATE,
+    FechaMovimiento DATETIME,
     CantidadProducto INT NOT NULL,
     IdMotivo INT NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE Existencias
     IdExistencias INT NOT NULL AUTO_INCREMENT,
     CantidadExistencias INT NOT NULL,
     PuntoCompraProducto INT NOT NULL,
-    FechaUltimaModificacion DATE NOT NULL,
+    FechaUltimaModificacion DATETIME NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
     PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
     FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE 

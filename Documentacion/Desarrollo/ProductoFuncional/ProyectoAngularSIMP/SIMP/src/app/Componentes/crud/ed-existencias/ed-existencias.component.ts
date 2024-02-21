@@ -12,7 +12,7 @@ export class EdExistenciasComponent implements OnInit {
 
   id=''
 
-  existencias= new ExistenciasModel("","","","","","","");
+  existencias= new ExistenciasModel("","","","","","","","");
 
   constructor(
     private existenciasService: UsuariosService,

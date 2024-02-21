@@ -1,24 +1,26 @@
-<main class="container mt-4">
-  <div class="container border p-4">
-    <div class="row">
-      <div class="col-sm-12">
-        <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm">
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-              <label for="FechaMovimiento">Fecha de Movimiento</label>
-              <input type="date" class="form-control" required [(ngModel)]="movimiento.FechaMovimiento" name="FechaMovimiento">
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-              <label for="CantidadProducto">Cantidad de Producto (g)</label>
-              <input type="text" class="form-control" required [(ngModel)]="movimiento.CantidadProducto" name="CantidadProducto">
-            </div>
-          </fieldset>
-          <fieldset class="form-group">
-            <div class="col-sm-12">
-                <label for="IdMotivo">Motivo Movimiento</label>
-                <select class="form-control" required [(ngModel)]="movimiento.IdMotivo" name="IdMotivo">
+<!-- version de color oscuro -->
+
+<main class="container mt-4" style="background-color: #061727;">
+  <div class="container border p-4" style="border-color: #FEFBD2;">
+      <div class="row">
+          <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm" style="background-color: ; color: white;">
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="FechaMovimiento" style="color: #FEFBD2;">Fecha de Movimiento</label>
+                  <input type="date" class="form-control" required [(ngModel)]="movimiento.FechaMovimiento" name="FechaMovimiento" style="color: #061727;">
+                </div>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="CantidadProducto" style="color: #FEFBD2;">Cantidad de Producto (g)</label>
+                  <input type="text" class="form-control" required [(ngModel)]="movimiento.CantidadProducto" name="CantidadProducto" style="color: #061727;">
+                </div>
+              </fieldset>
+              <fieldset class="form-group" style="border: 1px solid white;">
+                <div class="col-sm-12">
+                  <label for="IdMotivo" style="color: #FEFBD2;">Motivo Movimiento</label>
+                  <select class="form-control" required [(ngModel)]="movimiento.IdMotivo" name="IdMotivo" style="color: #061727;">
                     <option *ngFor="let motivo of motivos" [value]="motivo.IdMotivo">{{ motivo.DescripcionMovimiento }}</option>
                 </select>
             </div>
@@ -46,5 +48,4 @@
         </form>
       </div>
     </div>
-  </div>
 </main>

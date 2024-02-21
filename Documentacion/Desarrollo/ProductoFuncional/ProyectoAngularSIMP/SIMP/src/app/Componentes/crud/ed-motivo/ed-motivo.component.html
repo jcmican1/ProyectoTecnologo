@@ -1,18 +1,18 @@
-<main class="container mt-4">
-  <div class="container border p-4">
+<main class="container mt-4" style="background-color: #FEFBD2;">
+  <div class="container border p-4" style="border-color: #061727;">
       <div class="row">
           <div class="col-sm-12">
-            <form (ngSubmit)="onSubmit()" #motivoForm="ngForm" >
-              <fieldset class="form-group">
+            <form (ngSubmit)="onSubmit()" #motivoForm="ngForm" style="background-color: #061727; color: white;">
+              <fieldset class="form-group" style="border: 1px solid white;">
                   <div class="col-sm-12">
-                    <label class="control-label" for="DescripcionMovimiento">Descripcion de Movimiento</label>
-                    <input type="text" class="form-control" required [(ngModel)]="motivo.DescripcionMovimiento" name="DescripcionMovimiento">
+                    <label class="control-label" for="DescripcionMovimiento" style="color: #FEFBD2;">Descripcion de Movimiento</label>
+                    <input type="text" class="form-control" required [(ngModel)]="motivo.DescripcionMovimiento" name="DescripcionMovimiento" style="color: #061727;">
                   </div>
                   <br>
                 </fieldset>
-              <fieldset class="form-group">
+              <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary" [disabled]="!motivoForm.form.valid">Enviar</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!motivoForm.form.valid" style="background-color: #FEFBD2; color: #061727; border: none;">Enviar</button>
                 </div>
               </fieldset>
             </form>

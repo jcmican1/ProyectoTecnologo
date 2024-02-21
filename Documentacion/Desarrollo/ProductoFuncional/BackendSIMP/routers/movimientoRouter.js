@@ -3,12 +3,13 @@ const conexion = require('../conexion');
 const router = express.Router();
 router.get('/', (req, res) => {
     const query = `
-        SELECT Movimiento.IdMovimiento, Movimiento.FechaMovimiento, Movimiento.CantidadProducto, Movimiento.TipoMovimiento, Motivo.DescripcionMovimiento, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
+        SELECT Movimiento.IdMovimiento, DATE_FORMAT(Movimiento.FechaMovimiento, '%Y-%m-%d') AS FechaMovimientoFormateada, Movimiento.CantidadProducto, Movimiento.TipoMovimiento, Motivo.DescripcionMovimiento, Producto_Materia_Prima.NombreProducto, Usuario.NombreUsuario
         FROM Movimiento
         INNER JOIN Motivo ON Movimiento.IdMotivo = Motivo.IdMotivo
         INNER JOIN Producto_Materia_Prima ON Movimiento.IdProductoMateriaPrima = Producto_Materia_Prima.IdProductoMateriaPrima
         INNER JOIN Usuario ON Movimiento.IdUsuario = Usuario.IdUsuario;
     `;
+
     conexion.query(query, (error, resultado) => {
         if (error) {
             console.error(error.message);
