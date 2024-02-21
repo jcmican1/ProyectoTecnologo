@@ -21,7 +21,7 @@
                   <div class="col-sm-12">
                     <label class="control-label" for="IdCategoria" style="color: #FEFBD2;">Categoría</label>
                     <select class="form-control" required [(ngModel)]="productoMateriaPrima.IdCategoria" name="IdCategoria" style="color: #061727;">
-                      <option [ngValue]="''" style="color: white;">Seleccionar categoría</option>
+                      <option [ngValue]="''" style="color: #061727;">Seleccionar categoría</option>
                       <option *ngFor="let categoria of categorias" [ngValue]="categoria.IdCategoria" style="color: #061727;">{{ categoria.DescripcionCategoria }}</option>
                     </select>
                   </div>
@@ -30,8 +30,8 @@
                 <fieldset class="form-group" style="border: 1px solid white;">
                   <div class="col-sm-12">
                     <label class="control-label" for="IdUnidadMedida" style="color: #FEFBD2;">Unidad de medida</label>
-                    <select class="form-control" required [(ngModel)]="productoMateriaPrima.IdUnidadMedida" name="IdUnidadMedida" style="color: white;">
-                      <option [ngValue]="''" style="color: white;">Seleccionar unidad de medida</option>
+                    <select class="form-control" required [(ngModel)]="productoMateriaPrima.IdUnidadMedida" name="IdUnidadMedida" style="color: #061727;">
+                      <option [ngValue]="''" style="color: #061727;">Seleccionar unidad de medida</option>
                       <option *ngFor="let unidad of unidades" [ngValue]="unidad.IdUnidadMedida" style="color: #061727;">{{ unidad.UnidadMedida }}</option>
                     </select>
                   </div>
