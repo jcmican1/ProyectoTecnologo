@@ -29,8 +29,8 @@ create table Usuario
     Rol_IdRol int not null,
     Estado_idEstado int not null,
     primary key (IdUsuario),
-    foreign key (Rol_IdRol) references Rol (IdRol) on update cascade on delete cascade,
-    foreign key (Estado_idEstado) references Estado (IdEstado) on update cascade on delete cascade
+    foreign key (Rol_IdRol) references Rol (IdRol) on update cascade ,
+    foreign key (Estado_idEstado) references Estado (IdEstado) on update cascade 
 );
 
 
@@ -59,8 +59,8 @@ create table Producto_Materia_Prima
     IdCategoria int not null,
     IdUnidadMedida int not null,
     primary key (IdProductoMateriaPrima),
-    foreign key (IdCategoria) references Categoria (IdCategoria) on update cascade on delete cascade,
-    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade on delete cascade
+    foreign key (IdCategoria) references Categoria (IdCategoria) on update cascade ,
+    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade 
 );
 
 
@@ -84,8 +84,8 @@ CREATE TABLE Movimiento
     IdUsuario INT NOT NULL,
     TipoMovimiento ENUM('Entrada', 'Salida') NOT NULL,
     PRIMARY KEY (IdMovimiento),
-    FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ,
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE 
 );
 
 -- Crear tabla Existencias
@@ -97,7 +97,7 @@ CREATE TABLE Existencias
     FechaUltimaModificacion DATETIME NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
     PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
-    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE 
 );
 
 -- Trigger para actualizar existencias
@@ -135,8 +135,8 @@ INSERT INTO Estado (DescripcionEstado) VALUES
 -- Insertar datos de prueba en la tabla Usuario
 INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado) VALUES
     ('juan123', 'Pérez', 'juan@example.com', 'clave123', 1, 1),
-    ('ana456', 'López', 'ana@example.com', 'clave456', 2, 1),
-    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 1, 2);
+    ('ana456', 'López', 'ana@example.com', 'clave456', 2, 2),
+    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 1, 1);
 
 -- Insertar datos en la tabla Categoria
 INSERT INTO Categoria (DescripcionCategoria) VALUES

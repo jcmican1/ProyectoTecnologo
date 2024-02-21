@@ -22,37 +22,30 @@
                   <label for="IdMotivo" style="color: #FEFBD2;">Motivo Movimiento</label>
                   <select class="form-control" required [(ngModel)]="movimiento.IdMotivo" name="IdMotivo" style="color: #061727;">
                     <option *ngFor="let motivo of motivos" [value]="motivo.IdMotivo">{{ motivo.DescripcionMovimiento }}</option>
-                  </select>
-                </div>
-              </fieldset>
-              <fieldset class="form-group" style="border: 1px solid white;">
-                <div class="col-sm-12">
-                  <label for="IdProductoMateriaPrima" style="color: #FEFBD2;">ID Materia Prima</label>
-                  <input type="text" class="form-control" required [(ngModel)]="movimiento.IdProductoMateriaPrima" name="IdProductoMateriaPrima" style="color: #061727;">
-                </div>
-              </fieldset>
-              <fieldset class="form-group" style="border: 1px solid white;">
-                <div class="col-sm-12">
-                  <label for="IdUsuario" style="color: #FEFBD2;">Usuario que Realiza Movimiento</label>
-                  <input type="text" class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario" style="color: #061727;">
-                </div>
-              </fieldset>
-              <fieldset class="form-group" style="border: 1px solid white;">
-                <div class="col-sm-12">
-                  <label for="TipoMovimiento" style="color: #FEFBD2;">Tipo de Movimiento</label>
-                  <select class="form-control" required [(ngModel)]="movimiento.TipoMovimiento" name="TipoMovimiento" style="color: #061727;">
-                    <option value="Entrada">Entrada</option>
-                    <option value="Salida">Salida</option>
-                  </select>
-                </div>
-              </fieldset>
-              <fieldset class="form-group" style="border: 1px solid white;">
-                <div class="col-sm-offset-2 col-sm-10"> <br>
-                  <button type="submit" class="btn btn-primary" [disabled]="!movimientoForm.form.valid" style="background-color: #FEFBD2; border: #061727; color: #061727;">Enviar</button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
+                </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="col-sm-12">
+                <label for="IdProductoMateriaPrima">ID Materia Prima</label>
+                <input type="text" class="form-control" required [(ngModel)]="movimiento.IdProductoMateriaPrima" name="IdProductoMateriaPrima">
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="col-sm-12">
+              <label for="TipoMovimiento">Tipo de Movimiento</label>
+              <select class="form-control" required [(ngModel)]="movimiento.TipoMovimiento" name="TipoMovimiento">
+                <option value="Entrada">Entrada</option>
+                <option value="Salida">Salida</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary" [disabled]="!movimientoForm.form.valid">Enviar</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
 </main>
