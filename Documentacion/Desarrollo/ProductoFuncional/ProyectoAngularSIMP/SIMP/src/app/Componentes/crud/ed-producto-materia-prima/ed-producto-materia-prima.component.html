@@ -5,7 +5,7 @@
             <form (ngSubmit)="onSubmit()" #productoMateriaPrimaForm="ngForm" style="background-color: #061727; color: white;">
               <fieldset class="form-group" style="border: 1px solid white;">
                   <div class="col-sm-12">
-                    <label class="control-label" for="NombreProducto" style="color: #FEFBD2;">Nombre del producto</label>
+                    <label class="control-label" for="NombreProducto" style="color: #FEFBD2;" required>Nombre del producto</label>
                     <input type="text" class="form-control" required [(ngModel)]="productoMateriaPrima.NombreProducto" name="NombreProducto" style="color: #061727;">
                   </div>
                   <br>
