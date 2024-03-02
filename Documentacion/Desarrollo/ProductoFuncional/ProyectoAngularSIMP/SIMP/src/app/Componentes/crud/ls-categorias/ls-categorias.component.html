@@ -25,7 +25,6 @@
             <table class="table table-dark table-sm">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
                         <th>Descripción Categoría</th>
                         <!-- <th>Editar</th>
                         <th>Borrar</th> -->
@@ -34,7 +33,6 @@
                 <tbody>
                   <ng-container *ngIf="categorias.length > 0; else noDataMessage">
                     <tr *ngFor="let ca of categorias">
-                        <td>{{ ca.IdCategoria }}</td>
                         <td>{{ ca.DescripcionCategoria }}</td>
                      <!--    <td>
                             <a class="btn btn-warning" [routerLink]="['/categorias/editar/', ca.IdCategoria]">Editar</a>

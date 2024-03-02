@@ -13,7 +13,6 @@
             <table class="table table-dark table-sm">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
                         <th>Nombre Producto Plantilla</th>
                         <th>Nombre Producto</th>
                         <th>Borrar</th>
@@ -22,7 +21,6 @@
                 <tbody>
                   <ng-container *ngIf="productosMateria.length > 0; else noDataMessage">
                       <tr *ngFor="let pr of productosMateria">
-                          <td>{{ pr.IdProductoMateria }}</td>
                           <td>{{ pr.NombreProductoPlantilla }}</td>
                           <td>{{ pr.NombreProducto }}</td>
                           <td>

@@ -77,8 +77,6 @@ app.use('/existencias', auth, existenciasRouter);
 app.use('/movimiento', auth, movimientoRouter);
 app.use('/motivo', auth, motivoRouter);
 
-
-
 //comienzo de rutas
 
 app.get('/', (req, res) => {

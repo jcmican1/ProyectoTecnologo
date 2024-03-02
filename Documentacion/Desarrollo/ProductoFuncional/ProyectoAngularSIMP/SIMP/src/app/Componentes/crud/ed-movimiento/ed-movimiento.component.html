@@ -33,6 +33,13 @@
           </fieldset>
           <fieldset class="form-group" style="border: 1px solid white;">
             <div class="col-sm-12">
+              <label for="IdUsuario">Usuario que Realiza Movimiento</label>
+              <input type="text" class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario">
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="col-sm-12">
+              <label for="TipoMovimiento">Tipo de Movimiento</label>
               <label for="TipoMovimiento" style="color: #FEFBD2;">Tipo de Movimiento</label>
               <select class="form-control" required [(ngModel)]="movimiento.TipoMovimiento" name="TipoMovimiento">
                 <option value="Entrada">Entrada</option>

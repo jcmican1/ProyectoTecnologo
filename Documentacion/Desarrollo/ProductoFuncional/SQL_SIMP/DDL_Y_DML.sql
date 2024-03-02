@@ -29,10 +29,9 @@ create table Usuario
     Rol_IdRol int not null,
     Estado_idEstado int not null,
     primary key (IdUsuario),
-    foreign key (Rol_IdRol) references Rol (IdRol) on update cascade ,
-    foreign key (Estado_idEstado) references Estado (IdEstado) on update cascade 
+    foreign key (Rol_IdRol) references Rol (IdRol) on update cascade on delete cascade,
+    foreign key (Estado_idEstado) references Estado (IdEstado) on update cascade on delete cascade
 );
-
 
 -- Crear tabla Categoria
 create table Categoria
@@ -59,11 +58,9 @@ create table Producto_Materia_Prima
     IdCategoria int not null,
     IdUnidadMedida int not null,
     primary key (IdProductoMateriaPrima),
-    foreign key (IdCategoria) references Categoria (IdCategoria) on update cascade ,
-    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade 
+    foreign key (IdCategoria) references Categoria (IdCategoria) on update cascade on delete cascade,
+    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade on delete cascade
 );
-
-
 
 -- Crear tabla Motivo
 CREATE TABLE Motivo
@@ -84,20 +81,21 @@ CREATE TABLE Movimiento
     IdUsuario INT NOT NULL,
     TipoMovimiento ENUM('Entrada', 'Salida') NOT NULL,
     PRIMARY KEY (IdMovimiento),
-    FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ,
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE 
+    FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Crear tabla Existencias
-CREATE TABLE Existencias
+CREATE TABLE IF NOT EXISTS Existencias
 (
     IdExistencias INT NOT NULL AUTO_INCREMENT,
-    CantidadExistencias INT NOT NULL,
+    CantidadExistencias INT NOT NULL CHECK (CantidadExistencias >= 0),
     PuntoCompraProducto INT NOT NULL,
     FechaUltimaModificacion DATETIME NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
     PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
-    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE 
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -132,7 +130,6 @@ END;
 //
 DELIMITER ;
 
-
 -- Insertar datos de prueba en la tabla Rol
 INSERT INTO Rol (DescripcionRol) VALUES
     ('Admin'),
@@ -146,8 +143,8 @@ INSERT INTO Estado (DescripcionEstado) VALUES
 -- Insertar datos de prueba en la tabla Usuario
 INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado) VALUES
     ('juan123', 'Pérez', 'juan@example.com', 'clave123', 1, 1),
-    ('ana456', 'López', 'ana@example.com', 'clave456', 2, 2),
-    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 1, 1);
+    ('ana456', 'López', 'ana@example.com', 'clave456', 2, 1),
+    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 1, 2);
 
 -- Insertar datos en la tabla Categoria
 INSERT INTO Categoria (DescripcionCategoria) VALUES
@@ -165,7 +162,19 @@ INSERT INTO Producto_Materia_Prima (NombreProducto, DescripcionProductoMateriaPr
 ('Tomate', 'Tomate triturado', 1, 1),
 ('Pepperoni', 'Pepperoni en rodajas', 1, 1),
 ('Salsa de Tomate', 'Salsa de tomate para pizza', 1, 2),
-('Refresco', 'Refresco de cola', 2, 2);
+('Refresco', 'Refresco de cola', 2, 2),
+('NuevoProducto', 'Descripción del Nuevo Producto', 1, 1);  -- Agrega tu nuevo producto aquí
+
+-- Trigger para insertar automáticamente en Existencias después de INSERT en Producto_Materia_Prima
+DELIMITER //
+CREATE TRIGGER tr_insertar_existencias_after_insert AFTER INSERT ON Producto_Materia_Prima
+FOR EACH ROW
+BEGIN
+    INSERT INTO Existencias (IdProductoMateriaPrima, CantidadExistencias, PuntoCompraProducto, FechaUltimaModificacion)
+    VALUES (NEW.IdProductoMateriaPrima, 0, 0, CURRENT_DATE);
+END;
+//
+DELIMITER ;
 
 -- Insertar datos en la tabla Motivo
 INSERT INTO Motivo (DescripcionMovimiento) VALUES
@@ -183,4 +192,5 @@ INSERT INTO Movimiento (FechaMovimiento, CantidadProducto, IdMotivo, IdProductoM
 INSERT INTO Existencias (CantidadExistencias, PuntoCompraProducto, FechaUltimaModificacion, IdProductoMateriaPrima) VALUES
 (500, 100, '2023-01-15', 1),
 (300, 50, '2023-01-16', 2),
-(100, 20, '2023-01-17', 3);
+(100, 20, '2023-01-17', 3),
+(0, 0, CURRENT_DATE, 6);  -- Agrega el nuevo producto aquí

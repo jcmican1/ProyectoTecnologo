@@ -1,8 +1,6 @@
 const express = require('express');
 const conexion = require('../conexion');
 const router = express.Router();
-const auth = require('../middleware/auth')
-const roleAuth = require('../middleware/roleAuth')
 
 // Obtener todos los motivos
 router.get('/', (req, res) => {
@@ -35,7 +33,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Agregar un nuevo motivo
-router.post('/agregar',roleAuth([1]), (req, res) => {
+router.post('/agregar', (req, res) => {
     const motivo = {
         DescripcionMovimiento: req.body.DescripcionMovimiento,
     };
@@ -49,7 +47,7 @@ router.post('/agregar',roleAuth([1]), (req, res) => {
 });
 
 // Actualizar un motivo por su ID
-router.put('/actualizar/:id',roleAuth([1]), (req, res) => {
+router.put('/actualizar/:id', (req, res) => {
     const { id } = req.params;
     const { DescripcionMovimiento } = req.body;
 
@@ -62,7 +60,7 @@ router.put('/actualizar/:id',roleAuth([1]), (req, res) => {
 });
 
 // Eliminar un motivo por su ID
-router.delete('/borrar/:id',roleAuth([1]), (req, res) => {
+router.delete('/borrar/:id', (req, res) => {
     const { id } = req.params;
 
     const query = `DELETE FROM Motivo WHERE IdMotivo=${id};`;
