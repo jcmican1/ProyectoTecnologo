@@ -9,7 +9,7 @@
 
             <div class="ZonaBotones container col-lg-8">
                 <button class="btn btn-success" type="button" [routerLink]="['/ProductoMateria/agregar']">
-                    <img src="./assets/Imagenes/agregar.png" alt="Añadir item">
+                    <img src="./assets/Imagenes/agregar.png" alt="Añadir item"> Agregar
                 </button>
             </div>
 
@@ -35,19 +35,17 @@
 
                 <thead class="thead-dark">
                     <tr>
-                        <th >Id</th>
                         <th >Nombre</th>
                         <th >Descripción</th>
-                        <th >Descripcion Categoria</th>
+                        <th >Descripción Categoría</th>
                         <th >Unidad Medida</th>
-                        <th ></th>
-                        <th ></th>
+                        <th >Editar</th>
+                        <th >Borrar</th>
                     </tr>
                 </thead>
                 <tbody>
                   <ng-container *ngIf="ProductosMateriaPrimaModel.length > 0; else noDataMessage">
                      <tr *ngFor="let ProductoMateriaPrima of ProductosMateriaPrimaModel">
-                        <td>{{ProductoMateriaPrima.IdProductoMateriaPrima}}</td>
                         <td>{{ProductoMateriaPrima.NombreProducto}}</td>
                         <td>{{ProductoMateriaPrima.DescripcionProductoMateriaPrima}}</td>
                         <td>{{ProductoMateriaPrima.DescripcionCategoria}}</td>

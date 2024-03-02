@@ -12,6 +12,7 @@ import { UbicacionModel } from '../../Modelos/UbicacionAlmacen.module';
 import { ExistenciasModel } from '../../Modelos/Existencias.model';
 import { MovimientoModel } from '../../Modelos/Movimiento.model';
 import { MovimientoEDModel } from '../../Modelos/Movimiento-ed.model';
+import { ProductoMateriaPrimaModel } from 'src/app/Modelos/Producto_Materia_Prima.model';
 
 @Injectable({
   providedIn: 'root'
@@ -64,10 +65,6 @@ export class UsuariosService {
   }
 
   //Usuarios
-
-  obtenerUsuarios() {
-    return this.http.get<UsuarioModel[]>(this.url + '/usuarios');
-  }
 
   obtenerUsuario(idUsuario: string) {
     return this.http.get<UsuarioModel[]>(`${this.url}/usuarios/${idUsuario}`);
@@ -231,8 +228,16 @@ export class UsuariosService {
     return this.http.delete<string>(`${this.url}/movimiento/borrar/${id}`);
   }
 
-  //Productos
-  obtenerProductos(){
-    return this.http.get<any[]>(this.url+'/Existencias');
+  obtenerProductosMateriaPrima() {
+    return this.http.get<ProductoMateriaPrimaModel[]>(this.url + '/materia-prima');
+  }
+
+  obtenerProductoMateriaPrima(idProductoMateriaPrima: string) {
+    return this.http.get<ProductoMateriaPrimaModel[]>(`${this.url}/materia-prima/${idProductoMateriaPrima}`);
+  }
+
+  // Obtener lista de usuarios
+  obtenerUsuarios() {
+    return this.http.get<any[]>(this.url + '/usuarios');
   }
 }

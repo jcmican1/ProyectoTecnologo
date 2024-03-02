@@ -1,0 +1,28 @@
+<main class="container mt-4">
+    <div class="container border p-4">
+        <h1>Producto mas Vendido</h1>
+        <div class="m-3 container text-center row justify-content-md-center">
+
+        </div>
+        <div class="TablaTrabajo container table-responsive">
+            <table class="table table-dark table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto Materia Prima</th>
+                        <th>Total Vendido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                    <tr *ngFor="let re of ReportesModel | async ">                      
+                        <td>{{ re.NombreProducto }}</td>
+                        <td>{{ re.TotalVendido }}</td>
+                    
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+

@@ -4,7 +4,7 @@
 
         <div class="m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
-                <button class="btn btn-success" type="button" [routerLink]="['/movimiento/agregar']">Agregar</button>
+                <button class="btn btn-success" type="button" [routerLink]="['/movimiento/agregar']"> <img src="./assets/Imagenes/agregar.png" alt="Añadir item"> Agregar</button>
                 <button class="btn btn-primary" type="button" [routerLink]="['/existencias/']">Ir a Existencias</button>
                 <button class="btn btn-primary" type="button" [routerLink]="['/motivo/']">Ir a Motivo</button>
                 <button class="btn btn-primary" type="button" [routerLink]="['/Usuarios/']">Ir a Usuarios</button>
@@ -17,20 +17,20 @@
             <table class="table table-dark table-sm">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID Movimiento</th>
+                        <!-- <th>ID Movimiento</th> -->
                         <th>Fecha Movimiento</th>
                         <th>Cantidad Producto</th>
-                        <th>ID Motivo</th>
-                        <th>ID Producto Materia Prima</th>
-                        <th>ID Usuario</th>
+                        <th>Contexto</th>
+                        <th>Materia Prima</th>
+                        <th>Usuario</th>
                         <th>Tipo Movimiento</th>
                         <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let mv of movimiento | async">
-                        <td>{{ mv.IdMovimiento }}</td>
-                        <td>{{ mv.FechaMovimiento }}</td>
+                        <!-- <td>{{ mv.IdMovimiento }}</td> -->
+                        <td>{{ mv.FechaMovimientoFormateada }}</td>
                         <td>{{ mv.CantidadProducto }}</td>
                         <td>{{ mv.DescripcionMovimiento }}</td>
                         <td>{{ mv.NombreProducto }}</td>

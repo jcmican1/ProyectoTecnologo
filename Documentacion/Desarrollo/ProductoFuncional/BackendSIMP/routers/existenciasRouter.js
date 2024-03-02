@@ -4,7 +4,15 @@ const router = express.Router();
 
 // Obtener todas las existencias
 router.get('/', (req, res) => {
-    const query = 'SELECT * FROM Existencias;';
+    const query = `SELECT 
+    Existencias.IdExistencias, 
+    Producto_Materia_Prima.NombreProducto,
+    Existencias.CantidadExistencias, 
+    Existencias.PuntoCompraProducto, 
+    DATE_FORMAT(Existencias.FechaUltimaModificacion, '%Y-%m-%d') AS FechaUltimaModificacionFormateada
+FROM Existencias
+INNER JOIN Producto_Materia_Prima ON Existencias.IdProductoMateriaPrima = Producto_Materia_Prima.IdProductoMateriaPrima;`;
+;
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
 

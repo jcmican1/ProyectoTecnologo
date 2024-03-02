@@ -32,6 +32,7 @@ import { EdUnidadMedidaComponent } from './Componentes/crud/ed-unidad-medida/ed-
 import { LsProductoMateriaComponent } from './Componentes/crud/ls-producto-materia/ls-producto-materia.component';
 import { EdProductoMateriaComponent } from './Componentes/crud/ed-producto-materia/ed-producto-materia.component';
 import { AcMovimientosComponent } from './Componentes/crud/ac-movimientos/ac-movimientos.component';
+import { ReportesComponent } from './Componentes/TablasVista/reportes/reportes.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,8 @@ const routes: Routes = [
   { path: 'productosMateria', component: LsProductoMateriaComponent },
 
   { path:'productosMateria/agregar', component:EdProductoMateriaComponent },
+
+  { path: 'reportes', component:ReportesComponent},
 
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' }

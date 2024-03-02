@@ -48,6 +48,7 @@ const plantilla_producto_has_producto_materia_prima = require('./routers/plantil
 const plantilla_producto = require("./routers/plantilla_producto")
 const categoriaRouter = require('./routers/categoriaRouter');
 const producto_materia_prima = require('./routers/producto_materia_prima');
+const Reportes = require('./routers/reportesRouter');
 
 const proveedorRouter = require('./routers/proveedorRouter');
 const ubicacionAlmacenRouter = require('./routers/ubicacionAlmacenRouter');
@@ -68,14 +69,13 @@ app.use('/producto-materia', auth, plantilla_producto_has_producto_materia_prima
 app.use('/plantilla-producto', auth, plantilla_producto);
 app.use('/categoria', auth, categoriaRouter);
 app.use('/materia-prima', auth, producto_materia_prima);
+app.use('/reportes', auth, Reportes);
 
 app.use('/proveedor', auth, proveedorRouter);
 app.use('/ubicacion-almacen/', auth, ubicacionAlmacenRouter);
 app.use('/existencias', auth, existenciasRouter);
 app.use('/movimiento', auth, movimientoRouter);
 app.use('/motivo', auth, motivoRouter);
-
-
 
 //comienzo de rutas
 
