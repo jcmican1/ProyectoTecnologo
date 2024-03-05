@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const conexion = require('../conexion');
+const auth = require('../middleware/auth')
+const roleAuth = require('../middleware/roleAuth')
 
 // Consultar todos los registros de Unidad_Medida
 router.get('/', (req, res) => {
     const query = 'SELECT * FROM Unidad_Medida';
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
-
         if (resultado.length > 0) {
             res.json(resultado);
         } else {
@@ -15,7 +16,6 @@ router.get('/', (req, res) => {
         }
     });
 });
-
 // Consultar por ID en la tabla Unidad_Medida
 router.get('/:id', (req, res) => {
     const { id } = req.params;
@@ -23,7 +23,6 @@ router.get('/:id', (req, res) => {
     
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
-
         if (resultado.length > 0) {
             res.json(resultado);
         } else {
@@ -33,11 +32,10 @@ router.get('/:id', (req, res) => {
 });
 
 // Agregar un nuevo registro a la tabla Unidad_Medida
-router.post('/agregar', (req, res) => {
+router.post('/agregar',roleAuth([1]), (req, res) => {
     const nuevaUnidadMedida = {
         UnidadMedida: req.body.UnidadMedida 
     };
-
     const query = 'INSERT INTO Unidad_Medida SET ?';
     conexion.query(query, nuevaUnidadMedida, (error) => {
         if (error) {
@@ -50,7 +48,7 @@ router.post('/agregar', (req, res) => {
 });
 
 // Actualizar un registro en la tabla Unidad_Medida por su ID
-router.put('/actualizar/:id', (req, res) => {
+router.put('/actualizar/:id',roleAuth([1]), (req, res) => {
     const { id } = req.params;
     const { UnidadMedida } = req.body;
 
@@ -67,7 +65,7 @@ router.put('/actualizar/:id', (req, res) => {
 });
 
 // Borrar un registro en la tabla Unidad_Medida por su ID
-router.delete('/borrar/:id', (req, res) => {
+router.delete('/borrar/:id',roleAuth([1]), (req, res) => {
     const { id } = req.params;
 
     const query = `DELETE FROM Unidad_Medida WHERE IdUnidadMedida=${id}`;
@@ -81,5 +79,4 @@ router.delete('/borrar/:id', (req, res) => {
         }
     });
 });
-
 module.exports = router;

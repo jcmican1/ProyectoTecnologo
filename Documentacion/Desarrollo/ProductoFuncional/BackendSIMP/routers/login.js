@@ -5,6 +5,12 @@ const conexion = require('../conexion'); // Importa tu conexión a la base de da
 const { tokenSign } = require('./generateToken')
 
 router.post('/', (req, res) => {
+    if (!req.body.Correo) {
+        res.json("Por favor escribe tu correo")
+    }
+    if (!req.body.Clave) {
+        res.json("Por favor escribe tu clave")
+    }
     const nuevoUsuario = {
         Correo: req.body.Correo,
         Clave: req.body.Clave
@@ -14,26 +20,32 @@ router.post('/', (req, res) => {
     hash.update(nuevoUsuario.Clave);
     let hashMD5 = hash.digest('hex');
     nuevoUsuario.Clave = hashMD5
-
     const query = `SELECT * FROM usuario WHERE Correo = '${nuevoUsuario.Correo}' AND Clave = '${nuevoUsuario.Clave}';`
 
     conexion.query(query, async (error, resultado) => {
         try {
-
-            const tokenSession = await tokenSign(resultado[0]);
+            let estadoidusuario = resultado[0]
+            let estado = estadoidusuario.Estado_idEstado
             if (resultado.length > 0) {
-                console.log("Chido");
-                res.json(tokenSession)
+                if (estado == 1) {
+                    const tokenSession = await tokenSign(resultado[0]);
+                    console.log("Chido", resultado);
+                    res.json(tokenSession)
+                } else {
+                    res.json("Usuario no activo, contacta con el administrador")
+                }
             } else {
-                res.json(false)
             }
 
         } catch (error) {
-
-            if (error) return console.error(error.message);
-
+            console.log("Mensaje de error----",error.message,"----Mensaje de error");
+            if (error.message == "Cannot read properties of undefined (reading 'Estado_idEstado')") {
+                res.json("Contraseña incorrecta")
+            }else{
+                res.json("No existe el usuario")
+            }
+            if (error) return console.error("Este es el controlador de errores del login en el backend ", error.message);
         }
     });
 });
-
 module.exports = router;

@@ -238,6 +238,6 @@ export class UsuariosService {
 
   // Obtener lista de usuarios
   obtenerUsuarios() {
-    return this.http.get<any[]>(this.url + '/usuarios');
+    return this.http.get<UsuarioModel[]>(this.url + '/usuarios');
   }
 }
