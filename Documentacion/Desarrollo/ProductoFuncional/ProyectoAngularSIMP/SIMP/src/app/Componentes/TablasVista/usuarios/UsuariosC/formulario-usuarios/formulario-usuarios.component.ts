@@ -36,7 +36,6 @@ export class FormularioUsuariosComponent {
 
   onSubmit() {
     console.log('onSubmit');
-
     if (this.UsuarioModel.idUsuario) {
       this.UsuariosService.actualizarUsuario(this.UsuarioModel).subscribe(data => {
         alert(data)
