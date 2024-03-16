@@ -5,6 +5,7 @@ export class UsuarioModel {
         public Apellido: string,
         public Correo: string,
         public Clave: string,
+        public PalabraClave:string,
         public DescripcionRol: string,
         public DescripcionEstado: string
     ) { }

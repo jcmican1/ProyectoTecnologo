@@ -1,54 +1,78 @@
 <style>
-    .login-card {
-      background-color: #FEFBD2; 
-      border: 1px solid #061727; 
-    }
+  .login-card {
+    background-color: #FEFBD2;
+    border: 1px solid #061727;
+  }
 
-    .login-header {
-      background-color: #061727; 
-      color: #FEFBD2; 
-    }
+  .login-header {
+    background-color: #061727;
+    color: #FEFBD2;
+  }
 
-    .login-body {
-      padding: 30px; 
-    }
-    .Ins {
-      background-color: #061727; 
-      color: #FEFBD2; /
-        
-    }
-  </style>
+  .login-body {
+    padding: 30px;
+  }
+
+  .Ins {
+    background-color: #061727;
+    color: #FEFBD2;
+  }
+</style>
 
 <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-md-6">
-        <div class="card login-card">
-          <div class="card-header login-header">
-            <h2 class="text-center">Iniciar Sesión</h2>
-          </div>
-  
-          <form (ngSubmit)="logeo()" #LoginForm="ngForm" style="text-align: center;"
-                class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
-            <div class="form-outline mb-4">
-              <h1>Login SIMP</h1>
-            </div>
-            <div class="form-outline mb-4">
-              <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="UsuarioModel.Correo" required />
-              <label class="form-label">Correo</label>
-            </div>
-  
-            <div class="form-outline mb-4">
-              <input type="password" class="form-control" name="Clave" [(ngModel)]="UsuarioModel.Clave" required />
-              <label class="form-label">Clave</label>
-            </div>
-            <button type="submit" class="Ins">Iniciar Sesión</button> <br> <br>
-  
-           <!--  <a class="text-decoration-none text-muted" href="#">¿Olvidaste tu contraseña?</a>  --> <!-- <br><br> -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card login-card">
+        <div class="card-header login-header">
+          <h2 class="text-center">Iniciar Sesión</h2>
+        </div>
 
+        <form (ngSubmit)="logeo()" #LoginForm="ngForm" style="text-align: center;"
+          class="container mt-5 justify-content-center align-items-center col-lg-6 bg-light text-black">
+          <div class="form-outline mb-4">
+            <h1>Login SIMP</h1>
+          </div>
+          <div class="form-outline mb-4">
+            <input type="email" class="form-control" name="EmailUsuario" [(ngModel)]="UsuarioModel.Correo" required />
+            <label class="form-label">Correo</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="password" class="form-control" name="Clave" [(ngModel)]="UsuarioModel.Clave" required />
+            <label class="form-label">Clave</label>
+          </div>
+
+          <button type="submit" class="Ins">Iniciar Sesión</button>
+          <br><br>
+        </form>
+
+        <button type="button" class="btn btn-link" (click)="showForgotPasswordFormMetodo()">¿Olvidaste tu contraseña?</button>
+
+
+        <!-- Formulario de recuperación de contraseña -->
+        <div *ngIf="showForgotPasswordForm">
+          <h3>Recuperar Contraseña</h3>
+          <form (ngSubmit)="RecuperarClave()" #forgotPasswordForm="ngForm">
+
+            <div class="form-group">
+              <label for="correo">Correo</label>
+              <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="UsuarioModel.Correo" required>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label for="Clave">Clave</label>
+              <input type="password" class="form-control" name="Clave" [(ngModel)]="UsuarioModel.Clave" required />
+            </div>
+
+            <div class="form-group">
+              <label for="PalabraClave">Palabra Clave</label>
+              <input type="text" class="form-control" id="PalabraClave" name="PalabraClave" [(ngModel)]="UsuarioModel.PalabraClave" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
-  
         </div>
       </div>
     </div>
   </div>
-
+</div>

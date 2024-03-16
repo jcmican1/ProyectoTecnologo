@@ -19,6 +19,10 @@
                   <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Clave" name="Clave" id="Clave" style="color: 061727;">
               </div>
               <div class="form-group" style="border: 3px solid white;">
+                <label for="PalabraClave" style="color: #FEFBD2;">Palabra clave</label>
+                <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.PalabraClave" name="PalabraClave" id="PalabraClave" style="color: 061727;">
+            </div>
+              <div class="form-group" style="border: 3px solid white;">
                   <label for="Rol_IdRol" style="color: #FEFBD2;">Rol_IdRol</label><br>
                   <select [(ngModel)]="UsuarioModel.DescripcionRol" name="Rol_IdRol" style="color: #061727;">
                       <option value="1">Administrador</option>

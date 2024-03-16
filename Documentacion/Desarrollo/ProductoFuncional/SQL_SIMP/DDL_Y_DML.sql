@@ -26,6 +26,7 @@ create table Usuario
     Apellido varchar(45) not null,
     Correo varchar(100) not null,
     Clave varchar(200) not null,
+    PalabraClave varchar(200) not null,
     Rol_IdRol int not null,
     Estado_idEstado int not null,
     primary key (IdUsuario),
@@ -141,10 +142,10 @@ INSERT INTO Estado (DescripcionEstado) VALUES
     ('Inactivo');
 
 -- Insertar datos de prueba en la tabla Usuario
-INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, Rol_IdRol, Estado_idEstado) VALUES
-    ('juan123', 'Pérez', 'juan@example.com', 'clave123', 1, 1),
-    ('ana456', 'López', 'ana@example.com', 'clave456', 2, 2),
-    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980', 1, 1);
+INSERT INTO Usuario (NombreUsuario, Apellido, Correo, Clave, PalabraClave, Rol_IdRol, Estado_idEstado) VALUES
+    ('juan123', 'Pérez', 'juan@example.com', 'clave123','PAZ', 1, 1),
+    ('ana456', 'López', 'ana@example.com', 'clave456','PAIS', 2, 2),
+    ('carlos789', 'Gómez', 'J@E.com', 'a0aa2a69c1a92bd3343b37d1a900c980','CONTROL', 1, 1);
 
 -- Insertar datos en la tabla Categoria
 INSERT INTO Categoria (DescripcionCategoria) VALUES

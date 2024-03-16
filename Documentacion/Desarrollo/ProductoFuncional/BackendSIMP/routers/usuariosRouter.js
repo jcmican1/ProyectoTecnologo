@@ -7,7 +7,7 @@ const { tokenSign } = require('./generateToken')
 // Endpoint para manipular la tabla Usuario
 router.get('/', (req, res) => {
     console.log("Consulta de todos los usuarios");
-    const query = 'SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado';
+    const query = 'SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Usuario.PalabraClave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado';
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message);
 
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 
     const { id } = req.params
-    const query = `SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado WHERE idUsuario=${id};`
+    const query = `SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Usuario.PalabraClave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado WHERE idUsuario=${id};`
     conexion.query(query, (error, resultado) => {
         if (error) return console.error(error.message)
 
@@ -39,7 +39,7 @@ router.get('/Correo/:id', (req, res) => {
 
     // Utilizamos placeholders para la consulta y un array de valores
     const query = `
-        SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado
+        SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Usuario.PalabraClave, Rol.DescripcionRol, Estado.DescripcionEstado
         FROM Usuario
         INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol
         INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado
@@ -75,6 +75,7 @@ router.post('/agregar', (req, res) => {
         Apellido: req.body.Apellido,
         Correo: req.body.Correo,
         Clave: req.body.Clave,
+        PalabraClave: req.body.PalabraClave,
         Rol_IdRol: req.body.DescripcionRol,
         Estado_idEstado: req.body.DescripcionEstado
     };
@@ -83,10 +84,10 @@ router.post('/agregar', (req, res) => {
     hash.update(nuevoUsuario.Clave);
     let hashMD5 = hash.digest('hex');
     nuevoUsuario.Clave = hashMD5
+
     const query = 'INSERT INTO Usuario SET ?';
     conexion.query(query, nuevoUsuario, (error) => {
         if (error) return console.error(error.message);
-
         res.json('Se insertó correctamente el nuevo usuario');
     });
 });
@@ -97,20 +98,18 @@ router.put('/actualizar/:id', (req, res) => {
     console.log("Actualizacion de usuarios siiii", req, "1111||||2222", res);
     const { id } = req.params;
     console.log(id, "Mijo este es el ID");
-    let NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado;
+    let NombreUsuario = req.body.NombreUsuario, Apellido = req.body.Apellido, Correo = req.body.Correo, Clave = req.body.Clave, PalabraClave=req.body.PalabraClave, Rol_IdRol = req.body.DescripcionRol, Estado_idEstado = req.body.DescripcionEstado;
 
-    const queryVerificacion = `SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado WHERE idUsuario=${id};`
+    const queryVerificacion = `SELECT Usuario.idUsuario, Usuario.NombreUsuario, Usuario.Apellido, Usuario.Correo, Usuario.Clave , Usuario.PalabraClave, Rol.DescripcionRol, Estado.DescripcionEstado FROM Usuario INNER JOIN Rol ON Usuario.Rol_IdRol = Rol.IdRol INNER JOIN Estado ON Usuario.Estado_idEstado = Estado.idEstado WHERE idUsuario=${id};`
     conexion.query(queryVerificacion, (error, resultado) => {
         if (error) return console.error(error.message)
 
         if (resultado.length > 0) {
-            // Aquí puedes trabajar con los datos de resultado como lo necesites
             console.log(resultado[0].Clave);
 
-            // Después de realizar las operaciones necesarias, puedes continuar con la lógica de actualización
             if (resultado[0].Clave == Clave) {
 
-                const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
+                const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', PalabraClave='${PalabraClave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
 
                 console.log('==================querySinClave==================');
                 console.log(query);
@@ -128,7 +127,7 @@ router.put('/actualizar/:id', (req, res) => {
                 let hashMD5 = hash.digest('hex');
                 Clave = hashMD5
 
-                const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Clave='${Clave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
+                const query = `UPDATE Usuario SET NombreUsuario='${NombreUsuario}', Apellido='${Apellido}', Correo='${Correo}', Clave='${Clave}',PalabraClave='${PalabraClave}', Rol_IdRol=${Rol_IdRol}, Estado_idEstado=${Estado_idEstado} WHERE idUsuario=${id};`;
 
                 console.log('==================query==================');
                 console.log(query);
@@ -145,7 +144,6 @@ router.put('/actualizar/:id', (req, res) => {
         }
     })
 });
-
 
 // Endpoint para eliminar un usuario
 router.delete('/borrar/:id', (req, res) => {

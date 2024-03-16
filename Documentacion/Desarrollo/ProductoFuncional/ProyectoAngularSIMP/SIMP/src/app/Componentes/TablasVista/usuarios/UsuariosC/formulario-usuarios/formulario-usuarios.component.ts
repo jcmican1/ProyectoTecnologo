@@ -12,7 +12,7 @@ import { UsuariosService } from 'src/app/servicios/Usuarios/usuarios.service';
 export class FormularioUsuariosComponent {
 
   id = ''
-  UsuarioModel = new UsuarioModel("", "", "", "", "", "", "");
+  UsuarioModel = new UsuarioModel("", "", "", "", "", "", "", "");
 
   constructor(
     private UsuariosService: UsuariosService,
