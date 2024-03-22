@@ -1,49 +1,52 @@
-<div class="container" style="background-color: white;">
-  <div class="row">
+
+<div class="container">
+    <div class="row">
       <div class="col-md-6 mx-auto">
-          <form (ngSubmit)="onSubmit()" #RegistroForm="ngForm" style="background-color: #061727; color: #FEFBD2;">
-              <div class="form-group" style="border: 3px solid white;">
-                  <label for="NombreUsuario" style="color: #FEFBD2;">Nombre</label>
-                  <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.NombreUsuario" name="NombreUsuario" id="NombreUsuario" style="color: 061727;">
-              </div>
-              <div class="form-group" style="border: 3px solid white;">
-                  <label for="Apellido" style="color: #FEFBD2;">Apellido</label>
-                  <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Apellido" name="Apellido" id="Apellido" style="color: 061727;">
-              </div>
-              <div class="form-group" style="border: 3px solid white;">
-                  <label for="Correo" style="color: #FEFBD2;">Correo</label>
-                  <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Correo" name="Correo" id="Correo" style="color: 061727;">
-              </div>
-              <div class="form-group" style="border: 3px solid white;">
-                  <label for="Clave" style="color: #FEFBD2;">Clave</label>
-                  <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Clave" name="Clave" id="Clave" style="color: 061727;">
-              </div>
-              <div class="form-group" style="border: 3px solid white;">
-                <label for="PalabraClave" style="color: #FEFBD2;">Palabra clave</label>
-                <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.PalabraClave" name="PalabraClave" id="PalabraClave" style="color: 061727;">
+        <div class="form-container">
+          <form (ngSubmit)="onSubmit()" #RegistroForm="ngForm">
+            <div class="form-group">
+              <label for="NombreUsuario">Nombre</label>
+              <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.NombreUsuario" name="NombreUsuario" id="NombreUsuario">
             </div>
-              <div class="form-group" style="border: 3px solid white;">
-                  <label for="Rol_IdRol" style="color: #FEFBD2;">Rol_IdRol</label><br>
-                  <select [(ngModel)]="UsuarioModel.DescripcionRol" name="Rol_IdRol" style="color: #061727;">
-                      <option value="1">Administrador</option>
-                      <option value="2">Empleado</option>
-                  </select>               
-              </div>
-              <div class="form-group" style="border: 3px solid white;">
-                  <label for="Estado_idEstado" style="color: #FEFBD2;">Estado_idEstado</label><br>
-                  <select [(ngModel)]="UsuarioModel.DescripcionEstado" name="Estado_idEstado" style="color: #061727;">
-                      <option value="1">Activo</option>
-                      <option value="2">Inactivo</option>
-                  </select><br>  
-              </div>
-              <div class="form-group" style="border: 3px solid white;">
-                  <button type="submit" class="btn btn-primary" [disabled]="!RegistroForm.form.valid" style="background-color: #061727; color: #FEFBD2;">Enviar</button>
-              </div>
+            <div class="form-group">
+              <label for="Apellido">Apellido</label>
+              <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.Apellido" name="Apellido" id="Apellido">
+            </div>
+            <div class="form-group">
+              <label for="Correo">Correo</label>
+              <input type="email" class="form-control" required [(ngModel)]="UsuarioModel.Correo" name="Correo" id="Correo">
+            </div>
+            <div class="form-group">
+              <label for="Clave">Clave</label>
+              <input type="password" class="form-control" required [(ngModel)]="UsuarioModel.Clave" name="Clave" id="Clave">
+            </div>
+            <div class="form-group">
+              <label for="PalabraClave">Palabra clave</label>
+              <input type="text" class="form-control" required [(ngModel)]="UsuarioModel.PalabraClave" name="PalabraClave" id="PalabraClave">
+            </div>
+            <div class="form-group">
+              <label for="Rol_IdRol">Rol</label>
+              <select class="form-control" [(ngModel)]="UsuarioModel.DescripcionRol" name="Rol_IdRol">
+                <option value="1">Administrador</option>
+                <option value="2">Empleado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="Estado_idEstado">Estado</label>
+              <select class="form-control" [(ngModel)]="UsuarioModel.DescripcionEstado" name="Estado_idEstado">
+                <option value="1">Activo</option>
+                <option value="2">Inactivo</option>
+              </select>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary" [disabled]="!RegistroForm.form.valid">Enviar</button>
+            </div>
           </form>
           <hr>
-          <br>
-          <button class="btn btn-success" routerLink="/Usuarios" style="background-color: #061727; color: white; border: none;">Regresar</button>
-
+          <div class="text-center">
+            <button class="btn btn-success" routerLink="/Usuarios">Regresar</button>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
