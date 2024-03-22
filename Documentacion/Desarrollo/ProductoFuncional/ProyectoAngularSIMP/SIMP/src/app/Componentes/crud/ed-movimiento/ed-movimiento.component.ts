@@ -33,7 +33,7 @@ export class EdMovimientoComponent implements OnInit {
     this.movimientoService.agregarMovimiento(this.movimiento).subscribe(
       (data: any) => {
         alert(data.mensaje);
-        this.router.navigate(['/existencia']);
+        this.router.navigate(['/movimiento']);
       },
       (error: any) => {
         console.error('Error:', error);
