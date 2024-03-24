@@ -1,0 +1,8 @@
+.graficos {
+    width: 500px; /* Ancho de 300 píxeles */
+    height: 500px; /* Altura de 200 píxeles */
+    max-width: 700px; /* Ancho máximo de 500 píxeles */
+    max-height: 700px; /* Altura máxima de 400 píxeles */
+    min-width: 100px; /* Ancho mínimo de 100 píxeles */
+    min-height: 50px; /* Altura mínima de 50 píxeles */
+}
