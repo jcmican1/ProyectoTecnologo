@@ -172,7 +172,7 @@ CREATE TRIGGER tr_insertar_existencias_after_insert AFTER INSERT ON Producto_Mat
 FOR EACH ROW
 BEGIN
     INSERT INTO Existencias (IdProductoMateriaPrima, CantidadExistencias, PuntoCompraProducto, FechaUltimaModificacion)
-    VALUES (NEW.IdProductoMateriaPrima, 0, 0, CURRENT_DATE);
+    VALUES (NEW.IdProductoMateriaPrima, 0, 50, CURRENT_DATE);
 END;
 //
 DELIMITER ;
