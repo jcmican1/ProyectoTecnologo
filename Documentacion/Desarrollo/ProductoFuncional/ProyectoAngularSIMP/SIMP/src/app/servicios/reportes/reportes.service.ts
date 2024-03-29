@@ -10,8 +10,12 @@ export class ReportesService {
   url = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
-  obtenerReportes(): Observable<any> {
-    return this.http.get<ReportesModel[]>(this.url + '/reportes');
+  obtenerProductoMasVendido(): Observable<any> {
+    return this.http.get<ReportesModel[]>(this.url + '/reportes/masvendido');
+  }
+
+  obtenerProductoMenosVendido(): Observable<any> {
+    return this.http.get<ReportesModel[]>(this.url + '/reportes/menosvendido');
   }
   
 }
