@@ -4,7 +4,6 @@
 
         <div class="m-3 container text-center row justify-content-md-center">
             <div class="ZonaBotones container col-lg-8">
-                <button class="btn btn-success" type="button" [routerLink]="['/movimiento/agregar']"> <img src="./assets/Imagenes/agregar.png" alt="Añadir item"> Agregar</button>
             </div>
             <div class="col-lg-4">
             </div>
@@ -19,8 +18,6 @@
                         <th>Punto de Compra</th>
                         <th>Fecha Ultima Modificación</th>
                         <th>Materia Prima</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,12 +28,6 @@
                         <td>{{ ex.PuntoCompraProducto }}</td>
                         <td>{{ ex.FechaUltimaModificacionFormateada }}</td>
                         <td>{{ ex.NombreProducto }}</td>
-                        <td>
-                            <a class="btn btn-warning" [routerLink]="['/existencias/editar/', ex.IdExistencias]">Editar</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-danger" (click)="borrarExistencias(ex.IdExistencias)">Borrar</a>
-                        </td>
                     </tr>
                   </ng-container>
                   <ng-template #noDataMessage>
