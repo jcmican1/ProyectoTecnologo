@@ -1,8 +1,14 @@
 .graficos {
-    width: 500px; /* Ancho de 300 píxeles */
-    height: 500px; /* Altura de 200 píxeles */
-    max-width: 700px; /* Ancho máximo de 500 píxeles */
-    max-height: 700px; /* Altura máxima de 400 píxeles */
-    min-width: 100px; /* Ancho mínimo de 100 píxeles */
-    min-height: 50px; /* Altura mínima de 50 píxeles */
-}
+    display: flex;
+    justify-content: space-between; /* Distribuye las columnas uniformemente */
+  }
+  
+  .columna {
+    flex-basis: calc(50% - 20px ); /* El ancho de cada columna es del 50% del contenedor con un espacio de 10px entre ellas */
+  }
+  
+  canvas {
+    width: 100%; /* Ajusta el ancho del canvas al 100% del contenedor */
+    height: auto; /* La altura se ajustará automáticamente según el ancho */
+  }
+  
