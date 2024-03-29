@@ -59,8 +59,8 @@ create table Producto_Materia_Prima
     IdCategoria int not null,
     IdUnidadMedida int not null,
     primary key (IdProductoMateriaPrima),
-    foreign key (IdCategoria) references Categoria (IdCategoria) on update cascade ,
-    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) on update cascade 
+    foreign key (IdCategoria) references Categoria (IdCategoria),
+    foreign key (IdUnidadMedida) references Unidad_Medida (IdUnidadMedida) ON DELETE CASCADE
 );
 
 -- Crear tabla Motivo
@@ -84,7 +84,7 @@ CREATE TABLE Movimiento
     PRIMARY KEY (IdMovimiento),
     FOREIGN KEY (IdMotivo) REFERENCES Motivo (IdMotivo) ON UPDATE CASCADE ,
     FOREIGN KEY (IdUsuario) REFERENCES Usuario (IdUsuario) ON UPDATE CASCADE ,
-    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE 
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON DELETE CASCADE
 );
 
 -- Crear tabla Existencias
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS Existencias
     FechaUltimaModificacion DATETIME NOT NULL,
     IdProductoMateriaPrima INT NOT NULL,
     PRIMARY KEY (IdExistencias, IdProductoMateriaPrima),
-    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON UPDATE CASCADE 
+    FOREIGN KEY (IdProductoMateriaPrima) REFERENCES Producto_Materia_Prima (IdProductoMateriaPrima) ON DELETE CASCADE
 );
 
 
@@ -194,4 +194,4 @@ INSERT INTO Existencias (CantidadExistencias, PuntoCompraProducto, FechaUltimaMo
 (500, 100, '2023-01-15', 1),
 (300, 50, '2023-01-16', 2),
 (100, 20, '2023-01-17', 3),
-(0, 0, CURRENT_DATE, 6);  -- Agrega el nuevo producto aquí
+(0, 50, CURRENT_DATE, 6);  -- Agrega el nuevo producto aquí
