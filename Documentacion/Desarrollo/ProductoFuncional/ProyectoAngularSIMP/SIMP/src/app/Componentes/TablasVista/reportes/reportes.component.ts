@@ -82,7 +82,7 @@ export class ReportesComponent implements OnInit {
         datasets: [{
           label: 'Total Vendido',
           data: totalVendido,
-          backgroundColor: 'rgba(6, 23, 39)',
+          backgroundColor: 'rgba(255, 0, 0)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
         }]
