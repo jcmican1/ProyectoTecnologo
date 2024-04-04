@@ -11,8 +11,10 @@ import { MovimientoEDModel } from 'src/app/Modelos/Movimiento-ed.model';
 })
 export class AcMovimientosComponent implements OnInit {
   movimientoForm!: FormGroup;
-  idMovimiento!: string; 
+  idMovimiento!: string;
   movimiento: MovimientoEDModel | null = null;
+  motivos: any[] = [];
+  productos: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,15 +41,7 @@ export class AcMovimientosComponent implements OnInit {
         movimiento => {
           if (movimiento) {
             this.movimiento = movimiento;
-            this.movimientoForm.patchValue({
-              IdMovimiento: movimiento.IdMovimiento,
-              fechaMovimiento: movimiento.FechaMovimiento,
-              cantidadProducto: movimiento.CantidadProducto,
-              idMotivo: movimiento.IdMotivo,
-              idProductoMateriaPrima: movimiento.IdProductoMateriaPrima,
-              idUsuario: movimiento.IdUsuario,
-              tipoMovimiento: movimiento.TipoMovimiento
-            });
+            this.actualizarFormulario(); // Llamada a la función para actualizar el formulario
           }
         },
         error => {
@@ -55,6 +49,21 @@ export class AcMovimientosComponent implements OnInit {
         }
       );
     }
+
+    this.usuariosService.obtenerMotivos().subscribe((data: any[]) => (this.motivos = data));
+    this.usuariosService.obtenerProductosMateriaPrima().subscribe((data: any[]) => (this.productos = data));
+  }
+
+  actualizarFormulario() {
+    this.movimientoForm.patchValue({
+      IdMovimiento: this.movimiento?.IdMovimiento || '',
+      fechaMovimiento: this.movimiento?.FechaMovimiento || '',
+      cantidadProducto: this.movimiento?.CantidadProducto || '',
+      idMotivo: this.movimiento?.IdMotivo || '',
+      idProductoMateriaPrima: this.movimiento?.IdProductoMateriaPrima || '',
+      idUsuario: this.movimiento?.IdUsuario || '',
+      tipoMovimiento: this.movimiento?.TipoMovimiento || ''
+    });
   }
 
   onSubmit() {
@@ -86,5 +95,3 @@ export class AcMovimientosComponent implements OnInit {
     }
   }
 }
-
-

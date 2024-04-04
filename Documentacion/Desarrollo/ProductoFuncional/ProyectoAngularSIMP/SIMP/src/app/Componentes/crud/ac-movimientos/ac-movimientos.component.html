@@ -19,13 +19,17 @@
         </div>
 
         <div class="mb-3">
-          <label for="idMotivo" class="form-label">Contexto:</label>
-          <input type="number" id="idMotivo" formControlName="idMotivo" class="form-control">
+          <label for="idMotivo" class="form-label">Motivo del Movimiento:</label>
+          <select formControlName="idMotivo" class="form-select">
+            <option *ngFor="let motivo of motivos" [value]="motivo.IdMotivo">{{ motivo.DescripcionMovimiento }}</option>
+          </select>
         </div>
 
         <div class="mb-3">
-          <label for="idProductoMateriaPrima" class="form-label">Materia Prima:</label>
-          <input type="number" id="idProductoMateriaPrima" formControlName="idProductoMateriaPrima" class="form-control">
+          <label for="idProductoMateriaPrima" class="form-label">Producto/Materia Prima:</label>
+          <select formControlName="idProductoMateriaPrima" class="form-select">
+            <option *ngFor="let producto of productos" [value]="producto.IdProductoMateriaPrima">{{ producto.NombreProducto }}</option>
+          </select>
         </div>
 
         <div class="mb-3">

@@ -66,6 +66,11 @@ export class UsuariosService {
 
   //Usuarios
 
+// Obtener lista de usuarios
+  obtenerUsuarios() {
+    return this.http.get<UsuarioModel[]>(this.url + '/usuarios');
+  }
+
   obtenerUsuario(idUsuario: string) {
     return this.http.get<UsuarioModel[]>(`${this.url}/usuarios/${idUsuario}`);
   }
@@ -88,6 +93,11 @@ export class UsuariosService {
 
   borrarUsuario(idUsuario: string) {
     return this.http.delete<string>(`${this.url}/usuarios/borrar/${idUsuario}`)
+  }
+
+  //Poder cambiar contraseña
+  RecuperarClave(UsuarioModel: UsuarioModel) {
+    return this.http.put<string>(`${this.url}/login/RecuperarClave`, UsuarioModel)
   }
 
   //Usuarios_has_notificaciones
@@ -172,59 +182,59 @@ export class UsuariosService {
   }
 
   //Motivo
-  obtenerMotivos(){
-    return this.http.get<MotivoModel[]>(this.url+'/motivo');
+  obtenerMotivos() {
+    return this.http.get<MotivoModel[]>(this.url + '/motivo');
   }
-  obtenerMotivo(id:string){
+  obtenerMotivo(id: string) {
     return this.http.get<MotivoModel>(`${this.url}/motivo/${id}`);
   }
-  agregarMotivo(motivo: MotivoModel){
+  agregarMotivo(motivo: MotivoModel) {
     return this.http.post<string>(`${this.url}/motivo/agregar`, motivo);
   }
-  actualizarMotivo(motivo: MotivoModel){
+  actualizarMotivo(motivo: MotivoModel) {
     return this.http.put<string>(`${this.url}/motivo/actualizar/${motivo.IdMotivo}`, motivo);
   }
-  borrarMotivo(id:string){
+  borrarMotivo(id: string) {
     return this.http.delete<string>(`${this.url}/motivo/borrar/${id}`);
   }
 
   //Existencias
-  obtenerExistencias(){
-    return this.http.get<ExistenciasModel[]>(this.url+`/existencias`);
+  obtenerExistencias() {
+    return this.http.get<ExistenciasModel[]>(this.url + `/existencias`);
   }
-  obtenerExistencia(id:string){
+  obtenerExistencia(id: string) {
     return this.http.get<ExistenciasModel>(`${this.url}/existencias/${id}`);
   }
-  agregarExistencia(existencias: ExistenciasModel){
+  agregarExistencia(existencias: ExistenciasModel) {
     return this.http.post<string>(`${this.url}/existencias/agregar`, existencias);
   }
-  actualizarExistencia(existencias: ExistenciasModel){
+  actualizarExistencia(existencias: ExistenciasModel) {
     return this.http.put<string>(`${this.url}/existencias/actualizar/${existencias.IdExistencias}`, existencias);
   }
-  borrarExistencia(id:string){
+  borrarExistencia(id: string) {
     return this.http.delete<string>(`${this.url}/existencias/borrar/${id}`);
   }
 
   //Movimiento
-  obtenerMovimientos(){
-    return this.http.get<MovimientoEDModel[]>(this.url+`/movimiento`);
+  obtenerMovimientos() {
+    return this.http.get<MovimientoEDModel[]>(this.url + `/movimiento`);
   }
-  obtenerMovimiento(id:string){
+  obtenerMovimiento(id: string) {
     return this.http.get<MovimientoEDModel>(`${this.url}/movimiento/${id}`);
   }
-  obtenerMovimientosls(){
-    return this.http.get<MovimientoModel[]>(this.url+`/movimiento`);
+  obtenerMovimientosls() {
+    return this.http.get<MovimientoModel[]>(this.url + `/movimiento`);
   }
-  obtenerMovimientols(id:string){
+  obtenerMovimientols(id: string) {
     return this.http.get<MovimientoModel>(`${this.url}/movimiento/${id}`);
   }
-  agregarMovimiento(movimiento: MovimientoEDModel){
+  agregarMovimiento(movimiento: MovimientoEDModel) {
     return this.http.post<string>(`${this.url}/movimiento/agregar`, movimiento);
   }
-  actualizarMovimiento(movimiento: MovimientoEDModel){
+  actualizarMovimiento(movimiento: MovimientoEDModel) {
     return this.http.put<string>(`${this.url}/movimiento/actualizar/${movimiento.IdMovimiento}`, movimiento);
   }
-  borrarMovimiento(id:string){
+  borrarMovimiento(id: string) {
     return this.http.delete<string>(`${this.url}/movimiento/borrar/${id}`);
   }
 
@@ -236,8 +246,4 @@ export class UsuariosService {
     return this.http.get<ProductoMateriaPrimaModel[]>(`${this.url}/materia-prima/${idProductoMateriaPrima}`);
   }
 
-  // Obtener lista de usuarios
-  obtenerUsuarios() {
-    return this.http.get<any[]>(this.url + '/usuarios');
-  }
 }

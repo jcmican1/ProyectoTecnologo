@@ -4,7 +4,7 @@
   <div class="container border p-4" style="border-color: #FEFBD2;">
       <div class="row">
           <div class="col-sm-12">
-            <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm" style="background-color: ; color: white;">
+            <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm" style="background-color: #061727; color: white;">
               <fieldset class="form-group" style="border: 1px solid white;">
                 <div class="col-sm-12">
                   <label for="FechaMovimiento" style="color: #FEFBD2;">Fecha de Movimiento</label>
@@ -27,14 +27,18 @@
           </fieldset>
           <fieldset class="form-group" style="border: 1px solid white;">
             <div class="col-sm-12">
-                <label for="IdProductoMateriaPrima" style="color: #FEFBD2;">ID Materia Prima</label>
-                <input type="text" class="form-control" required [(ngModel)]="movimiento.IdProductoMateriaPrima" name="IdProductoMateriaPrima">
+              <label for="IdProductoMateriaPrima">ID Materia Prima</label>
+              <select class="form-control" required [(ngModel)]="movimiento.IdProductoMateriaPrima" name="IdProductoMateriaPrima">
+                <option *ngFor="let producto of productos" [value]="producto.IdProductoMateriaPrima">{{ producto.NombreProducto }}</option>
+              </select>
             </div>
           </fieldset>
           <fieldset class="form-group" style="border: 1px solid white;">
             <div class="col-sm-12">
               <label for="IdUsuario">Usuario que Realiza Movimiento</label>
-              <input type="text" class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario">
+<select class="form-control" required [(ngModel)]="movimiento.IdUsuario" name="IdUsuario">
+  <option *ngFor="let usuario of usuarios" [value]="usuario.IdUsuario">{{ usuario.NombreUsuario }}</option>
+</select>
             </div>
           </fieldset>
           <fieldset class="form-group">
@@ -55,3 +59,5 @@
         </form>
       </div>
     </div>
+  </div>
+</main>  
